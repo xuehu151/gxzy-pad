@@ -1,0 +1,78 @@
+<ion-view view-title = "大乐透">
+    <ion-nav-bar class='bar-light'>
+        <ion-nav-buttons side="left">
+            <a href="#login" class="button button-icon ion-ios-arrow-left" style="font-size: 2em;color: #fff"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right" >
+            <span class="headTime">
+                距 <i ng-cloak="">{{wareIssue}}</i>
+                期截止：<span class="time" ng-cloak="">{{endTime}}</span>
+            </span>
+
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <div class="bar bar-subheader addBtn">
+        <div class="row number">请选择您要兑换的大乐透号码</div>
+        <div class="row h44">
+            <a class="button icon icon-left ion-ios-plus-empty col btn-30" href="" ng-click="autoAddOneNote()">机选一注号码</a>
+            <a class="button icon icon-left ion-ios-plus-empty col btn-30" href="" ng-click=autoAddFiveNote()>机选五注号码</a>
+        </div>
+    </div>
+
+    <ion-content style="background: #f0f4f3;" class="padding-6">
+        <div class="padding">
+            <ul class="list betting-detail-ul">
+                <li class="item item-button-left item-button-right" ng-repeat="liItem in sessionJsonWarp track by $index">
+                    <a class="button button-clear " ng-click="deleteRow($index)">
+                        <i class="icon ion-android-close dark"></i>
+                    </a>
+                    <div class="betting-num num-bg-red">
+                        <i ng-repeat="redItem in liItem.red" ng-bind="redItem.num"></i>
+                    </div>
+                    <div class="betting-num num-bg-blue">
+                       <i ng-repeat="blueItem in liItem.blue" ng-bind="blueItem.num"></i>
+                    </div>
+                </li>
+            </ul>
+            <div  class="emptyStatus" ng-show="sessionJsonWarp.length==0">
+                <img ng-src="{{dummyStatus}}" alt = "">
+                <p>好像什么都没有耶</p>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar class=" betting-detail-footer" style="height: 80px;">
+        <div class="row">
+            <div class="col col-33 detele">
+                <span class="ion-trash-a" ng-click="emptyAll()"> &nbsp;清空</span>
+            </div>
+            <div class="col col-33 middle">
+                <div>
+                    投注
+                    <label class="padding-left">
+                        <input class="bigLotto-input1"
+                               placeholder=""
+                               type="tel"
+                               onKeyUp="value=value.replace(/\D/g,'')"
+                               ng-change="multipleChange()"
+                               ng-model="multiple"/>
+                    </label> 倍
+                    <p style="height: 35px;">
+                        <span ng-cloak="">{{sessionJsonWarp.length}}注</span>
+                        <span class="font-red" ng-cloak> {{totalMoney}}</span>  元 &nbsp;&nbsp;&nbsp;
+                    </p>
+                </div>
+            </div>
+            <div class="col col-33 exchange">
+                <button class="button button-block button-liner-gradiend" ng-click="showOrderAlertCms(res)"
+                        style="font-size: 16px;" ng-disabled="isDisabled">
+                    立即投注
+                </button>
+            </div>
+        </div>
+
+    </ion-footer-bar>
+
+</ion-view>
+<!--ion-trash-a-->

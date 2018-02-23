@@ -1,0 +1,251 @@
+/* Empty. Add your own CSS if you like */
+html{
+    font-size: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.headTime{
+    font-size: .8rem;
+    line-height: 2.5;
+    margin-right: 1.5rem;
+}
+
+.headTime .time{
+    color: #ff9307;
+    font-size: .8rem;
+}
+
+.betting-detail-ul li {
+    padding: .3rem 3rem;
+}
+
+.betting-num i {
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    margin: 3px 0.5%;
+    display: inline-block;
+    float: left;
+}
+
+.num-bg-red i {
+    background: #d11d1d;
+}
+
+.num-bg-blue i {
+    background: #3f97d5;
+}
+
+.betting-detail-footer .bigLotto-input1 {
+    width: 4rem;
+    height: 1.6rem;
+    border: 1px solid #ccc;
+    display: inline-block;
+    background: transparent;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1.6rem;
+}
+
+.checkSected{
+    margin-left: 2%;
+}
+
+.betting-detail-footer .bigLotto-input2 {
+    width: 18px;
+    height: 18px;
+    top: 17px;
+    left: -20px;
+}
+
+input.bigLotto-input2:checked:before {
+    background: #e42112;
+    border-color: #e42112;
+}
+
+
+.button-liner-gradiend {
+    color: white;
+    margin: 6px auto;
+    min-height: 40px !important;
+    max-width: 90%;
+    border-color: transparent;
+    background: #692bfe;
+    box-shadow: 2px 20px 85px #8d41eb;
+    background: -o-linear-gradient(left, #692bfe, #8d41eb);
+    background: -ms-linear-gradient(left, #692bfe, #8d41eb);
+    background: -moz-linear-gradient(left, #692bfe, #8d41eb);
+    background: -webkit-linear-gradient(left, #692bfe, #8d41eb);
+}
+
+.h44 {
+    width: 50%;
+    height: 44px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.h44 .button {
+    color: #10298e;
+    border: solid 1px #989898;
+    font-size: 1rem;
+}
+
+.btn-30 {
+    margin: 0 15px;
+}
+
+.h44 a {
+    min-height: 40px!important;
+    line-height: 39px!important;
+    padding: 0;
+}
+
+.h44 a.button.icon:before,
+.betting-detail-ul a.button .icon:before {
+    margin-top: 0
+}
+
+.h44 a.btn-30:before {
+    line-height: 39px;
+    margin-left: 20%;
+}
+
+.addBtn{
+    background: #f0f4f3;
+    margin-top: 2px;
+    height: 6rem;
+}
+
+.number{
+    color: #10298e;
+    font-size: 1rem;
+    width: 100%;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.detele{
+    font-size: 1.2rem;
+    color: #10298e;
+    line-height: 3;
+}
+
+.middle{
+    text-align: center;
+}
+
+.exchange .button{
+    width: auto;
+    padding: 0 1.4rem;
+    border-radius: 2rem;
+    float: right;
+    line-height: 2;
+    margin: .4rem 0;
+}
+
+.font-red {
+    color: #6a2cfd;
+}
+
+.padding-6{
+    padding-top: 7rem;
+}
+
+#modalAccount2{
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, .6);
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.account-modal2 {
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 40px 0 25px;
+}
+
+.account-modal2 img{
+    width: auto;
+}
+
+.account-modal2 .cancel-pop {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #666;
+    width: 30px;
+    height: 30px;
+}
+
+.account-modal2 .account-style1 {
+    color: #10298e;
+    font-size: 1.5rem;
+    margin: 20px;
+    padding: 15px 10px;
+}
+
+/*空状态*/
+.emptyStatus{
+    text-align: center;
+    margin: 65px;
+}
+
+.emptyStatus img{
+    width: auto;
+}
+
+.emptyStatus p{
+    color: #bababa;
+}
+
+.loadingImg{
+    width: 100%;
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.hancaiHome{
+
+}
+
+.hancaiHome .scroll{
+    height: 100%;
+}
+
+.homeInset{
+    width: 100%;
+    height: 100%;
+    display: table;
+    text-align: center;
+}
+
+.hancaiHome li{
+    margin: 0;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.hancaiHome li img{
+    width: auto;
+}
+
