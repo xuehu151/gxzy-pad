@@ -1,0 +1,6 @@
+{
+    "directory": "www/lib",
+    "presets": [
+        "es2015"
+    ]
+}
