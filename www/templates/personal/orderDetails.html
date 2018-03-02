@@ -1,0 +1,37 @@
+<ion-view >
+    <ion-content class="details">
+        <div class="order_details">
+            <div class="order_title">
+                <a href=""
+                   class="fl button button-icon ion-ios-arrow-left"
+                   style="font-size: 2em;"
+                   nav-transition='none'
+                   ion-direction='enter'
+                   ng-click="goback()">  </a>
+                <h4 class="title_h4" ng-cloak="">{{orderInfos.lotteryTxt}}</h4>
+                <a href="" class="button fr" style="color: red" ng-cloak="">{{orderInfos.statusTxt}}</a>
+            </div>
+            <div class="order_content ">
+                <div class="order_content_info">
+                    <div class="order_title_category">购买方案：
+                        <div class="order_ball">
+                            <span
+                                    ng-repeat="ball in orderInfos.lotteryList track by $index"
+                                    ng-cloak="">
+                                <i class="red_ball" ng-cloak="" ng-repeat="red in ball.red track by $index">{{red}}</i>
+                                <i class="blue_ball" ng-cloak="" ng-repeat="blue in ball.blue track by $index">{{blue}}</i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="order_title_category">订单支付：<span ng-cloak=""> ￥ {{orderInfos.patternPayment}}</span></div>
+                    <div class="order_title_category">订单编号：<span ng-cloak="">{{orderInfos.orderNo}}</span></div>
+                    <div class="order_title_category">订单时间：<span ng-cloak="">{{orderInfos.createDate}}</span></div>
+                    <div class="order_title_category order_money" ng-if="orderInfos.num==4">中奖奖金：<span ng-cloak="">{{orderInfos.money | currency : '￥'}}</span></div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+

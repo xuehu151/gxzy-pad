@@ -1,0 +1,28 @@
+<ion-view>
+    <ion-content>
+        <div style="padding-bottom: 4rem">
+            <ul class="list withdrawal_record " ng-repeat="withdraw in withdrawal.withdrawInfoList track by $index">
+                <li class="item" >
+                    <div class="list_content">
+                        <div class="txt_title" ng-cloak="">{{withdraw.statusTxt}}</div>
+                        <div class="txt_date" ng-cloak="">{{withdraw.createDate}}</div>
+                    </div>
+                    <div class="list_content text_algin_right">
+                        提现:
+                        <span ng-cloak="">{{withdraw.money | currency : '￥'}}</span>
+                    </div>
+                </li>
+            </ul>
+            <ion-infinite-scroll ng-if = "withdrawal.moredata" on-infinite = "withdrawal.loadMore()" distance = "1%"></ion-infinite-scroll>
+            <div class="no_list" ng-if="withdrawInfoList.length==0">
+                <img src="../../img/servicesFaild.png"/>
+                <p style="margin-bottom: 50px;">
+                    好像出错了，什么也没有耶!
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+

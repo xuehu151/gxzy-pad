@@ -41,6 +41,9 @@ angular.module ('starter.controllers', [])
                             else if (lotteryId === '40') {
                                 $state.go ('arrangeFive');
                             }
+                            else if (lotteryId === '0') {
+                                $state.go ('mine.myBonus');
+                            }
                         }, 1000 * 2);
                     }
                 }
@@ -62,9 +65,8 @@ angular.module ('starter.controllers', [])
                 $scope.integral = modal;
             });
 
-        $scope.cancelPop2 = function () {
+        $scope.cancelPop = function () {
             $scope.integral.hide ();
-            //timeout3 (response);
         };
 
     });

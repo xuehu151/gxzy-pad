@@ -1,0 +1,14 @@
+<!-- 错误弹框-->
+<ion-modal-view id="modalError">
+    <div class="modalError">
+        <div class="top">
+            <img style="width: 58px;" src="./img/mistake.png" alt=""/>
+        </div>
+        <div class="text" ng-cloak>
+            {{errorInfo}}
+        </div>
+        <div class="close" ng-click="cancelPopError()">
+           关闭
+        </div>
+    </div>
+</ion-modal-view>

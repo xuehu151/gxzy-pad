@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in loading.js
 var param = location.href;
-angular.module ('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.util', 'starter.services', 'starter.superLottoCtrl', 'starter.arrangeThreeCtrl', 'starter.arrangeFiveCtrl', 'starter.homeCtrl'])
+angular.module ('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'starter.controllers', 'starter.util', 'starter.services', 'starter.superLottoCtrl', 'starter.arrangeThreeCtrl', 'starter.arrangeFiveCtrl', 'starter.homeCtrl', 'starter.mineCtrl', 'starter.myBonusCtrl', 'starter.bonusRecordCtrl', 'starter.withdrawalRecordCtrl', 'starter.orderInquiryCtrl', 'starter.allOrderCtrl', 'starter.outstandingOrderCtrl', 'starter.openOrderCtrl', 'starter.awardedOrderCtrl', 'starter.orderDetailsCtrl'])
 
     .run (function ($ionicPlatform) {
         $ionicPlatform.ready (function () {
@@ -58,6 +58,92 @@ angular.module ('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starte
                 prefetchTemplate : false,
                 templateUrl : 'templates/home.html',
                 controller : 'homeCtrl'
+            })
+
+            //个人中心status
+            .state ('mine', {
+                url : '/mine',
+                cache : 'false',
+                prefetchTemplate : false,
+                templateUrl : 'templates/personal/mine.html',
+                controller : 'mineCtrl'
+            })
+
+            .state ('mine.myBonus', {
+                url : '/myBonus',
+                cache : 'false',
+                prefetchTemplate : false,
+                templateUrl : 'templates/personal/myBonus.html',
+                controller : 'myBonusCtrl'
+            })
+
+            .state ('mine.bonusRecord', {
+                url : '/bonusRecord',
+                cache : 'false',
+                prefetchTemplate : false,
+                templateUrl : 'templates/personal/bonusRecord.html',
+                controller : 'bonusRecordCtrl'
+            })
+
+            .state ('mine.withdrawalRecord', {
+                url : '/withdrawalRecord',
+                cache : 'false',
+                prefetchTemplate : false,
+                templateUrl : 'templates/personal/withdrawalRecord.html',
+                controller : 'withdrawalRecordCtrl'
+            })
+
+            .state ('mine.orderInquiry', {
+                url : '/orderInquiry',
+                cache : 'false',
+                prefetchTemplate : false,
+                templateUrl : 'templates/personal/orderInquiry.html',
+                controller : 'orderInquiryCtrl'
+            })
+
+            .state ('mine.orderInquiry.allOrder', {
+                url : '/allOrder',
+                cache : 'false',
+                prefetchTemplate : false,
+                params : {'status' : null},
+                templateUrl : 'templates/personal/allOrder.html',
+                controller : 'allOrderCtrl'
+            })
+
+            .state ('mine.orderInquiry.outstandingOrder', {
+                url : '/outstandingOrder',
+                cache : 'false',
+                prefetchTemplate : false,
+                params : {'status' : null},
+                templateUrl : 'templates/personal/outstandingOrder.html',
+                controller : 'outstandingOrderCtrl'
+            })
+
+            .state ('mine.orderInquiry.openOrder', {
+                url : '/openOrder',
+                cache : 'false',
+                prefetchTemplate : false,
+                params : {'status' : null},
+                templateUrl : 'templates/personal/openOrder.html',
+                controller : 'openOrderCtrl'
+            })
+
+            .state ('mine.orderInquiry.awardedOrder', {
+                url : '/awardedOrder',
+                cache : 'false',
+                prefetchTemplate : false,
+                params : {'status' : null},
+                templateUrl : 'templates/personal/awardedOrder.html',
+                controller : 'awardedOrderCtrl'
+            })
+
+            .state ('mine.orderInquiry.orderDetails', {//订单详情
+                url : '/orderDetails',
+                cache : 'false',
+                prefetchTemplate : false,
+                params : {'order' : null},
+                templateUrl : 'templates/personal/orderDetails.html',
+                controller : 'orderDetailsCtrl'
             })
 
             //大乐透

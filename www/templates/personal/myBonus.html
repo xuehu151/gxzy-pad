@@ -1,0 +1,18 @@
+<ion-view>
+    <ion-content>
+        <div class="money_warp">
+            <div class=" amount_money ">
+                <h4>奖金余额 (元)</h4>
+                <div class="content money_text_1" ng-cloak="">{{moneyInfoObj.bonusBalance | currency : ''}}</div>
+            </div>
+            <div class=" amount_money ">
+                <h4>可用余额 (元)</h4>
+                <div class="content money_text_2" ng-cloak="">{{moneyInfoObj.usableMoney | currency : ''}}</div>
+            </div>
+            <div class=" amount_money ">
+                <h4>冻结余额 (元)</h4>
+                <div class="content money_text_3" ng-cloak="">{{moneyInfoObj.freeze | currency : ''}}</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

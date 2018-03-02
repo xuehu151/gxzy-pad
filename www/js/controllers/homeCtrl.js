@@ -16,6 +16,9 @@ angular.module ('starter.homeCtrl', [])
             else if(num === 40){
                 $state.go ('arrangeFive');
             }
+            else if(num === 1){
+                $state.go ('mine.myBonus');
+            }
             else{
                 $scope.successOrFaild = '暂未开放';
                 $scope.imgagesUrl = imgClass[1];
@@ -32,7 +35,7 @@ angular.module ('starter.homeCtrl', [])
                 $scope.integral = modal;
             });
 
-        $scope.cancelPop2 = function () {
+        $scope.cancelPop = function () {
             $scope.integral.hide ();
             //timeout3 (response);
         };

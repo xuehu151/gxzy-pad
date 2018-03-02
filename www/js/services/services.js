@@ -51,6 +51,42 @@ angular.module ('starter.services', [])
         };
     })
 
+    //用户信息
+    .factory('$getUserInfoService', function($http, $util) {
+        return {
+            getUserInfo: function(data, token) {
+                return $util.httpPostRequest($util.getHttpURL().getUserUrl, data, token);
+            },
+
+
+
+        };
+    })
+
+    //奖金纪录
+    .factory('$BonusRecordService', function($http, $util) {
+        return {
+            getUserInfo: function(data, token) {
+                return $util.httpPostRequest($util.getHttpURL().getListUrl, data, token);
+            },
+            withdrawGetList: function(data, token) {
+                return $util.httpPostRequest($util.getHttpURL().withdrawGetListUrl, data, token);
+            },
+
+
+        };
+    })
+
+    //订单记录
+    .factory('$allOrdersdService', function($http, $util) {
+        return {
+            allOrders: function(data, token) {
+                return $util.httpPostRequest($util.getHttpURL().ordersGetListUrl, data, token);
+            }
+
+        };
+    })
+
     //获取期号
     .factory('getWareIssueService', function($http, $util) {
         return {

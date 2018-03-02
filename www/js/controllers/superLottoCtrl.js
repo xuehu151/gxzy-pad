@@ -170,7 +170,7 @@ angular.module ('starter.superLottoCtrl', [])
                 var data = {
                     data : {
                         wareIssue : $scope.wareIssue,
-                        payType : 1,
+                        payType : 2,
                         vid : '',
                         addFlag : 0,
                         data : dataArrayBig
@@ -208,7 +208,7 @@ angular.module ('starter.superLottoCtrl', [])
                 $scope.integral = modal;
             });
 
-        $scope.cancelPop2 = function () {
+        $scope.cancelPop = function () {
             $scope.integral.hide ();
         };
 

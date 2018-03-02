@@ -15,7 +15,13 @@ angular.module ('starter.util', [])
             pl5AddUrl : ipUrl + '/service/lottery/pl5add', //排列5投注
             dltAddUrl : ipUrl + '/service/lottery/dltadd', //大乐透投注
             getWareIssueUrl : ipUrl + '/service/lottery/getWareIssue',   //获取期号
-            pl3addAutoUrl : ipUrl + '/service/lottery/pl3addAuto'   //排列三自动投注
+            pl3addAutoUrl : ipUrl + '/service/lottery/pl3addAuto',   //排列三自动投注
+            getUserUrl : ipUrl + '/service/customer/getUser',   //用户信息
+            getListUrl : ipUrl + '/service/bonus/getList',   //奖金纪录
+            withdrawGetListUrl : ipUrl + '/service/cash/getList',   //提现纪录
+            ordersGetListUrl : ipUrl + '/service/lottery/getList',   //全部订单
+
+
         };
         return {
             /* 返回httpURL  */

@@ -1,0 +1,28 @@
+<ion-view>
+    <ion-content>
+        <div class="money_warp">
+            <div class=" bonus_record" ng-repeat="bonus in bonus.bonusInfoList  track by $index">
+                <div class="record_content row">
+                    <h4 class="col col-50" ng-cloak="">{{bonus.bonusRecordTitle}}</h4>
+                    <h4
+                            class="col col-50 text_algin_right"
+                            ng-class="bonus.plusOrMinus=='+'?'bonus_money':''"
+                            ng-cloak="">
+                        {{bonus.plusOrMinus}}{{bonus.money | currency : '￥'}}
+                    </h4>
+                </div>
+                <div class="record_content row">
+                    <div class="record_text col col-50" ng-cloak="">{{bonus.createDate}}</div>
+                    <div class="record_text col col-50 text_algin_right" ng-cloak="">{{bonus.incomeOrExpend}}</div>
+                </div>
+            </div>
+            <ion-infinite-scroll ng-if = "bonus.moredata" on-infinite = "bonus.loadMore()" distance = "1%"></ion-infinite-scroll>
+            <div class="no_list" ng-if="bonusInfoList.length==0">
+                <img src="../../img/servicesFaild.png"  />
+                <p style="margin-bottom: 50px;">
+                    好像出错了，什么也没有耶!
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

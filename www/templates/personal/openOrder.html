@@ -1,0 +1,49 @@
+<ion-view>
+    <ion-content scroll = "true" class = "all_orders" has-bouncing = "true" delegate-handle = "mainScroll">
+        <ion-list>
+            <div class = "all_orders_list" ng-repeat="order in vm.allOrders track by $index"><!-- ng-repeat = "order in havenot.allOrders"-->
+                <ion-item class = "padding_h12">
+                    <span ng-cloak>
+                        {{order.lotteryTxt}}
+                    </span>
+                    <span
+                            class = "fr font_style1"
+                            ng-class="order.num == 2?'bonus_money':''"
+                            ng-cloak>
+                        {{order.statusTxt}}
+                    </span>
+                </ion-item>
+                <ion-item>
+                    <div class = "fl">
+                        <div class = "bonus_txt">
+                            <span ng-cloak="" ng-class="order.num!=2?'order_money':''" >{{order.differentTxt}}</span>
+                        </div>
+                        <div class = "order_number_txt" ng-cloak>
+                            订单编号:{{order.orderNo}}
+                        </div>
+                    </div>
+                    <div class = "fr">
+                        <div>
+                            <span ng-if = "order.num==2" class = "font-style3">奖金支付: </span>
+                            <!--<span  class = "font-style3">龙币支付: </span>-->
+                            <span ng-cloak ng-class = "order.num==2?'order_money':''">{{order.patternPayment | currency : '￥'}}</span>
+                        </div>
+                        <div
+                                class = "check_txt fr"
+                                nav-transition='none' ion-direction='back'
+                                ng-click="goToCheckOrders(order)">
+                            查看订单
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
+            <div class="no_list" ng-if="allOrders.length==0">
+                <img src="../../img/servicesFaild.png" />
+                <p style="margin-bottom: 50px;">
+                    好像出错了，什么也没有耶!
+                </p>
+            </div>
+            <ion-infinite-scroll ng-if = "vm.moredata" on-infinite = "vm.loadMore()" distance = "1%"></ion-infinite-scroll>
+        </ion-list>
+    </ion-content>
+</ion-view>

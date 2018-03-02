@@ -131,7 +131,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
                 var data = {
                     data : {
                         wareIssue : $scope.wareIssue,
-                        payType : 1,
+                        payType : 2,
                         vid : '',
                         data : dataArrayBig
                     },
@@ -170,7 +170,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
                 $scope.integral = modal;
             });
 
-        $scope.cancelPop2 = function () {
+        $scope.cancelPop = function () {
             $scope.integral.hide ();
         };
     });
