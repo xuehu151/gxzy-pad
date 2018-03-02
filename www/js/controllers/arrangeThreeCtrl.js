@@ -3,7 +3,7 @@
  */
 angular.module ('starter.arrangeThreeCtrl', [])
 
-    .controller ('arrangeThreeCtrl', function ($scope, $ionicModal, $util, BettingService, getWareIssueService) {
+    .controller ('arrangeThreeCtrl', function ($scope, $state,$ionicModal, $util,$interval, BettingService, getWareIssueService,$errorPopupFactory) {
         $scope.sessionJsonWarp = [];
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         $scope.successOrFaild = '您的余额不足,无法投注';
@@ -13,6 +13,148 @@ angular.module ('starter.arrangeThreeCtrl', [])
         $scope.isDisabled = true;
         //空状态
         $scope.dummyStatus = '././img/dummyStatus.png';
+
+        //设置排列3球百位号码
+        $scope.numDataBit100 = [];
+        $scope.filterBit100 = [];
+        //设置排列3球十位号码
+        $scope.numDataBit10 = [];
+        $scope.filterBit10 = [];
+        //设置排列3球个位号码
+        $scope.numDataBit1 = [];
+        $scope.filterBit1 = [];
+        // Create the ball items   百位
+        for (var j = 0; j < 10; j++) {
+            var itemsBit = {
+                num: j,
+                check: false
+            };
+            $scope.numDataBit100.push (itemsBit);
+        }
+        //给百位添加点击事件
+        filterBit100 = [];
+        $scope.addBit100Click = function (item) {
+            $scope.numDataBit100 = [];
+            for (var j = 0; j < 10; j++) {
+                if (item.num == j) {
+                    var itemsBit = {
+                        num: j,
+                        check: true
+                    };
+                    $scope.filterBit100[0] = item;
+                    console.log($scope.filterBit100.length)
+                    $scope.numDataBit100.push (itemsBit);
+                }
+                else {
+                    var itemsBit1 = {
+                        num: j,
+                        check: false
+                    };
+                    $scope.numDataBit100.push (itemsBit1);
+                }
+            }
+        };
+        // Create the ball items   十位
+        for (var j = 0; j < 10; j++) {
+            var itemsBit10 = {
+                num: j,
+                check: false
+            };
+            $scope.numDataBit10.push (itemsBit10);
+        }
+        //给十位添加点击事件
+        filterBit10 = [];
+        $scope.addBit10Click = function (item) {
+            $scope.numDataBit10 = [];
+            for (var i = 0; i < 10; i++) {
+                if (item.num == i) {
+                    var itemsBit10 = {
+                        num: i,
+                        check: true
+                    };
+                    $scope.filterBit10[0] = item;
+                    console.log($scope.filterBit10.length)
+                    $scope.numDataBit10.push (itemsBit10);
+                }
+                else {
+                    var itemsBit10 = {
+                        num: i,
+                        check: false
+                    };
+                    $scope.numDataBit10.push (itemsBit10);
+                }
+            }
+        };
+        // Create the ball items   个位
+        for (var j = 0; j < 10; j++) {
+            var itemsBit1 = {
+                num: j,
+                check: false
+            };
+            $scope.numDataBit1.push (itemsBit1);
+        }
+        //给个位添加点击事件
+        filterBit1 = [];
+        $scope.addBit1Click = function (item) {
+            $scope.numDataBit1 = [];
+            for (var j = 0; j < 10; j++) {
+                if (item.num == j) {
+                    var itemsBit1 = {
+                        num: j,
+                        check: true
+                    };
+                    $scope.filterBit1[0] = item;
+                    console.log(filterBit1.length);
+                    $scope.numDataBit1.push (itemsBit1);
+                }
+                else {
+                    var itemsBit1 = {
+                        num: j,
+                        check: false
+                    };
+                    $scope.numDataBit1.push (itemsBit1);
+                }
+            }
+        };
+        $scope.$watch("filterBit100+filterBit10+filterBit1",function(){
+            $scope.numData=
+                {
+                    red:[]
+                };
+            if($scope.filterBit100.length>0 && $scope.filterBit10.length>0 && $scope.filterBit1.length>0){
+                    $scope.numData.red.push($scope.filterBit100[0]);
+                    $scope.numData.red.push($scope.filterBit10[0]);
+                    $scope.numData.red.push($scope.filterBit1[0]);
+                console.log( $scope.numData);
+                $scope.sessionJsonWarp.push($scope.numData);
+                console.log("6464564",$scope.sessionJsonWarp);
+                $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
+                // for(var i=0; i<$scope.numDataBit100.length; i++){
+                //     $scope.numDataBit100[i].check = false;
+                // }
+                // for(var i=0; i<$scope.numDataBit10.length; i++){
+                //     $scope.numDataBit10[i].check = false;
+                // }
+                // for(var i=0; i<$scope.numDataBit1.length; i++){
+                //     $scope.numDataBit1[i].check = false;
+                // }
+                var n = ['','0','00'];
+                for(var i=0;i<n.length;i++){
+                    for(var j=0; j<eval("$scope.numDataBit1"+n[i]).length; j++){
+                        eval("$scope.numDataBit1"+n[i])[j].check = false;
+                    }
+                }
+                $scope.filterBit100 = [];
+                $scope.filterBit10=[];
+                $scope.filterBit1=[];
+
+                if($scope.sessionJsonWarp.length>0){
+                    $scope.isDisabled = false;
+                }
+            }
+
+        },true);
+
         //店家点击机选，添加机选一注
         $scope.autoAddOneNote = function () {
             $scope.arrRed = [];
@@ -82,9 +224,10 @@ angular.module ('starter.arrangeThreeCtrl', [])
                 console.info(response);
                 if(response.error === '0'){
                     $scope.wareIssue = response.data.wareIssue;
-                    var end_sale_time = $util.countTime(response.data.end_sale_time);
-                    $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
-                    console.info(end_sale_time);
+                    $interval(function() {
+                        var end_sale_time = $util.countTime(response.data.end_sale_time);
+                        $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
+                    },1000)
                 }
                 else {
                     $scope.successOrFaild = response.info;
@@ -148,29 +291,19 @@ angular.module ('starter.arrangeThreeCtrl', [])
                             $scope.sessionJsonWarp = [];
                             $scope.isDisabled = true;
                             $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
-                            $scope.integral.show();
+                            $errorPopupFactory.errorInfo ($scope, $state);
+                        }
+                        else if(response.error === '1110'){
+                            $scope.successOrFaild = response.info;
+                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
                         }
                         else {
                             $scope.successOrFaild = response.info;
-                            $scope.integral.show();
+                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
                         }
                     }, function (error) {
                         alert('获取投注信息失败，请检查网络');
                     });
             }
-        };
-
-
-        //积分判断弹框
-        $ionicModal.fromTemplateUrl ('templates/getOneBetModal.html', {
-            scope : $scope,
-            backdropClickToClose : true
-        })
-            .then (function (modal) {
-                $scope.integral = modal;
-            });
-
-        $scope.cancelPop = function () {
-            $scope.integral.hide ();
         };
     });

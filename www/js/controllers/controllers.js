@@ -1,6 +1,6 @@
 angular.module ('starter.controllers', [])
 
-    .controller ('loginCtrl', function ($scope, $state, $loginService, $util, $cordovaToast, $timeout, $ionicLoading, $ionicModal) {
+    .controller ('loginCtrl', function ($scope, $state, $loginService, $util, $cordovaToast, $timeout, $ionicLoading, $ionicModal,$errorPopupFactory) {
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         var splitUrl = param.split ('?')[1];
         var loginArgument = splitUrl.split ('&');
@@ -51,22 +51,10 @@ angular.module ('starter.controllers', [])
                     $timeout (function () {
                         $scope.successOrFaild = response.info;
                         $scope.imgagesUrl = imgClass[1];
-                        $scope.integral.show ();
+                        $errorPopupFactory.errorInfo ($scope, $state ,'login');
                     }, 1000 * 3);
                 }
             });
 
-        //积分判断弹框
-        $ionicModal.fromTemplateUrl ('templates/getOneBetModal.html', {
-            scope : $scope,
-            backdropClickToClose : true
-        })
-            .then (function (modal) {
-                $scope.integral = modal;
-            });
-
-        $scope.cancelPop = function () {
-            $scope.integral.hide ();
-        };
 
     });

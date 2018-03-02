@@ -1,7 +1,7 @@
 <ion-view view-title = "大乐透">
     <ion-nav-bar class='bar-light'>
         <ion-nav-buttons side="left">
-            <a href="#login" class="button button-icon ion-ios-arrow-left" style="font-size: 2em;color: #fff"></a>
+            <a href="#login" class="button button-icon ion-ios-arrow-left" style="  font-size: 2em;color: #fff"></a>
         </ion-nav-buttons>
         <ion-nav-buttons side="right" >
             <span class="headTime">
@@ -11,7 +11,28 @@
 
         </ion-nav-buttons>
     </ion-nav-bar>
+    <!--************************大乐透选号区域*********************-->
+    <div class="leftNum">
+        <div class="num-sum-red">
+            <i
+                ng-repeat="redNumRed in numDataRed track by $index"
+                ng-class="{false: 'red-ball-bg-white', true: 'red-ball-bg-red'}[redNumRed.check]"
+                ng-click="addRedClick(redNumRed)" ng-cloak>
+                {{redNumRed.num}}
+            </i>
+        </div>
 
+        <div class="num-sum-blue">
+            <i
+                ng-repeat="blueNumBlue in numDataBlue track by $index"
+                class="blue-ball-bg-white"
+                ng-class="{false: 'blue-ball-bg-white', true: 'blue-ball-bg-blue'}[blueNumBlue.check]"
+                ng-click="addBlueClick(blueNumBlue)" ng-cloak>
+                {{blueNumBlue.num}}
+            </i>
+        </div>
+    </div>
+    <!--************************大乐透选号区域结束*********************-->
     <div class="bar bar-subheader addBtn">
         <div class="row number">请选择您要兑换的大乐透号码</div>
         <div class="row h44">

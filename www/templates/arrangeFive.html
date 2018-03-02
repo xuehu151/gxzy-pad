@@ -11,6 +11,67 @@
 
         </ion-nav-buttons>
     </ion-nav-bar>
+    <!--************************排列五选号区域*********************-->
+    <div class="leftNum">
+        <div class="num-arrange-3">
+            <div class="row">
+                <div class="col col-20">万位:</div>
+                <div class="col col-80">
+                    <i
+                        ng-repeat="bitNum10000 in numDataBit10000"
+                        ng-class="{false: 'arrange-3-bg-white', true: 'arrange-3-bg-red'}[bitNum10000.check]"
+                        ng-click="addBit10000Click(bitNum10000)" ng-cloak>
+                        {{bitNum10000.num}}
+                    </i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-20">千位:</div>
+                <div class="col col-80">
+                    <i
+                        ng-repeat="bitNum1000 in numDataBit1000"
+                        ng-class="{false: 'arrange-3-bg-white', true: 'arrange-3-bg-red'}[bitNum1000.check]"
+                        ng-click="addBit1000Click(bitNum1000)" ng-cloak>
+                        {{bitNum1000.num}}
+                    </i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-20">百位:</div>
+                <div class="col col-80">
+                    <i
+                        ng-repeat="bitNum100 in numDataBit100"
+                        ng-class="{false: 'arrange-3-bg-white', true: 'arrange-3-bg-red'}[bitNum100.check]"
+                        ng-click="addBit100Click(bitNum100)" ng-cloak>
+                        {{bitNum100.num}}
+                    </i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-20">十位:</div>
+                <div class="col col-80">
+                    <i
+                        ng-repeat="bitNum10 in numDataBit10"
+                        ng-class="{false: 'arrange-3-bg-white', true: 'arrange-3-bg-red'}[bitNum10.check]"
+                        ng-click="addBit10Click(bitNum10)">
+                        {{bitNum10.num}}
+                    </i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-20">个位:</div>
+                <div class="col col-80">
+                    <i
+                        ng-repeat="bitNum1 in numDataBit1"
+                        ng-class="{false: 'arrange-3-bg-white', true: 'arrange-3-bg-red'}[bitNum1.check]"
+                        ng-click="addBit1Click(bitNum1)">
+                        {{bitNum1.num}}
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--************************排列五选号区域结束*********************-->
 
     <div class="bar bar-subheader addBtn">
         <div class="row number">请选择您要兑换的排列五号码</div>
@@ -19,7 +80,6 @@
             <a class="button icon icon-left ion-ios-plus-empty col btn-30" href="" ng-click=autoAddFiveNote()>机选五注号码</a>
         </div>
     </div>
-
     <ion-content style="background: #f0f4f3;" class="padding-6">
         <div class="padding">
             <ul class="list betting-detail-ul">
@@ -39,7 +99,6 @@
             </div>
         </div>
     </ion-content>
-
     <ion-footer-bar class=" betting-detail-footer" style="height: 80px;">
         <div class="row">
             <div class="col col-33 detele">
