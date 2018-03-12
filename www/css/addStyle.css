@@ -1,0 +1,117 @@
+.addBtn{
+    width: 50%;
+    margin-left: 50%;
+    margin-top: 0;
+}
+.h44{
+    width: 100%;
+}
+.padding-6{
+    width: 50%;
+    margin-left: 50%;
+}
+.leftNum{
+    width: 50%;
+    height: 100%;
+    background: #f0f4f3;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-right:1px solid #D3D7D6;
+}
+
+.num-sum-red {
+    padding: 2rem 0 8px 3%;
+}
+
+.red-ball-bg-white {
+    width: 4rem;
+    height: 4rem;
+    border: solid 1px #888888;
+    background-color: #ffffff;
+    color: #888888;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 4rem;
+    margin: 1.8rem 1.0%;
+    display: inline-block;
+    font-size: 30px;
+}
+
+.red-ball-bg-red {
+    width: 4rem;
+    height: 4rem;
+    border: solid 1px #d11d1d;
+    background-color: #d11d1d;
+    color: #fff4fb;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 4rem;
+    margin: 1.8rem 1.0%;
+    display: inline-block;
+    font-size: 30px;
+}
+
+.num-sum-blue {
+    padding: 2.5rem 0 0 3%;
+}
+
+.blue-ball-bg-white {
+    width: 4rem;
+    height: 4rem;
+    border: solid 1px #888888;
+    background-color: #ffffff;
+    color: #888888;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 4rem;
+    margin: 1.8rem 1.0%;
+    display: inline-block;
+    font-size: 30px;
+}
+
+.blue-ball-bg-blue {
+    width: 4rem;
+    height: 4rem;
+    border: solid 1px #3f97d5;
+    background-color: #3f97d5;
+    color: #fff4fb;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 4rem;
+    margin: 1.8rem 1.0%;
+    display: inline-block;
+    font-size: 30px;
+}
+/*排列三*/
+.num-arrange-3 .col-20 {
+    text-align: center;
+    padding-top: 2rem;
+    flex: 0 0 16%;
+    color: #036bb4;
+    font-size: 26px;
+}
+.arrange-3-bg-white,
+.arrange-3-bg-red {
+    width: 4rem;
+    height: 4rem;
+    color: #fff4fb;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 4rem;
+    margin: 4px 7px;
+    display: inline-block;
+    font-size: 30px;
+}
+
+.arrange-3-bg-red {
+    border: solid 1px #d11d1d;
+    background-color: #d11d1d;
+}
+
+.arrange-3-bg-white {
+    background-color: #fffefb;
+    border: solid 1px #989898;
+    color: #959595;
+}
+
+
