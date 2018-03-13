@@ -14,8 +14,8 @@
                 </li>
             </ul>
             <ion-infinite-scroll ng-if = "withdrawal.moredata" on-infinite = "withdrawal.loadMore()" distance = "1%"></ion-infinite-scroll>
-            <div class="no_list" ng-if="withdrawInfoList.length==0">
-                <img src="../../img/servicesFaild.png"/>
+            <div class="no_list" ng-if="withdrawal.withdrawalRecord.length==0">
+                <img src="././img/servicesFaild.png"/>
                 <p style="margin-bottom: 50px;">
                     好像出错了，什么也没有耶!
                 </p>

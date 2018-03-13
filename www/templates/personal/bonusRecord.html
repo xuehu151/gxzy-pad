@@ -17,8 +17,8 @@
                 </div>
             </div>
             <ion-infinite-scroll ng-if = "bonus.moredata" on-infinite = "bonus.loadMore()" distance = "1%"></ion-infinite-scroll>
-            <div class="no_list" ng-if="bonusInfoList.length==0">
-                <img src="../../img/servicesFaild.png"  />
+            <div class="no_list" ng-if="bonus.bonusRecord.length==0">
+                <img src="././img/servicesFaild.png"  />
                 <p style="margin-bottom: 50px;">
                     好像出错了，什么也没有耶!
                 </p>

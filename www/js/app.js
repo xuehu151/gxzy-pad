@@ -8,7 +8,7 @@
 var param = location.href;
 angular.module ('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'starter.controllers', 'starter.util', 'starter.services', 'starter.superLottoCtrl', 'starter.arrangeThreeCtrl', 'starter.arrangeFiveCtrl', 'starter.homeCtrl', 'starter.mineCtrl', 'starter.myBonusCtrl', 'starter.bonusRecordCtrl', 'starter.withdrawalRecordCtrl', 'starter.orderInquiryCtrl', 'starter.allOrderCtrl', 'starter.outstandingOrderCtrl', 'starter.openOrderCtrl', 'starter.awardedOrderCtrl', 'starter.orderDetailsCtrl'])
 
-    .run (function ($ionicPlatform) {
+    .run (function ($ionicPlatform, $ionicHistory, $cordovaToast, $rootScope, $location) {
         $ionicPlatform.ready (function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -21,6 +21,36 @@ angular.module ('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'star
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault ();
             }
+
+            /******************双击退出start********************/
+            $ionicPlatform.registerBackButtonAction (function (e) {
+                //判断处于哪个页面时双击退出
+                if ($location.path () === '/home' || $location.path () === '/login') {
+                    if ($rootScope.backButtonPressedOnceToExit) {
+                        ionic.Platform.exitApp ();
+                    }
+                    else {
+                        $rootScope.backButtonPressedOnceToExit = true;
+                        $cordovaToast.showShortBottom ('再按一次退出系统');
+                        setTimeout (function () {
+                            $rootScope.backButtonPressedOnceToExit = false;
+                        }, 2000);
+                    }
+                }
+                else if ($ionicHistory.backView ()) {
+                    $ionicHistory.goBack ();
+                }
+                else {
+                    $rootScope.backButtonPressedOnceToExit = true;
+                    $cordovaToast.showShortBottom ('再按一次退出系统');
+                    setTimeout (function () {
+                        $rootScope.backButtonPressedOnceToExit = false;
+                    }, 2000);
+                }
+                e.preventDefault ();
+                return false;
+            }, 101);
+            /********************双击退出end********************/
 
         });
     })

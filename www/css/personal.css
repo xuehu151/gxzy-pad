@@ -523,9 +523,16 @@ div.good-news {
     background: #3f97d5;
 }
 
+.my_btn{
+    position: absolute;
+    top: 5%;
+    right: 0;
+    width: 160px;
+}
 
-
-
+.my_btn img{
+    width: 100%;
+}
 
 
 

@@ -40,6 +40,12 @@
                     </div>
                 </ion-item>
             </div>
+            <div class="no_list" ng-if="vm.orderEach.length==0">
+                <img src="././img/servicesFaild.png" />
+                <p style="margin-bottom: 50px;">
+                    好像出错了，什么也没有耶!
+                </p>
+            </div>
             <ion-infinite-scroll ng-if = "vm.moredata" on-infinite = "vm.loadMore()" distance = "1%"></ion-infinite-scroll>
         </ion-list>
     </ion-content>
