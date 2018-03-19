@@ -22,7 +22,7 @@ angular.module ('starter.homeCtrl', [])
             else{
                 $scope.successOrFaild = '暂未开放';
                 $scope.imgagesUrl = imgClass[1];
-                $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                $errorPopupFactory.errorInfo ($scope, $state, null);
             }
         };
 

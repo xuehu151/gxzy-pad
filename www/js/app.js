@@ -25,13 +25,14 @@ angular.module ('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'star
             /******************双击退出start********************/
             $ionicPlatform.registerBackButtonAction (function (e) {
                 //判断处于哪个页面时双击退出
-                if ($location.path () === '/home' || $location.path () === '/login') {
+                if ($location.path () === '/home' || $location.path () === '/arrangeFive'
+                    || $location.path () === '/arrangeThree' || $location.path () === '/superLotto') {
                     if ($rootScope.backButtonPressedOnceToExit) {
                         ionic.Platform.exitApp ();
                     }
                     else {
                         $rootScope.backButtonPressedOnceToExit = true;
-                        $cordovaToast.showShortBottom ('再按一次退出系统');
+                        $cordovaToast.showShortBottom ('再按一次返回首页');
                         setTimeout (function () {
                             $rootScope.backButtonPressedOnceToExit = false;
                         }, 2000);
@@ -42,7 +43,7 @@ angular.module ('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'star
                 }
                 else {
                     $rootScope.backButtonPressedOnceToExit = true;
-                    $cordovaToast.showShortBottom ('再按一次退出系统');
+                    $cordovaToast.showShortBottom ('再按一次返回首页');
                     setTimeout (function () {
                         $rootScope.backButtonPressedOnceToExit = false;
                     }, 2000);

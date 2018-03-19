@@ -3,7 +3,7 @@
  */
 angular.module ('starter.arrangeFiveCtrl', [])
 
-    .controller ('arrangeFiveCtrl', function ($scope, $state, $ionicModal, $util,$interval, getWareIssueService, BettingService,$errorPopupFactory) {
+    .controller ('arrangeFiveCtrl', function ($scope, $state, $ionicModal, $util, $interval, getWareIssueService, BettingService, $errorPopupFactory) {
         $scope.sessionJsonWarp = [];
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         $scope.successOrFaild = '您的余额不足,无法投注';
@@ -31,8 +31,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
         // Create the ball items   万位
         for (var j = 0; j < 10; j++) {
             var itemsBit10000 = {
-                num: j,
-                check: false
+                num : j,
+                check : false
             };
             $scope.numDataBit10000.push (itemsBit10000);
         }
@@ -42,16 +42,16 @@ angular.module ('starter.arrangeFiveCtrl', [])
             for (var j = 0; j < 10; j++) {
                 if (item.num == j) {
                     var itemsBit10000 = {
-                        num: j,
-                        check: true
+                        num : j,
+                        check : true
                     };
                     $scope.filterBit10000[0] = item;
                     $scope.numDataBit10000.push (itemsBit10000);
                 }
                 else {
                     var itemsBit10000 = {
-                        num: j,
-                        check: false
+                        num : j,
+                        check : false
                     };
                     $scope.numDataBit10000.push (itemsBit10000);
                 }
@@ -60,8 +60,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
         // Create the ball items   千位
         for (var j = 0; j < 10; j++) {
             var itemsBit1000 = {
-                num: j,
-                check: false
+                num : j,
+                check : false
             };
             $scope.numDataBit1000.push (itemsBit1000);
         }
@@ -71,16 +71,16 @@ angular.module ('starter.arrangeFiveCtrl', [])
             for (var j = 0; j < 10; j++) {
                 if (item.num == j) {
                     var itemsBit1000 = {
-                        num: j,
-                        check: true
+                        num : j,
+                        check : true
                     };
                     $scope.filterBit1000[0] = item;
                     $scope.numDataBit1000.push (itemsBit1000);
                 }
                 else {
                     var itemsBit1000 = {
-                        num: j,
-                        check: false
+                        num : j,
+                        check : false
                     };
                     $scope.numDataBit1000.push (itemsBit1000);
                 }
@@ -89,8 +89,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
         // Create the ball items   百位
         for (var j = 0; j < 10; j++) {
             var itemsBit100 = {
-                num: j,
-                check: false
+                num : j,
+                check : false
             };
             $scope.numDataBit100.push (itemsBit100);
         }
@@ -100,16 +100,16 @@ angular.module ('starter.arrangeFiveCtrl', [])
             for (var j = 0; j < 10; j++) {
                 if (item.num == j) {
                     var itemsBit100 = {
-                        num: j,
-                        check: true
+                        num : j,
+                        check : true
                     };
                     $scope.filterBit100[0] = item;
                     $scope.numDataBit100.push (itemsBit100);
                 }
                 else {
                     var itemsBit100 = {
-                        num: j,
-                        check: false
+                        num : j,
+                        check : false
                     };
                     $scope.numDataBit100.push (itemsBit100);
                 }
@@ -118,8 +118,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
         // Create the ball items   十位
         for (var j = 0; j < 10; j++) {
             var itemsBit10 = {
-                num: j,
-                check: false
+                num : j,
+                check : false
             };
             $scope.numDataBit10.push (itemsBit10);
         }
@@ -129,16 +129,16 @@ angular.module ('starter.arrangeFiveCtrl', [])
             for (var j = 0; j < 10; j++) {
                 if (item.num == j) {
                     var itemsBit10 = {
-                        num: j,
-                        check: true
+                        num : j,
+                        check : true
                     };
                     $scope.filterBit10[0] = item;
                     $scope.numDataBit10.push (itemsBit10);
                 }
                 else {
                     var itemsBit10 = {
-                        num: j,
-                        check: false
+                        num : j,
+                        check : false
                     };
                     $scope.numDataBit10.push (itemsBit10);
                 }
@@ -147,8 +147,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
         // Create the ball items   个位
         for (var j = 0; j < 10; j++) {
             var itemsBit1 = {
-                num: j,
-                check: false
+                num : j,
+                check : false
             };
             $scope.numDataBit1.push (itemsBit1);
         }
@@ -158,35 +158,35 @@ angular.module ('starter.arrangeFiveCtrl', [])
             for (var j = 0; j < 10; j++) {
                 if (item.num == j) {
                     var itemsBit1 = {
-                        num: j,
-                        check: true
+                        num : j,
+                        check : true
                     };
                     $scope.filterBit1[0] = item;
                     $scope.numDataBit1.push (itemsBit1);
                 }
                 else {
                     var itemsBit1 = {
-                        num: j,
-                        check: false
+                        num : j,
+                        check : false
                     };
                     $scope.numDataBit1.push (itemsBit1);
                 }
             }
         };
-        $scope.$watch("filterBit10000+filterBit1000+filterBit100+filterBit10+filterBit1",function(){
-            $scope.numData=
+        $scope.$watch ("filterBit10000+filterBit1000+filterBit100+filterBit10+filterBit1", function () {
+            $scope.numData =
                 {
-                    red:[]
+                    red : []
                 };
-            if($scope.filterBit10000.length>0 && $scope.filterBit1000.length>0 && $scope.filterBit100.length>0 && $scope.filterBit10.length>0 && $scope.filterBit1.length>0){
-                $scope.numData.red.push($scope.filterBit10000[0]);
-                $scope.numData.red.push($scope.filterBit1000[0]);
-                $scope.numData.red.push($scope.filterBit100[0]);
-                $scope.numData.red.push($scope.filterBit10[0]);
-                $scope.numData.red.push($scope.filterBit1[0]);
-                console.log( $scope.numData);
-                $scope.sessionJsonWarp.push($scope.numData);
-                console.log("6464564",$scope.sessionJsonWarp);
+            if ($scope.filterBit10000.length > 0 && $scope.filterBit1000.length > 0 && $scope.filterBit100.length > 0 && $scope.filterBit10.length > 0 && $scope.filterBit1.length > 0) {
+                $scope.numData.red.push ($scope.filterBit10000[0]);
+                $scope.numData.red.push ($scope.filterBit1000[0]);
+                $scope.numData.red.push ($scope.filterBit100[0]);
+                $scope.numData.red.push ($scope.filterBit10[0]);
+                $scope.numData.red.push ($scope.filterBit1[0]);
+                console.log ($scope.numData);
+                $scope.sessionJsonWarp.push ($scope.numData);
+                console.log ("6464564", $scope.sessionJsonWarp);
                 $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
                 // for(var i=0; i<$scope.numDataBit10000.length; i++){
                 //     $scope.numDataBit10000[i].check = false;
@@ -203,24 +203,24 @@ angular.module ('starter.arrangeFiveCtrl', [])
                 // for(var i=0; i<$scope.numDataBit1.length; i++){
                 //     $scope.numDataBit1[i].check = false;
                 // }
-                var n = ['','0','00','000','0000'];
-                for(var i=0;i<n.length;i++){
-                    for(var j=0; j<eval("$scope.numDataBit1"+n[i]).length; j++){
-                        eval("$scope.numDataBit1"+n[i])[j].check = false;
+                var n = ['', '0', '00', '000', '0000'];
+                for (var i = 0; i < n.length; i++) {
+                    for (var j = 0; j < eval ("$scope.numDataBit1" + n[i]).length; j++) {
+                        eval ("$scope.numDataBit1" + n[i])[j].check = false;
                     }
                 }
                 $scope.filterBit10000 = [];
                 $scope.filterBit1000 = [];
                 $scope.filterBit100 = [];
-                $scope.filterBit10=[];
-                $scope.filterBit1=[];
+                $scope.filterBit10 = [];
+                $scope.filterBit1 = [];
 
-                if($scope.sessionJsonWarp.length>0){
+                if ($scope.sessionJsonWarp.length > 0) {
                     $scope.isDisabled = false;
                 }
             }
 
-        },true);
+        }, true);
         //店家点击机选，添加机选一注
         $scope.autoAddOneNote = function () {
             $scope.arrRed = [];
@@ -273,8 +273,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
         };
 
         //倍数的变化
-        $scope.multipleChange = function  () {
-            if($scope.multiple > 1000){
+        $scope.multipleChange = function () {
+            if ($scope.multiple > 1000) {
                 $scope.multiple = '1';
             }
             $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
@@ -289,42 +289,47 @@ angular.module ('starter.arrangeFiveCtrl', [])
         };
         getWareIssueService.getWareIssue (data, userInfo.token)
             .then (function (response) {
-                console.info(response);
-                if(response.error === '0'){
+                console.info (response);
+                if (response.error === '0') {
                     $scope.wareIssue = response.data.wareIssue;
-                    $interval(function () {
-                    var end_sale_time = $util.countTime(response.data.end_sale_time);
-                    $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
-                    },1000)
+                    $interval (function () {
+                        var end_sale_time = $util.countTime (response.data.end_sale_time);
+                        if (end_sale_time !== '0') {
+                            $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
+                        }
+                        else {
+                            $scope.endTime = '0 分';
+                        }
+                    }, 1000)
                 }
                 else {
                     $scope.successOrFaild = response.info;
                     $scope.imgagesUrl = imgClass[1];
-                    $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                    $errorPopupFactory.errorInfo ($scope, $state, 'login');
                 }
-            },function (error) {
+            }, function (error) {
                 //...
             });
 
         // 确认提交按钮
         $scope.showOrderAlertCms = function () {
             if ($scope.multiple * 1 <= 0 || $scope.multiple * 1 === '') { //投注倍数限制
-                alert('倍数不能为0或为空');
+                alert ('倍数不能为0或为空');
                 return
             }
             //获取大乐透期号
-            if($scope.wareIssue !== undefined){
+            if ($scope.wareIssue !== undefined) {
                 getpl5add ();
             }
             else {
                 $scope.successOrFaild = '获取期号失败!';
                 $scope.imgagesUrl = imgClass[1];
-                $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                $errorPopupFactory.errorInfo ($scope, $state, 'login');
             }
             // 大乐透投注接口信息
             function getpl5add () {
                 var dataArrayBig = [];
-                console.info($scope.sessionJsonWarp);
+                console.info ($scope.sessionJsonWarp);
                 for (var i = 0; i < $scope.sessionJsonWarp.length; i++) {
                     var dataObj = {
                         investCode : "", //"investCode":"01,03,05,07,09*06,08"
@@ -352,7 +357,7 @@ angular.module ('starter.arrangeFiveCtrl', [])
                 console.log (data);
                 BettingService.pl5BetAdd (data, userInfo.token)
                     .then (function (response) {
-                        console.info(response);
+                        console.info (response);
                         if (response.error === '0') {
                             $scope.successOrFaild = '投注成功!';
                             $scope.imgagesUrl = imgClass[0];
@@ -361,16 +366,16 @@ angular.module ('starter.arrangeFiveCtrl', [])
                             $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
                             $errorPopupFactory.errorInfo ($scope, $state);
                         }
-                        else if(response.error === '1110'){
+                        else if (response.error === '1110') {
                             $scope.successOrFaild = response.info;
-                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                            $errorPopupFactory.errorInfo ($scope, $state, 'login');
                         }
                         else {
                             $scope.successOrFaild = response.info;
-                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                            $errorPopupFactory.errorInfo ($scope, $state, 'login');
                         }
                     }, function (error) {
-                        alert('获取投注信息失败，请检查网络');
+                        alert ('获取投注信息失败，请检查网络');
                     });
             }
         };

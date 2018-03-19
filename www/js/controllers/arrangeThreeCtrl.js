@@ -226,7 +226,12 @@ angular.module ('starter.arrangeThreeCtrl', [])
                     $scope.wareIssue = response.data.wareIssue;
                     $interval(function() {
                         var end_sale_time = $util.countTime(response.data.end_sale_time);
-                        $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
+                        if (end_sale_time !== '0') {
+                            $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
+                        }
+                        else {
+                            $scope.endTime = '0 分';
+                        }
                     },1000)
                 }
                 else {

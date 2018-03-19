@@ -26,12 +26,12 @@ angular.module ('starter.controllers', [])
                 if (response.error === '0') {
                     $util.setUserInfo (response.data);
                     if(openId !== 'null' && lotteryId === 'null'){
-                        $timeout(function () {
+                        // $timeout(function () {
                             $state.go('home');
-                        },1000 * 3);
+                        // },1000);
                     }
                     else {
-                        $timeout (function () {
+                        // $timeout (function () {
                             if (lotteryId === '2') {
                                 $state.go ('superLotto');
                             }
@@ -42,9 +42,11 @@ angular.module ('starter.controllers', [])
                                 $state.go ('arrangeFive');
                             }
                             else if (lotteryId === '0') {
-                                $state.go ('mine.myBonus');
+                                $scope.successOrFaild = '暂未开放';
+                                $scope.imgagesUrl = imgClass[1];
+                                $errorPopupFactory.errorInfo ($scope, $state, 'home');
                             }
-                        }, 1000 * 2);
+                        // }, 1000 * 2);
                     }
                 }
                 else {

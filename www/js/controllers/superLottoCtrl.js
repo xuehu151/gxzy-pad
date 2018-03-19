@@ -3,9 +3,9 @@
  */
 angular.module ('starter.superLottoCtrl', [])
 
-    .controller ('superLottoCtrl', function ($scope, $state, $ionicModal, getWareIssueService, $ionicLoading, $http, $rootScope, $util,$interval, BettingService,$errorPopupFactory) {
+    .controller ('superLottoCtrl', function ($scope, $state, $ionicModal, getWareIssueService, $ionicLoading, $http, $rootScope, $util, $interval, BettingService, $errorPopupFactory) {
         $scope.sessionJsonWarp = [];
-        var imgClass = ['./img/completeInfoSucceed.png','./img/completeInf.png'];
+        var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         $scope.successOrFaild = '您的余额不足,无法投注';
         $scope.imgagesUrl = imgClass[1];
         $scope.multiple = '1';
@@ -22,8 +22,8 @@ angular.module ('starter.superLottoCtrl', [])
         // Create the red items   红球
         for (var j = 1; j <= 35; j++) {
             var itemsRed = {
-                num: j + 1,
-                check: false
+                num : j + 1,
+                check : false
             };
             if (j < 10) {
                 itemsRed.num = '0' + j
@@ -72,8 +72,8 @@ angular.module ('starter.superLottoCtrl', [])
         // Create the blue items  蓝球
         for (var i = 1; i <= 12; i++) {
             var itemsBlue = {
-                num: i + 1,
-                check: false
+                num : i + 1,
+                check : false
             };
             if (i < 10) {
                 itemsBlue.num = '0' + i
@@ -116,44 +116,44 @@ angular.module ('starter.superLottoCtrl', [])
                 }
             }
         };
-        $scope.$watch("filterDataRed+filterDataBlue",function(){
-            $scope.numData=
-                    {
-                    red:[],
-                    blue:[]
+        $scope.$watch ("filterDataRed+filterDataBlue", function () {
+            $scope.numData =
+                {
+                    red : [],
+                    blue : []
                 };
-            if($scope.filterDataRed.length==5 && $scope.filterDataBlue.length==2){
+            if ($scope.filterDataRed.length == 5 && $scope.filterDataBlue.length == 2) {
                 // console.log($scope.filterDataRed);
                 // $scope.filterDataRed=Number($scope.filterDataRed.num);
 
-                for(var i=0;i<$scope.filterDataRed.length;i++){
-                        $scope.numData.red.push($scope.filterDataRed[i]);
-                        console.log('+++++++',$scope.numData);
-                     }
+                for (var i = 0; i < $scope.filterDataRed.length; i++) {
+                    $scope.numData.red.push ($scope.filterDataRed[i]);
+                    console.log ('+++++++', $scope.numData);
+                }
 
-                for(var i=0;i<$scope.filterDataBlue.length;i++){
-                        $scope.numData.blue.push($scope.filterDataBlue[i]);
-                     }
+                for (var i = 0; i < $scope.filterDataBlue.length; i++) {
+                    $scope.numData.blue.push ($scope.filterDataBlue[i]);
+                }
                 // $scope.filterDataRed=$scope.numData;
                 //
                 // console.log('++++',$scope.numData);
                 // console.log('===',$scope.filterDataRed);
                 // Array.prototype.push.apply($scope.numData, JSON.stringify($scope.filterDataRed).num);
                 // Array.prototype.push.apply($scope.numData, JSON.stringify($scope.filterDataBlue).num);
-                $scope.sessionJsonWarp.push($scope.numData);
-                console.log("++++",$scope.sessionJsonWarp);
-                for(var i=0; i<$scope.numDataRed.length; i++){
+                $scope.sessionJsonWarp.push ($scope.numData);
+                console.log ("++++", $scope.sessionJsonWarp);
+                for (var i = 0; i < $scope.numDataRed.length; i++) {
                     $scope.numDataRed[i].check = false;
                 }
-                for(var i=0; i<$scope.numDataBlue.length; i++){
+                for (var i = 0; i < $scope.numDataBlue.length; i++) {
                     $scope.numDataBlue[i].check = false;
                 }
                 $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
                 $scope.filterDataBlue = [];
-                $scope.filterDataRed=[];
+                $scope.filterDataRed = [];
                 // console.log('++++++++++++++++',$scope.numData)
                 // console.log('----------',$scope.sessionJsonWarp)
-                if($scope.sessionJsonWarp.length>0){
+                if ($scope.sessionJsonWarp.length > 0) {
                     $scope.isDisabled = false;
                 }
 
@@ -163,7 +163,7 @@ angular.module ('starter.superLottoCtrl', [])
                 // }
             }
 
-        },true);
+        }, true);
 
         //店家点击机选，添加机选一注
         $scope.autoAddOneNote = function () {
@@ -223,8 +223,8 @@ angular.module ('starter.superLottoCtrl', [])
         };
         //机选五注
         $scope.autoAddFiveNote = function () {
-            for(var i = 0; i  < 5; i++){
-                $scope.autoAddOneNote();
+            for (var i = 0; i < 5; i++) {
+                $scope.autoAddOneNote ();
             }
         };
 
@@ -244,8 +244,8 @@ angular.module ('starter.superLottoCtrl', [])
         };
 
         //倍数的变化
-        $scope.multipleChange = function  () {
-            if($scope.multiple > 1000){
+        $scope.multipleChange = function () {
+            if ($scope.multiple > 1000) {
                 $scope.multiple = '1';
             }
             $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
@@ -259,43 +259,48 @@ angular.module ('starter.superLottoCtrl', [])
         };
         getWareIssueService.getWareIssue (data, userInfo.token)
             .then (function (response) {
-                console.info(response);
-                console.log("++++",response.data.end_sale_time);
-                    if(response.error === '0'){
+                console.info (response);
+                console.log ("++++", response.data.end_sale_time);
+                if (response.error === '0') {
                     $scope.wareIssue = response.data.wareIssue;
-                    $interval(function() {
-                        var end_sale_time = $util.countTime(response.data.end_sale_time);
-                        $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
-                    },1000);
+                    $interval (function () {
+                        var end_sale_time = $util.countTime (response.data.end_sale_time);
+                        if (end_sale_time !== '0') {
+                            $scope.endTime = end_sale_time.hours + '时' + end_sale_time.minute + '分' + end_sale_time.second + '秒';
+                        }
+                        else {
+                            $scope.endTime = '0 分';
+                        }
+                    }, 1000);
                 }
                 else {
                     $scope.successOrFaild = response.info;
                     $scope.imgagesUrl = imgClass[1];
-                    $scope.integral.show();
+                    $scope.integral.show ();
                 }
-            },function (error) {
+            }, function (error) {
                 //...
             });
 
         // 确认提交按钮
         $scope.showOrderAlertCms = function () {
             if ($scope.multiple * 1 <= 0 || $scope.multiple * 1 === '') { //投注倍数限制
-                alert('倍数不能为0或为空');
+                alert ('倍数不能为0或为空');
                 return
             }
             //获取大乐透期号
-            if($scope.wareIssue !== undefined){
+            if ($scope.wareIssue !== undefined) {
                 getdltadd ();
             }
             else {
                 $scope.successOrFaild = '获取期号失败!';
                 $scope.imgagesUrl = imgClass[1];
-                $scope.integral.show();
+                $scope.integral.show ();
             }
             // 大乐透投注接口信息
             function getdltadd () {
                 var dataArrayBig = [];
-                console.info($scope.sessionJsonWarp);
+                console.info ($scope.sessionJsonWarp);
                 for (var i in $scope.sessionJsonWarp) {
                     var dataObj = {
                         investCode : "", //"investCode":"01,03,05,07,09*06,08"
@@ -335,7 +340,7 @@ angular.module ('starter.superLottoCtrl', [])
                 console.log (data);
                 BettingService.dltBetAdd (data, userInfo.token)
                     .then (function (response) {
-                        console.info(response);
+                        console.info (response);
                         if (response.error === '0') {
                             $scope.successOrFaild = '投注成功!';
                             $scope.imgagesUrl = imgClass[0];
@@ -344,16 +349,16 @@ angular.module ('starter.superLottoCtrl', [])
                             $scope.isDisabled = true;
                             $errorPopupFactory.errorInfo ($scope, $state);
                         }
-                        else if(response.error === '1110'){
+                        else if (response.error === '1110') {
                             $scope.successOrFaild = response.info;
-                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                            $errorPopupFactory.errorInfo ($scope, $state, 'login');
                         }
                         else {
                             $scope.successOrFaild = response.info;
-                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                            $errorPopupFactory.errorInfo ($scope, $state, 'login');
                         }
                     }, function (error) {
-                        alert('获取投注信息失败，请检查网络');
+                        alert ('获取投注信息失败，请检查网络');
                     });
             }
         };
