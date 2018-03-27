@@ -1,7 +1,7 @@
 <ion-view view-title = "排列五">
     <ion-nav-bar class='bar-light'>
         <ion-nav-buttons side="left">
-            <a href="#home" class="button button-icon ion-ios-arrow-left" style="font-size: 2em;"></a>
+            <a href="#home" class="button button-icon ion-ios-arrow-left"></a>
         </ion-nav-buttons>
         <ion-nav-buttons side="right" >
             <span class="headTime">
@@ -12,10 +12,10 @@
         </ion-nav-buttons>
     </ion-nav-bar>
     <!--************************排列五选号区域*********************-->
-    <div class="leftNum">
-        <div class="num-arrange-3">
+    <div class="leftNum five">
+        <div class="num-arrange-3"> 
             <div class="row">
-                <div class="col col-20">万位:</div>
+                <div class="col col-20">万位&nbsp;:</div>
                 <div class="col col-80">
                     <i
                         ng-repeat="bitNum10000 in numDataBit10000"
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col col-20">千位:</div>
+                <div class="col col-20">千位&nbsp;:</div>
                 <div class="col col-80">
                     <i
                         ng-repeat="bitNum1000 in numDataBit1000"
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col col-20">百位:</div>
+                <div class="col col-20">百位&nbsp;:</div>
                 <div class="col col-80">
                     <i
                         ng-repeat="bitNum100 in numDataBit100"
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col col-20">十位:</div>
+                <div class="col col-20">十位&nbsp;:</div>
                 <div class="col col-80">
                     <i
                         ng-repeat="bitNum10 in numDataBit10"
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col col-20">个位:</div>
+                <div class="col col-20">个位&nbsp;:</div>
                 <div class="col col-80">
                     <i
                         ng-repeat="bitNum1 in numDataBit1"
@@ -115,15 +115,15 @@
                                ng-change="multipleChange()"
                                ng-model="multiple"/>
                     </label> 倍
-                    <p style="height: 35px;">
+                    <p style="height: 35px; padding-top:0.5rem">
                         <span ng-cloak="">{{sessionJsonWarp.length}}注</span>
-                        <span class="font-red" ng-cloak> {{totalMoney}}</span>  元 &nbsp;&nbsp;&nbsp;
+                        <span class="font-red" ng-cloak> {{totalMoney}}</span>  龙币 &nbsp;&nbsp;&nbsp;
                     </p>
                 </div>
             </div>
             <div class="col col-33 exchange">
                 <button class="button button-block button-liner-gradiend" ng-click="showOrderAlertCms(res)"
-                        style="font-size: 16px;" ng-disabled="isDisabled">
+                        style="font-size: 22px;" ng-disabled="isDisabled">
                     立即投注
                 </button>
             </div>

@@ -1,7 +1,7 @@
 <ion-view view-title = "大乐透">
     <ion-nav-bar class='bar-light'>
         <ion-nav-buttons side="left">
-            <a href="#home" class="button button-icon ion-ios-arrow-left" style="  font-size: 2em;"></a>
+            <a href="#home" class="button button-icon ion-ios-arrow-left"></a>
         </ion-nav-buttons>
         <ion-nav-buttons side="right" >
             <span class="headTime">
@@ -63,8 +63,8 @@
         </div>
     </ion-content>
 
-    <ion-footer-bar class=" betting-detail-footer" style="height: 80px;">
-        <div class="row">
+    <ion-footer-bar class=" betting-detail-footer" style="height: 5rem;">
+        <div class="row" s>
             <div class="col col-33 detele">
                 <span class="ion-trash-a" ng-click="emptyAll()"> &nbsp;清空</span>
             </div>
@@ -79,15 +79,15 @@
                                ng-change="multipleChange()"
                                ng-model="multiple"/>
                     </label> 倍
-                    <p style="height: 35px;">
+                    <p style="height: 35px; padding-top:0.5rem">
                         <span ng-cloak="">{{sessionJsonWarp.length}}注</span>
-                        <span class="font-red" ng-cloak> {{totalMoney}}</span>  元 &nbsp;&nbsp;&nbsp;
+                        <span class="font-red" ng-cloak> {{totalMoney}}</span>  龙币 &nbsp;&nbsp;&nbsp;
                     </p>
                 </div>
             </div>
             <div class="col col-33 exchange">
                 <button class="button button-block button-liner-gradiend" ng-click="showOrderAlertCms(res)"
-                        style="font-size: 16px;" ng-disabled="isDisabled">
+                        style="font-size: 22px;" ng-disabled="isDisabled">
                     立即投注
                 </button>
             </div>

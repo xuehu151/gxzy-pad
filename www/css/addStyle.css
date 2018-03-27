@@ -1,10 +1,12 @@
 .addBtn{
     width: 50%;
     margin-left: 50%;
-    margin-top: 0;
+    margin-top: 2.3rem;
+    height: 7rem;
 }
 .h44{
     width: 100%;
+    height: 3.3rem;
 }
 .padding-6{
     width: 50%;
@@ -88,7 +90,12 @@
     padding-top: 2rem;
     flex: 0 0 16%;
     color: #036bb4;
-    font-size: 26px;
+    font-size: 30px;
+    margin-top: 4rem;
+}
+
+.num-arrange-3 .col-80{
+    margin-top: 4rem;
 }
 .arrange-3-bg-white,
 .arrange-3-bg-red {
@@ -114,4 +121,82 @@
     color: #959595;
 }
 
+/* 排列三 */
+.five .num-arrange-3 .row .col-20{
+    margin-top: 0.4rem;
+}
+.five .num-arrange-3 .row .col-80{
+    margin-top: 0.4rem;
+}
 
+
+/*大乐透*/
+.bar.bar-light.bar-header{
+    height: 5rem;
+}
+.bar.bar-light .title{
+    font-size: 34px;
+    line-height: 5rem;
+    height: 5rem
+}
+.headTime{
+    font-size:28px;
+}
+
+.headTime .time{
+    font-size:28px;
+}
+.detele{
+    font-size: 24px;
+    line-height: 4rem;
+}
+.middle{
+    font-size: 24px
+}
+.exchange .button{
+    float: left;
+    margin-left: -12rem
+}
+.number{
+    font-size: 28px;
+}
+.h44 .button{
+    font-size: 24px;
+    height: 3rem;
+}
+.bar .button.button-icon:before, .bar .button .icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before, .bar button.button-icon:before, .bar button .icon:before, .bar button.icon:before, .bar button.icon-left:before, .bar button.icon-right:before {
+    line-height: 4rem;
+    font-size: 40px;
+}
+.h44 a.button.icon:before, .betting-detail-ul a.button .icon:before {
+    line-height: 2.9rem;
+}
+.padding-6{
+    padding-top:9rem;
+}
+.betting-num i{
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size:26px;
+    margin: 3px 1%;
+}
+.item-button-right > .button, .item-button-right .item-content > .button, .item-button-right > .buttons, .item-button-right .item-content > .buttons{
+    top: 21px;
+}
+.item-button-right > .button .icon:before, .item-button-right .item-content > .button .icon:before, .item-button-right > .buttons .icon:before, .item-button-right .item-content > .buttons .icon:before {
+    line-height:30px;
+    font-size: 48px;
+    margin-left: 16px;
+}
+.betting-detail-ul li {
+    padding-left: 100px;
+}
+
+.betting-detail-footer .bigLotto-input1 {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 6px;
+    font-size: 26px;
+    line-height: 2rem;
+}
