@@ -1,12 +1,10 @@
 <ion-view view-title = "">
     <ion-content style="background: #f0f4f3;"  class="hancaiHome">
         <ul class=" padding homeInset">
-            <li ng-click="clickPlFn(31)"><img src = "./img/pl3.png" alt = ""></li>
-            <li ng-click="clickPlFn(40)"><img src = "./img/pl5.png" alt = ""></li>
-            <li ng-click="clickPlFn(2)"><img src = "./img/dlt.png" alt = ""></li>
-            <li ng-click="clickPlFn(0)">
-                <img src = "./img/zucai.png" alt = "">
-            </li>
+            <li ng-click="clickPlFn(31)"><img src = "{{activityPicture[0].img}}" alt = ""></li>
+            <li ng-click="clickPlFn(40)"><img src = "{{activityPicture[1].img}}" alt = ""></li>
+            <li ng-click="clickPlFn(2)"><img src = "{{activityPicture[2].img}}" alt = ""></li>
+            <li ng-click="clickPlFn(0)"><img src = "{{activityPicture[3].img}}" alt = ""> </li>
             <div class="my_btn" ng-click="clickPlFn(1)">
                 <img src = "./img/myLottery.png" alt = "我的彩票">
             </div>

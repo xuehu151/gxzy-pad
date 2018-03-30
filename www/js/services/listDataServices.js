@@ -1,10 +1,11 @@
 /**
  * Created by admin on 2018/2/26.
  */
-angular.module ('starter.CustomService', [])
-    .factory ('$BonusRecordFactory', function () {
+angular.module('starter.CustomService', [])
+
+    .factory('$BonusRecordFactory', function () {
         return {
-            bonusRecord : function (listData) {
+            bonusRecord: function (listData) {
                 var bonusInfoArr = [];
                 for (var i = 0; i < listData.length; i++) {
                     var withdrawalInfoObj = {};
@@ -28,7 +29,7 @@ angular.module ('starter.CustomService', [])
                             withdrawalInfoObj.plusOrMinus = '+';
                             break;
                     }
-                    bonusInfoArr.push (withdrawalInfoObj);
+                    bonusInfoArr.push(withdrawalInfoObj);
                 }
                 return bonusInfoArr
             }
@@ -36,10 +37,10 @@ angular.module ('starter.CustomService', [])
     })
 
     //提现记录
-    .factory ('$WithdrawalRecordFactory', function () {
+    .factory('$WithdrawalRecordFactory', function () {
         return {
-            withdrawalRecord : function (listData) {
-                console.info ('*****', listData);
+            withdrawalRecord: function (listData) {
+                console.info('*****', listData);
                 var withdrawalInfoArr = [];
                 for (var i = 0; i < listData.length; i++) {
                     var withdrawalInfoObj = {};
@@ -59,7 +60,7 @@ angular.module ('starter.CustomService', [])
                             withdrawalInfoObj.statusTxt = '审核不通过';
                             break;
                     }
-                    withdrawalInfoArr.push (withdrawalInfoObj);
+                    withdrawalInfoArr.push(withdrawalInfoObj);
                 }
                 return withdrawalInfoArr
             }
@@ -67,34 +68,34 @@ angular.module ('starter.CustomService', [])
         };
     })
     //全部订单
-    .factory ('$allOrdersFactory', function () {
+    .factory('$allOrdersFactory', function () {
         return {
-            allOrders : function (listData, status) {
-                console.info ('*****', listData);
+            allOrders: function (listData, status) {
+                console.info('*****', listData);
                 var allOrdersInfoArr = [];
                 for (var i = 0; i < listData.length; i++) {  // aaa = [    ]
                     var allOrdersInfoObj = {};
                     var investCodeListArr = [];
                     for (var j = 0; j < listData[i].lotteryList.length; j++) {
                         var investCodeList = {
-                            red : [],
-                            blue : []
+                            red: [],
+                            blue: []
                         };
                         if (listData[i].lotteryList[j].lotteryID !== '2') {
-                            investCodeList.red = (listData[i].lotteryList[j].investCode.split ('*'));
+                            investCodeList.red = (listData[i].lotteryList[j].investCode.split('*'));
                         }
                         else {
-                            var investCodeDlt = listData[i].lotteryList[j].investCode.split ('*');
-                            investCodeList.red = investCodeDlt[0].split (',');
-                            investCodeList.blue = investCodeDlt[1].split (',');
+                            var investCodeDlt = listData[i].lotteryList[j].investCode.split('*');
+                            investCodeList.red = investCodeDlt[0].split(',');
+                            investCodeList.blue = investCodeDlt[1].split(',');
                         }
-                        investCodeListArr.push (investCodeList);
+                        investCodeListArr.push(investCodeList);
                     }
                     allOrdersInfoObj.lotteryList = investCodeListArr;
                     allOrdersInfoObj.money = listData[i].money;
                     allOrdersInfoObj.createDate = listData[i].createDate;
                     allOrdersInfoObj.orderNo = listData[i].orderNo;
-                    switch (Number (listData[i].lotteryID)) {
+                    switch (Number(listData[i].lotteryID)) {
                         case 2:
                             allOrdersInfoObj.lotteryTxt = '大乐透';
                             break;
@@ -143,7 +144,7 @@ angular.module ('starter.CustomService', [])
                             allOrdersInfoObj.patternPayment = listData[i].channelName;
                             break;
                     }
-                    allOrdersInfoArr.push (allOrdersInfoObj);
+                    allOrdersInfoArr.push(allOrdersInfoObj);
                 }
                 return allOrdersInfoArr
             }
@@ -151,25 +152,63 @@ angular.module ('starter.CustomService', [])
         };
     })
     //错误弹框
-    .factory ('$errorPopupFactory', function ($ionicModal) {
+    .factory('$errorPopupFactory', function ($ionicModal) {
         return {
-            errorInfo : function (obj,state, target) {
-                $ionicModal.fromTemplateUrl ('templates/getOneBetModal.html', {
-                    scope : obj,
-                    backdropClickToClose : true
+            errorInfo: function (obj, state, target, hideBtn, showBtn, hideText, showText) {
+                $ionicModal.fromTemplateUrl('templates/getOneBetModal.html', {
+                    scope: obj,
+                    backdropClickToClose: true
                 })
-                    .then (function (modal) {
+                    .then(function (modal) {
                         obj.integral = modal;
                         modal.show();
                     });
 
+                if (hideBtn) {
+                    obj.hideBtn = true;
+                    obj.hideText = hideText;
+                }
+                else {
+                    obj.hideBtn = false;
+                    obj.hideText = '';
+                }
+                if (showBtn) {
+                    obj.showBtn = true;
+                    obj.showText = showText;
+                }
+                else {
+                    obj.showBtn = false;
+                    obj.showText = '';
+                }
+                obj.cancel = function () {//取消
+                    obj.integral.hide();
+                }
+                obj.makeSure = function () {//確定
+                    obj.integral.hide();
+                    state.go(target);
+                }
                 obj.cancelPop = function () {
-                    obj.integral.hide ();
+                    obj.integral.hide();
                     state.go(target);
                 };
-
-
             }
-
         };
-    });
+    })
+
+    //活动数据获取
+    .factory('$getActivityData', function ($interval) {
+        return {
+            ActivityData: function (obj,startTime, endTime, discount) {
+                $interval(function () {
+                    if (Date.parse(new Date(startTime)) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(new Date(endTime))) {
+                        obj.saleNum = discount;
+                        // console.log('打折');
+                    } else {
+                        obj.saleNum = 1;
+                        // console.log('不打折');
+                    }
+                }, 1000)
+            }
+        }
+    })
+

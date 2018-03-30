@@ -4,5 +4,9 @@
         <div class="cancel-pop" ng-click="cancelPop()"><i class="ion-close-round"></i></div>
         <img ng-src="{{imgagesUrl}}" alt="获得一注彩票" />
         <div class="account-style1" ng-cloak="">{{successOrFaild}}</div>
+         <div class="modalBtn">
+             <button class="button button-royal" ng-click="cancel()" ng-if="hideBtn">{{hideText}}</button>
+             <button class="button button-royal" ng-click="makeSure()" ng-if="showBtn" >{{showText}}</button>
+         </div>       
     </div>
 </ion-modal-view>

@@ -20,7 +20,8 @@ angular.module ('starter.util', [])
             getListUrl : ipUrl + '/service/bonus/getList',   //奖金纪录
             withdrawGetListUrl : ipUrl + '/service/cash/getList',   //提现纪录
             ordersGetListUrl : ipUrl + '/service/lottery/getList',   //全部订单
-
+            activityDiscountUrl : ipUrl + '/service/lottery/activityDiscount', //折扣信息
+            homeImageUrl : ipUrl +  '/service/common/image' // 入口图片
 
         };
         return {

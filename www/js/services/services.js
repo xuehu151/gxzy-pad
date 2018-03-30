@@ -1,30 +1,30 @@
-angular.module ('starter.services', [])
+angular.module('starter.services', [])
 
-    .factory ('locals', ['$window', function ($window) {
+    .factory('locals', ['$window', function ($window) {
         return {
             //存储单个属性
-            set : function (key, value) {
+            set: function (key, value) {
                 $window.localStorage[key] = value;
             },
             //读取单个属性
-            get : function (key, defaultValue) {
+            get: function (key, defaultValue) {
                 return $window.localStorage[key] || defaultValue;
             },
             //存储对象，以JSON格式存储
-            setObject : function (key, value) {
-                $window.localStorage[key] = JSON.stringify (value);
+            setObject: function (key, value) {
+                $window.localStorage[key] = JSON.stringify(value);
             },
             //读取对象
-            getObject : function (key) {
-                return JSON.parse ($window.localStorage[key] || '{}');
+            getObject: function (key) {
+                return JSON.parse($window.localStorage[key] || '{}');
             }
         }
 
     }])
     //初始化接口
-    .factory('$loginService', function($http, $util) {
+    .factory('$loginService', function ($http, $util) {
         return {
-            login: function(data, token) {
+            login: function (data, token) {
                 token = token || '';
                 return $util.httpPostRequest($util.getHttpURL().loginUrl, data, token);
             }
@@ -33,18 +33,18 @@ angular.module ('starter.services', [])
     })
 
     //排列三投注
-    .factory('BettingService', function($http, $util) {
+    .factory('BettingService', function ($http, $util) {
         return {
-            pl3BetAdd: function(data, token) {
+            pl3BetAdd: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().pl3AddUrl, data, token);
             },
-            pl5BetAdd: function(data, token) {
+            pl5BetAdd: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().pl5AddUrl, data, token);
             },
-            dltBetAdd: function(data, token) {
+            dltBetAdd: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().dltAddUrl, data, token);
             },
-            pl3addAuto: function(data, token) {
+            pl3addAuto: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().pl3addAutoUrl + '?token=' + token, data);
             }
 
@@ -52,9 +52,9 @@ angular.module ('starter.services', [])
     })
 
     //用户信息
-    .factory('$getUserInfoService', function($http, $util) {
+    .factory('$getUserInfoService', function ($http, $util) {
         return {
-            getUserInfo: function(data, token) {
+            getUserInfo: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().getUserUrl, data, token);
             },
 
@@ -64,12 +64,12 @@ angular.module ('starter.services', [])
     })
 
     //奖金纪录
-    .factory('$BonusRecordService', function($http, $util) {
+    .factory('$BonusRecordService', function ($http, $util) {
         return {
-            getUserInfo: function(data, token) {
+            getUserInfo: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().getListUrl, data, token);
             },
-            withdrawGetList: function(data, token) {
+            withdrawGetList: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().withdrawGetListUrl, data, token);
             },
 
@@ -78,9 +78,9 @@ angular.module ('starter.services', [])
     })
 
     //订单记录
-    .factory('$allOrdersdService', function($http, $util) {
+    .factory('$allOrdersdService', function ($http, $util) {
         return {
-            allOrders: function(data, token) {
+            allOrders: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().ordersGetListUrl, data, token);
             }
 
@@ -88,11 +88,25 @@ angular.module ('starter.services', [])
     })
 
     //获取期号
-    .factory('getWareIssueService', function($http, $util) {
+    .factory('getWareIssueService', function ($http, $util) {
         return {
-            getWareIssue: function(data, token) {
+            getWareIssue: function (data, token) {
                 console.info(token);
                 return $util.httpPostRequest($util.getHttpURL().getWareIssueUrl, data, token);
             }
         };
+    })
+
+    //折扣信息
+    .factory('$activityDiscount', function ($http, $util) {
+        return {
+
+            activityDiscount: function (data, token) {
+                return $util.httpPostRequest($util.getHttpURL().activityDiscountUrl, data, token);
+            },
+            homeImage: function (data, token) {
+                return $util.httpPostRequest($util.getHttpURL().homeImageUrl, data, token);
+            }
+
+        }
     });

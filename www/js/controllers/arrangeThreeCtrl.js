@@ -3,7 +3,7 @@
  */
 angular.module ('starter.arrangeThreeCtrl', [])
 
-    .controller ('arrangeThreeCtrl', function ($scope, $state,$ionicModal, $util,$interval, BettingService, getWareIssueService,$errorPopupFactory) {
+    .controller ('arrangeThreeCtrl', function ($scope, $state,$ionicModal, $util,$interval, BettingService, getWareIssueService,$errorPopupFactory,$getActivityData,$stateParams) {
         $scope.sessionJsonWarp = [];
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         $scope.successOrFaild = '您的余额不足,无法投注';
@@ -13,6 +13,19 @@ angular.module ('starter.arrangeThreeCtrl', [])
         $scope.isDisabled = true;
         //空状态
         $scope.dummyStatus = '././img/dummyStatus.png';
+        //活动期间数据处理
+        var activityData = $stateParams.resdata; 
+        var activityImg = $stateParams.resimg;
+        $scope.imgurl = {
+            "background-image" : 'url(' + activityImg +')',
+            "background-size": "100% 100%"
+        }
+        $scope.saleNum = 1;
+        console.log(Date.parse(new Date(activityData.startTime)));
+        console.log(Date.parse(new Date()));
+        console.log(Date.parse(new Date(activityData.endTime)));
+
+        $getActivityData.ActivityData( $scope,activityData.startTime,activityData.endTime,activityData.discount);
 
         //设置排列3球百位号码
         $scope.numDataBit100 = [];
@@ -128,7 +141,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
                 console.log( $scope.numData);
                 $scope.sessionJsonWarp.push($scope.numData);
                 console.log("6464564",$scope.sessionJsonWarp);
-                $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
+                $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
                 // for(var i=0; i<$scope.numDataBit100.length; i++){
                 //     $scope.numDataBit100[i].check = false;
                 // }
@@ -180,7 +193,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
             }
             $scope.sessionJsonWarp.push (addJson);
             $scope.isDisabled = $util.forbidWhetherEmpty ($scope.sessionJsonWarp, $scope.isDisabled);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
         };
         //机选五注
         $scope.autoAddFiveNote = function () {
@@ -193,7 +206,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
         $scope.deleteRow = function ($index) {
             $scope.sessionJsonWarp.splice ($index, 1); //点击删除本行
             $scope.isDisabled = $util.forbidWhetherEmpty ($scope.sessionJsonWarp, $scope.isDisabled);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
         };
 
         //清空
@@ -201,7 +214,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
             $scope.sessionJsonWarp = [];
             $scope.multiple = '1';
             $scope.isDisabled = $util.forbidWhetherEmpty ($scope.sessionJsonWarp, $scope.isDisabled);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
         };
 
         //倍数的变化
@@ -209,7 +222,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
             if($scope.multiple > 1000){
                 $scope.multiple = '1';
             }
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
         };
 
         var userInfo = $util.getUserInfo ();
@@ -295,16 +308,16 @@ angular.module ('starter.arrangeThreeCtrl', [])
                             $scope.imgagesUrl = imgClass[0];
                             $scope.sessionJsonWarp = [];
                             $scope.isDisabled = true;
-                            $scope.totalMoney = $scope.sessionJsonWarp.length * 2 * $scope.multiple;
-                            $errorPopupFactory.errorInfo ($scope, $state);
+                            $scope.totalMoney = $scope.sessionJsonWarp.length* 100 * $scope.multiple* $scope.saleNum;
+                            $errorPopupFactory.errorInfo ($scope, $state, 'mine.myBonus',true,true,'继续投注','个人中心');
                         }
                         else if(response.error === '1110'){
                             $scope.successOrFaild = response.info;
-                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                            $errorPopupFactory.errorInfo ($scope, $state ,'login',false,false);
                         }
                         else {
                             $scope.successOrFaild = response.info;
-                            $errorPopupFactory.errorInfo ($scope, $state ,'login');
+                            $errorPopupFactory.errorInfo ($scope, $state ,'login',false,false);
                         }
                     }, function (error) {
                         alert('获取投注信息失败，请检查网络');

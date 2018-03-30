@@ -80,7 +80,7 @@
             <a class="button icon icon-left ion-ios-plus-empty col btn-30" href="" ng-click=autoAddFiveNote()>机选五注号码</a>
         </div>
     </div>
-    <ion-content style="background: #f0f4f3;" class="padding-6">
+    <ion-content ng-style="imgurl" class="padding-6">
         <div class="padding">
             <ul class="list betting-detail-ul">
                 <li class="item item-button-left item-button-right" ng-repeat="liItem in sessionJsonWarp track by $index">
@@ -117,7 +117,7 @@
                     </label> 倍
                     <p style="height: 35px; padding-top:0.5rem">
                         <span ng-cloak="">{{sessionJsonWarp.length}}注</span>
-                        <span class="font-red" ng-cloak> {{totalMoney}}</span>  龙币 &nbsp;&nbsp;&nbsp;
+                        <span class="font-red" ng-cloak> {{totalMoney | number:0}}</span>  龙币 &nbsp;&nbsp;&nbsp;
                     </p>
                 </div>
             </div>
