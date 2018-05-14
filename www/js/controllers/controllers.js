@@ -6,6 +6,7 @@ angular.module('starter.controllers', [])
         var loginArgument = splitUrl.split('&');
         var lotteryId = loginArgument[0].split('=')[1];
         var openId = loginArgument[1].split('=')[1];
+        var userId = loginArgument[2].split('=')[1];
         var KEY = "a1b2c3d4e5f6g7";
         var sign = md5(openId + KEY);
         var data = {
@@ -16,6 +17,7 @@ angular.module('starter.controllers', [])
             }
         };
         console.info('data', data);
+        console.info('userId', userId);
         console.info('openId', openId);
         console.info('lotteryId', lotteryId);
         var reques = '';
@@ -23,6 +25,7 @@ angular.module('starter.controllers', [])
         $loginService.login(data)
             .then(function (response) {
                 reques = response.info;
+                console.info('response',response);
                 if (response.error === '0') {
                     $util.setUserInfo(response.data);
                     if (openId !== 'null' && lotteryId === 'null') {
@@ -44,20 +47,26 @@ angular.module('starter.controllers', [])
                             })
                             .then(function (res) {
                                 if (lotteryId === '2') {
-                                    $state.go('superLotto', { resdata: res.activityDiscount[2], resimg: res.activityPicture[6].img });
+                                    $state.go('superLotto', { resdata: res.activityDiscount[2], resimg: res.activityPicture[6].img , userId:userId});
                                 }
                                 else if (lotteryId === '31') {
-                                    $state.go('arrangeThree', { resdata: res.activityDiscount[0], resimg: res.activityPicture[4].img });
+                                    $state.go('arrangeThree', { resdata: res.activityDiscount[0], resimg: res.activityPicture[4].img, userId:userId });
                                 }
                                 else if (lotteryId === '40') {
-                                    $state.go('arrangeFive', { resdata: res.activityDiscount[1], resimg: res.activityPicture[5].img });
+                                    $state.go('arrangeFive', { resdata: res.activityDiscount[1], resimg: res.activityPicture[5].img , userId:userId});
                                 }
                                 else if (lotteryId === '0') {
-                                    $scope.successOrFaild = '暂未开放';
-                                    $scope.imgagesUrl = imgClass[1];
-                                    $errorPopupFactory.errorInfo($scope, $state, 'home');
+                                    // $scope.successOrFaild = '暂未开放';
+                                    // $scope.imgagesUrl = imgClass[1];
+                                    // $errorPopupFactory.errorInfo($scope, $state, 'home');
+                                    $state.go("lotteryFootball")
                                 }
-
+                                else if (lotteryId === '1') {
+                                    // $scope.successOrFaild = '暂未开放';
+                                    // $scope.imgagesUrl = imgClass[1];
+                                    // $errorPopupFactory.errorInfo($scope, $state, 'home');
+                                    $state.go("twoLotteryFootball")
+                                }
                             })
 
 

@@ -15,20 +15,21 @@ angular.module ('starter.arrangeFiveCtrl', [])
         $scope.dummyStatus = '././img/dummyStatus.png';
 
          //活动期间数据处理
-         var activityData = $stateParams.resdata; 
+         var activityData = $stateParams.resdata;
          var activityImg = $stateParams.resimg;
+         var userId = $stateParams.userId;
          $scope.saleNum = 1;
          $scope.imgurl = {
             "background-image" : 'url(' + activityImg +')',
             "background-size": "100% 100%"
         }
- 
+
          console.log('activityData',activityData);
          console.log('activityImg',activityImg);
- 
-         
+
+
          $getActivityData.ActivityData( $scope,activityData.startTime,activityData.endTime,activityData.discount);
- 
+
         //设置排列3球万位号码
         $scope.numDataBit10000 = [];
         $scope.filterBit10000 = [];
@@ -365,7 +366,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
                         wareIssue : $scope.wareIssue,
                         payType : 2,
                         vid : '',
-                        data : dataArrayBig
+                        data : dataArrayBig,
+                        businessmanId : userId
                     },
                     params : {}
                 };

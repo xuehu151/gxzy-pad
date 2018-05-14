@@ -2,6 +2,10 @@
     padding: 0;
     margin: 0;
 }
+th{
+    border: 1px solid black;
+
+}
 .addBtn{
     width: 50%;
     margin-left: 50%;
@@ -213,11 +217,285 @@
 }
 .modalBtn button{
     width: 100%;
-    font-size: 22px;
-    line-height: 2.5rem;
+    font-size: 28px;
+    line-height: 3.2rem;
     background:gainsboro;
+}
+.modalBtn button:first-child{
+    border-right:1px solid gainsboro;
+}
+.modalBtn button:last-child{
+    border-left:1px solid gainsboro;
 }
 
 .account-modal2 .account-style1 {
     padding: 1px 10px 29px 10px;
+}
+.account-style1{
+    padding-bottom:40px;
+}
+
+/*足彩*/
+.bar-header{
+    height: 4rem;
+}
+.bar .title{
+    height: 100%;
+    line-height: 4rem;
+    font-size: 38px;
+}
+
+.btn-mig-l{
+    margin-left: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+.footer-bar{
+    height: 7.5rem;
+    line-height: 7.5rem;
+    border-top: 1px solid gainsboro;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+}
+.footer-clean{
+    float: left;
+    font-size: 52px;
+    color: #1F3795  ;
+    display: flex;
+}
+.footer-clean span{
+    font-size: 28px;
+    margin-left: 13px;
+}
+.footer-confirm{
+    width: 13.5rem;
+    height: 4rem;
+    border-radius: 47px;
+    margin-left: 15rem;
+}
+.footer-multiple{
+    display: flex;
+    width: 23rem;
+    height: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    justify-content: space-between;
+    font-size: 31px;
+    margin-left: 14rem ;
+
+}
+.footer-multiple .add-subtract .multiple-ipt{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 55px;
+}
+.add-subtract{
+    width: 17rem;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    font-size: 50px;
+}
+.add-subtract a{
+    display: block;
+    width: 7rem;
+    text-align: center;
+    color: black;
+    background: gainsboro;
+
+}
+.add-subtract a:first-child{
+    border-right:1px solid black ;
+}
+.add-subtract a:last-child{
+    border-left:1px solid black ;
+}
+.bet-num{
+    font-size: 27px;
+    margin-left: 8rem;
+}
+.bet-num i{
+    font-size: 43px;
+    color: purple;
+}
+.content-bg{
+    background: url("../img/footballBg.png") no-repeat;
+    background-size:100% 100% ;
+    width: 100%;
+    height: 100%;
+    padding: 0 10rem;
+}
+.competition-time{
+    color: #ffffff;
+    line-height: 9rem;
+    text-align: center;
+}
+.competition-time .time-t{
+    font-size: 30px;
+    float: left;
+}
+.competition-time .time{
+    font-size: 26px;
+}
+.competition-time .time i{
+    color: #FF9307;
+}
+.competition-session{
+    width: 100%;
+}
+.team-name {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    justify-content: space-around;
+    background: #692CFE;
+    align-items: center;
+    font-size: 58px;
+    color: white;
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    position: relative;
+    padding: 0 8rem;
+    overflow: hidden;
+}
+.team-name .weak{
+    position: absolute;
+    left: 0;
+    top:0;
+    background: white;
+    font-size: 26px;
+    color: #692CFE;
+    padding: 12px 32px;
+    border-bottom-right-radius: 15px;
+}
+.match-fitness{
+    padding: 4rem 5rem 2rem;
+    background: white;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+
+}
+.match-fitness .rating{
+    width: 100%;
+    height: 1.2rem;
+    background: gainsboro;
+    border-radius: 28px;
+    overflow: hidden;
+}
+.match-fitness .rating .plan{
+    height: 100%;
+    float: left;
+}
+.match-fitness .rating .win-plan{
+    background:#00B7EE;
+    border-radius: 28px;
+}
+.rating-num .win-cl{
+    color:#00B7EE ;
+}
+
+.match-fitness .rating .draw-plan{
+    background:#EB00EE;
+    border-radius: 28px;
+}
+.rating-num .draw-cl{
+    color:#EB00EE ;
+}
+
+.match-fitness .rating .lose-plan{
+    background:#BFE707;
+}
+.rating-num .lose-cl{
+    color:#BFE707 ;
+}
+
+
+
+
+.match-fitness .rating-num{
+    display: flex;
+    justify-content: space-around;
+}
+.match-fitness .rating-num div{
+    text-align: center;
+}
+.match-fitness .rating-num .num{
+    line-height: 5rem;
+    font-size: 34px;
+}
+.match-fitness .rating-num .num-btn{
+    border: 3px solid #6636D3;
+    border-radius: 19px;
+    padding: 4rem 7rem;
+    font-size: 51px;
+    color: #6636D3;
+    font-weight: bold;
+}
+.match-fitness .rating-num .num-btn-click{
+    border: 3px solid #FB9504;
+    background: #FB9504;
+    color: white;
+}
+
+.match-fitness .rating-num .support{
+    line-height: 9rem;
+    font-size: 40px;
+    color: #6A2EFE;
+}
+/*足彩-2串1*/
+.two-lh{
+    line-height: 5.5rem;
+}
+.two-rating{
+    display: flex;
+    width: 28rem;
+    align-items: flex-end;
+    padding-bottom: 1rem;
+}
+.two-rating .rating{
+    margin: 0 1.5rem;
+}
+.p-bottom{
+    padding-bottom: 0;
+    padding-top: 2rem;
+}
+.two-support{
+    line-height: 3rem;
+    font-size: 30px;
+    color: #6A2EFE
+}
+.match-fitness .rating-num .two-w{
+    padding: 3.5rem 7rem;
+}
+.mt-1{
+    margin-top: 1rem;
+}
+.match-fitness .two-rating{
+    background: url("../img/pk.png") no-repeat;
+    background-position-x: center;
+}
+.match-fitness .two-rating .num{
+    line-height: 1rem;
+}
+.match-fitness .two-rating .rating{
+    background:#EB00EE ;
+}
+/*彩票详情页*/
+
+.order-title-result{
+    text-align: center;
+}
+.order-title-result .text-head{
+    font-size: 32px;
+}
+.order-title-result .match-message{
+    width: 100%;
+    height: 300px;
+    margin-top: 2rem;
+    padding: 0 14.5rem;
+}
+.match-message .message-tb{
+    width: 100%;
 }

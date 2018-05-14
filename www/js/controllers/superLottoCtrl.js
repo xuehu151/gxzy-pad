@@ -15,6 +15,7 @@ angular.module('starter.superLottoCtrl', [])
         $scope.dummyStatus = '././img/dummyStatus.png';
         var activityData = $stateParams.resdata;  //活动期间数据
         var activityImg = $stateParams.resimg;
+        var userId = $stateParams.userId;
         $scope.saleNum = 1;
         $scope.imgurl = {
             "background-image": 'url(' + activityImg + ')',
@@ -257,6 +258,7 @@ angular.module('starter.superLottoCtrl', [])
 
         //倍数的变化
         $scope.multipleChange = function () {
+            console.log($scope.multiple)
             if ($scope.multiple > 1000) {
                 $scope.multiple = '1';
             }
@@ -309,7 +311,7 @@ angular.module('starter.superLottoCtrl', [])
                 $scope.imgagesUrl = imgClass[1];
                 $scope.integral.show();
             }
-            // 大乐透投注接口信息   
+            // 大乐透投注接口信息
             function getdltadd() {
                 var dataArrayBig = [];
                 console.info("+++", $scope.sessionJsonWarp);
@@ -344,7 +346,8 @@ angular.module('starter.superLottoCtrl', [])
                         payType: 2,
                         vid: '',
                         addFlag: 0,
-                        data: dataArrayBig
+                        data: dataArrayBig,
+                        businessmanId : userId
                     },
                     params: {}
                 };

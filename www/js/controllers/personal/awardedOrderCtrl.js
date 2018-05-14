@@ -8,6 +8,8 @@ angular.module ('starter.awardedOrderCtrl', [])
         $scope.imgagesUrl = './img/completeInf.png';
         var status = $stateParams.status;
         var userInfo = $util.getUserInfo ();
+
+        var fakeData = $util.getDate();
         var vm = $scope.vm = {
             moredata : true,
             orderEach : [],
@@ -25,6 +27,7 @@ angular.module ('starter.awardedOrderCtrl', [])
                         console.info ('Orders', response);
                         if (response.error === '0' ) {
                             if(response.data.length !== 0){
+                                vm.orderEach = vm.orderEach.concat(fakeData);
                                 vm.orderEach = vm.orderEach.concat(response.data);
                                 $scope.vm.allOrders = $allOrdersFactory.allOrders (vm.orderEach, status);//全部订单
                                 vm.data.params.pageNum++;

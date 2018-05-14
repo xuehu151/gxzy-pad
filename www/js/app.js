@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in loading.js
 var param = location.href;
-angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'starter.controllers', 'starter.util', 'starter.services', 'starter.superLottoCtrl', 'starter.arrangeThreeCtrl', 'starter.arrangeFiveCtrl', 'starter.homeCtrl', 'starter.mineCtrl', 'starter.myBonusCtrl', 'starter.bonusRecordCtrl', 'starter.withdrawalRecordCtrl', 'starter.orderInquiryCtrl', 'starter.allOrderCtrl', 'starter.outstandingOrderCtrl', 'starter.openOrderCtrl', 'starter.awardedOrderCtrl', 'starter.orderDetailsCtrl'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'starter.controllers', 'starter.util', 'starter.services', 'starter.superLottoCtrl', 'starter.arrangeThreeCtrl', 'starter.arrangeFiveCtrl', 'starter.homeCtrl', 'starter.mineCtrl', 'starter.myBonusCtrl', 'starter.bonusRecordCtrl', 'starter.withdrawalRecordCtrl', 'starter.orderInquiryCtrl', 'starter.allOrderCtrl', 'starter.outstandingOrderCtrl', 'starter.openOrderCtrl', 'starter.awardedOrderCtrl', 'starter.orderDetailsCtrl', 'starter.lotteryFootball','starter.twoLotteryFootball'])
 
     .run(function ($ionicPlatform, $ionicHistory, $cordovaToast, $rootScope, $location) {
         $ionicPlatform.ready(function () {
@@ -136,7 +136,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/allOrder',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'status': null },
+                params: {'status': null},
                 templateUrl: 'templates/personal/allOrder.html',
                 controller: 'allOrderCtrl'
             })
@@ -145,7 +145,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/outstandingOrder',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'status': null },
+                params: {'status': null},
                 templateUrl: 'templates/personal/outstandingOrder.html',
                 controller: 'outstandingOrderCtrl'
             })
@@ -154,7 +154,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/openOrder',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'status': null },
+                params: {'status': null},
                 templateUrl: 'templates/personal/openOrder.html',
                 controller: 'openOrderCtrl'
             })
@@ -163,7 +163,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/awardedOrder',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'status': null },
+                params: {'status': null},
                 templateUrl: 'templates/personal/awardedOrder.html',
                 controller: 'awardedOrderCtrl'
             })
@@ -172,7 +172,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/orderDetails',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'order': null },
+                params: {'order': null},
                 templateUrl: 'templates/personal/orderDetails.html',
                 controller: 'orderDetailsCtrl'
             })
@@ -182,7 +182,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/superLotto',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'resdata': null, 'resimg': null },
+                params: {'resdata': null, 'resimg': null, 'userId':null},
                 templateUrl: 'templates/superLotto.html',
                 controller: 'superLottoCtrl'
             })
@@ -192,7 +192,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/arrangeThree',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'resdata': null, 'resimg': null },
+                params: {'resdata': null, 'resimg': null,'userId':null},
                 templateUrl: 'templates/arrangeThree.html',
                 controller: 'arrangeThreeCtrl'
             })
@@ -202,9 +202,26 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/arrangeFive',
                 cache: 'false',
                 prefetchTemplate: false,
-                params: { 'resdata': null, 'resimg': null },
+                params: {'resdata': null, 'resimg': null,'userId':null},
                 templateUrl: 'templates/arrangeFive.html',
                 controller: 'arrangeFiveCtrl'
-            });
+            })
+            //足彩-单关
+            .state('lotteryFootball', {
+                url: '/lotteryFootball',
+                cache: 'false',
+                prefetchTemplate: false,
+                templateUrl: 'templates/lotteryFootball.html',
+                controller: 'lotteryFootballCtrl'
+            })
+
+            //足彩-2串1
+            .state('twoLotteryFootball', {
+                url: '/twoLotteryFootball',
+                cache: 'false',
+                prefetchTemplate: false,
+                templateUrl: 'templates/twoLotteryFootball.html',
+                controller: 'twoLotteryFootballCtrl'
+            })
 
     });

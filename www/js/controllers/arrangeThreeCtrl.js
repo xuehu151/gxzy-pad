@@ -14,8 +14,9 @@ angular.module ('starter.arrangeThreeCtrl', [])
         //空状态
         $scope.dummyStatus = '././img/dummyStatus.png';
         //活动期间数据处理
-        var activityData = $stateParams.resdata; 
+        var activityData = $stateParams.resdata;
         var activityImg = $stateParams.resimg;
+        var userId = $stateParams.userId;
         $scope.imgurl = {
             "background-image" : 'url(' + activityImg +')',
             "background-size": "100% 100%"
@@ -226,6 +227,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
         };
 
         var userInfo = $util.getUserInfo ();
+        console.log("token",userInfo.token);
         var data = {
             data : {},
             params : {
@@ -294,12 +296,13 @@ angular.module ('starter.arrangeThreeCtrl', [])
                         wareIssue : $scope.wareIssue,
                         payType : 2,
                         vid : '',
-                        data : dataArrayBig
+                        data : dataArrayBig,
+                        businessmanId : userId
                     },
                     params : {}
                 };
 
-                console.log (data);
+                console.log ('data',data);
                 BettingService.pl3BetAdd (data, userInfo.token)
                     .then (function (response) {
                         console.info(response);

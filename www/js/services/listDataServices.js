@@ -81,8 +81,10 @@ angular.module('starter.CustomService', [])
                             red: [],
                             blue: []
                         };
-                        if (listData[i].lotteryList[j].lotteryID !== '2') {
-                            investCodeList.red = (listData[i].lotteryList[j].investCode.split('*'));
+                        if (listData[i].lotteryList[j].lotteryID !== '2' && listData[i].lotteryList[j].lotteryID !== '0') {
+                            investCodeList.red = listData[i].lotteryList[j].investCode.split('*');
+                        }else if(listData[i].lotteryList[j].lotteryID === '0'){
+                            investCodeList =listData[i].lotteryList[j].investCode;
                         }
                         else {
                             var investCodeDlt = listData[i].lotteryList[j].investCode.split('*');
@@ -90,12 +92,18 @@ angular.module('starter.CustomService', [])
                             investCodeList.blue = investCodeDlt[1].split(',');
                         }
                         investCodeListArr.push(investCodeList);
+
                     }
                     allOrdersInfoObj.lotteryList = investCodeListArr;
                     allOrdersInfoObj.money = listData[i].money;
                     allOrdersInfoObj.createDate = listData[i].createDate;
                     allOrdersInfoObj.orderNo = listData[i].orderNo;
+
                     switch (Number(listData[i].lotteryID)) {
+                        case 0:
+                            allOrdersInfoObj.lotteryTxt = '竞彩足球';
+                            allOrdersInfoObj.lotteryKind = 0;
+                            break;
                         case 2:
                             allOrdersInfoObj.lotteryTxt = '大乐透';
                             break;
@@ -106,6 +114,7 @@ angular.module('starter.CustomService', [])
                             allOrdersInfoObj.lotteryTxt = '排列五';
                             break;
                     }
+
                     switch (listData[i].status) {
                         case 0:
                         case 1:
@@ -146,6 +155,7 @@ angular.module('starter.CustomService', [])
                     }
                     allOrdersInfoArr.push(allOrdersInfoObj);
                 }
+                console.log("adasdsafas",allOrdersInfoArr);
                 return allOrdersInfoArr
             }
 

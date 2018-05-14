@@ -28,7 +28,7 @@ angular.module ('starter.openOrderCtrl', [])
                                 vm.orderEach = vm.orderEach.concat(response.data);
                                 $scope.vm.allOrders = $allOrdersFactory.allOrders (vm.orderEach, status);
                                 vm.data.params.pageNum++;
-                                console.info ('allOrders/', $scope.vm.allOrders);
+                                console.info (' allOrders/', $scope.vm.allOrders);
                             }
                             else {
                                 vm.moredata = false;
