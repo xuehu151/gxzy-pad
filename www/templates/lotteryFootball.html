@@ -1,0 +1,75 @@
+<ion-view view-title="世界杯-单关">
+    <ion-nav-bar class="bar bar-header bar-royal">
+        <ion-nav-buttons side="left">
+            <a href="#home" class="button button-icon ion-ios-arrow-left btn-mig-l"></a>
+        </ion-nav-buttons>
+        <h1 class="title">世界杯-单关</h1>
+    </ion-nav-bar>
+    <ion-content scroll="false" style="padding-bottom: 4.9rem; padding-top: 1.4rem; ">
+        <div class="content-bg">
+            <div class="competition-time ">
+                <span class="time-t">日职赛事</span>
+                <span class="time">周三17:&nbsp;54截止:&nbsp;&nbsp;<i>剩4时25分07秒</i></span>
+            </div>
+            <div class="competition-session">
+
+                <div class="team-name">
+                    <div class="weak">周三&nbsp;001</div>
+                    <span>大阪樱花</span>
+                    <img src="./img/VS1.png" alt="">
+                    <span>仙台七夕</span>
+                </div>
+                <div class="match-fitness">
+                    <div class="rating">
+                        <div class="plan win-plan" ng-style="{'width':'{{winpercent+'%'}}'}"></div>
+                        <div class="plan draw-plan" ng-style="{'width':'{{drawpercent+'%'}}'}"></div>
+                        <div class="plan lose-plan" ng-style="{'width':'{{losepercent+'%'}}'}"></div>
+                    </div>
+                    <div class="rating-num" >
+                        <div class="win">
+                            <span class="num win-cl">{{winpercent}}%</span>
+                            <div class="num-btn" ng-click="bunkoBtn(1)" ng-class="betnum===1?'num-btn-click':''">胜&nbsp;&nbsp;1.64</div>
+                            <span class="support">{{headwin}}次支持</span>
+                        </div>
+                        <div class="draw" >
+                            <span class="num draw-cl">{{drawpercent}}%</span>
+                            <div class="num-btn" ng-click="bunkoBtn(2)" ng-class="betnum===2?'num-btn-click':''">平&nbsp;&nbsp;1.64</div>
+                            <span class="support">{{headdraw}}次支持</span>
+                        </div>
+                        <div class="lose">
+                            <span class="num lose-cl">{{losepercent}}%</span>
+                            <div class="num-btn"  ng-click="bunkoBtn(3)" ng-class="betnum===3?'num-btn-click':''">负&nbsp;&nbsp;1.64</div>
+                            <span class="support">{{headlose}}次支持</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="footer-bar">
+        <a class="footer-clean">
+            <i class="icon ion-ios-trash-outline"></i>
+            <span>清空</span>
+        </a>
+        <div class="footer-multiple">
+            <span>投</span>
+            <div class="add-subtract">
+                <a ng-click="multSmall()">-</a>
+                <input class="multiple-ipt" type="text" ng-model="multiple">
+                <a ng-click="multBig()">+</a>
+            </div>
+            <span>倍</span>
+        </div>
+        <div class="bet-num">
+            共1注&nbsp;1倍
+            <i>26000</i>
+            龙币
+            预计奖金
+            <i>10.21</i>
+            元
+        </div>
+        <button type="button" class="button-liner-gradiend footer-confirm" style="font-size: 25px">
+            确定
+        </button>
+    </ion-footer-bar>
+</ion-view>
