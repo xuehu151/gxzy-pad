@@ -29,9 +29,7 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-splashscreen": {}
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
