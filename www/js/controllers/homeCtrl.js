@@ -5,15 +5,21 @@ angular.module('starter.homeCtrl', [])
 
     .controller('homeCtrl', function ($scope, $state, $errorPopupFactory, $util, $activityDiscount) {
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
-
+        $scope.pl3Num = 31;
+        $scope.pl3Bg ='';
+        $scope.pl5Num = 40;
+        $scope.pl5Bg ='';
         var userInfo = $util.getUserInfo();
         var data = {
             data: {},
             params: {}
         };
+
+
+
+
         $activityDiscount.activityDiscount(data, userInfo.token)
             .then(function (response) {
-                console.info('+++++++', response);
                 // var discountData = response.data;
                 return {
                     activityDiscount: response.data.activityDiscount,
@@ -23,28 +29,61 @@ angular.module('starter.homeCtrl', [])
             })
 
             .then( function(res){
-                $scope.activityPicture = res.activityPicture;
-                $scope.clickPlFn = function (num) {
+                var teach = '';
+                $activityDiscount.footBall(teach, userInfo.token)
+                    .then(function (response) {
+                        $scope.footOneData =response.data;
+                        $scope.activityPicture = res.activityPicture;
+                        $scope.pl3Bg = $scope.activityPicture[0].img;//排列三入口背景
+                        $scope.pl5Bg =$scope.activityPicture[1].img; //排列五入口背景
 
-                    if (num === 2) {
+                        if( $scope.footOneData[0].length === 1){ //length为1,单关
+                            $scope.pl3Num = 11;
+                            $scope.pl3Bg =$scope.activityPicture[8].img;
+                        }else if($scope.footOneData[0].length === 2){ //length为2,2串1
+                            $scope.pl3Num = 27;
+                            $scope.pl3Bg =$scope.activityPicture[9].img;
+                        }
 
-                        $state.go('superLotto', { resdata: res.activityDiscount[2], resimg:  $scope.activityPicture[6].img });
-                    }
-                    else if (num === 31) {
-                        $state.go('arrangeThree', { resdata: res.activityDiscount[0], resimg:  $scope.activityPicture[4].img });
-                    }
-                    else if (num === 40) {
-                        $state.go('arrangeFive', { resdata: res.activityDiscount[1], resimg:  $scope.activityPicture[5].img });
-                    }
-                    else if (num === 1) {
-                        $state.go('mine.myBonus', { resdata: res.activityDiscount[3], resimg:  $scope.activityPicture[7].img });
-                    }
-                    else {
-                        $scope.successOrFaild = '暂未开放';
-                        $scope.imgagesUrl = imgClass[1];
-                        $errorPopupFactory.errorInfo($scope, $state, null);
-                    }
-                };
+                        if($scope.footOneData[1].length === 1){
+                            $scope.pl5Num = 11;
+                            $scope.pl5Bg =$scope.activityPicture[8].img;
+                        }else if($scope.footOneData[1].length === 2){
+                            $scope.pl5Num = 27;
+                            $scope.pl5Bg =$scope.activityPicture[9].img;
+                        }
+
+                        $scope.clickPlFn = function (num,data) {
+                            if (num === 2) {
+
+                                $state.go('superLotto', { resdata: res.activityDiscount[2], resimg:  $scope.activityPicture[6].img });
+                            }
+                            else if (num === 31) {
+                                $state.go('arrangeThree', { resdata: res.activityDiscount[0], resimg:  $scope.activityPicture[4].img });
+                            }
+                            else if (num === 40) {
+                                $state.go('arrangeFive', { resdata: res.activityDiscount[1], resimg:  $scope.activityPicture[5].img });
+                            }
+                            else if(num ===11){
+                                $state.go('lotteryFootball',{resdata:data});
+                            }
+                            else if(num ===27){
+                                $state.go('twoLotteryFootball',{resdata:data});
+                            }
+                            else if (num === 1) {
+                                $state.go('mine.myBonus', { resdata: res.activityDiscount[3], resimg:  $scope.activityPicture[7].img });
+                            }
+                            else {
+                                $scope.successOrFaild = '暂未开放';
+                                $scope.imgagesUrl = imgClass[1];
+                                $errorPopupFactory.errorInfo($scope, $state, null);
+                            }
+                        };
+
+                    });
+
+
+
             })
 
 

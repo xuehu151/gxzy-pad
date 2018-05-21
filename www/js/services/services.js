@@ -46,8 +46,7 @@ angular.module('starter.services', [])
             },
             pl3addAuto: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().pl3addAutoUrl + '?token=' + token, data);
-            }
-
+            },
         };
     })
 
@@ -106,7 +105,10 @@ angular.module('starter.services', [])
             },
             homeImage: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().homeImageUrl, data, token);
-            }
+            },
+            footBall: function (data, token) {
+                return $util.httpPostRequest($util.getHttpURL().zcAddUrl, data, token);
+            },
 
         }
     });

@@ -12,9 +12,6 @@ angular.module ('starter.allOrderCtrl', [])
         }
         var userInfo = $util.getUserInfo ();
 
-        //假数据
-       var fakeData = $util.getDate();
-
 
         var vm = $scope.vm = {
             moredata : true,

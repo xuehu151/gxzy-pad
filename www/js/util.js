@@ -21,7 +21,8 @@ angular.module ('starter.util', [])
             withdrawGetListUrl : ipUrl + '/service/cash/getList',   //提现纪录
             ordersGetListUrl : ipUrl + '/service/lottery/getList',   //全部订单
             activityDiscountUrl : ipUrl + '/service/lottery/activityDiscount', //折扣信息
-            homeImageUrl : ipUrl +  '/service/common/image' // 入口图片
+            homeImageUrl : ipUrl +  '/service/common/image', // 入口图片
+            zcAddUrl: ipUrl + '/service/ball/getPlan', //足彩投注
 
         };
         return {
@@ -146,65 +147,128 @@ angular.module ('starter.util', [])
                 return promise;
             },
 
-            getDate:function () {
-                return data = [
-                    {
-                        addFlag: 0,
-                        channelName: "扫码兑换",
-                        channelNotice: 0,
-                        createDate: "2018-05-09 17:00:19",
-                        customer_phone: "15596827206",
-                        customer_realName: "柳树",
-                        dcurrencyAmount: 150,
-                        delFlag: "0",
-                        drawTime: "2018-05-09 20:30:00",
-                        id: 8264,
-                        lotteryID: "0",
-                        lotteryList:
-                            [
-                                {
-
-                                    addFlag: 0,
-                                    betAmount: 1,
-                                    betWay: "10051051",
-                                    createDate: "2018-05-09 17:00:19",
-                                    customer_phone: "15596827206",
-                                    customer_realName: "柳树",
-                                    delFlag: "0",
-                                    drawTime: "2018-05-09 20:30:00",
-                                    id: 8410,
-                                    investCode: [
-                                        {
-                                            changci: "021",
-                                            week: '周五',
-                                            teamone: '莱恩',
-                                            teamtwo: '瓦哈卡',
-                                            num: '3:2',
-                                            end: '0'
-                                        }
-                                    ],
-                                    lotteryID: "0",
-                                    money: 2600,
-                                    multiple: 1,
-                                    payType: 2,
-                                    printTime: "2018-05-09 17:00:20",
-                                    status: 3,
-                                    ticketID: "20180509170019356182",
-                                    updateDate: "2018-05-09 21:36:47",
-                                    wareIssue: "2018122",
-                                    winamt: 0
-                                }
-                            ],
-                        money: 2,
-                        notice: 0,
-                        orderNo: "20180509165844246000",
-                        payType: 2,
-                        status:4  ,
-                        updateDate: "2018-05-09 21:36:48",
-                        wareIssue: "2018122"
-                    }
-                ];
-
-            }
+            // getDate:function () {
+            //     return data = [
+            //         {
+            //             addFlag: 0,
+            //             channelName: "扫码兑换",
+            //             channelNotice: 0,
+            //             createDate: "2018-05-09 17:00:19",
+            //             customer_phone: "15596827206",
+            //             customer_realName: "柳树",
+            //             dcurrencyAmount: 150,
+            //             delFlag: "0",
+            //             drawTime: "2018-05-09 20:30:00",
+            //             id: 8264,
+            //             lotteryID: "0",
+            //             lotteryList:
+            //                 [
+            //                     {
+            //
+            //                         addFlag: 0,
+            //                         betAmount: 1,
+            //                         betWay: "10051051",
+            //                         createDate: "2018-05-09 17:00:19",
+            //                         customer_phone: "15596827206",
+            //                         customer_realName: "柳树",
+            //                         delFlag: "0",
+            //                         drawTime: "2018-05-09 20:30:00",
+            //                         id: 8410,
+            //                         investCode: [
+            //                             {
+            //                                 changci: "021",
+            //                                 week: '周五',
+            //                                 teamone: '莱恩',
+            //                                 teamtwo: '瓦哈卡',
+            //                                 num: '3:2',
+            //                                 end: '0'
+            //                             }
+            //                         ],
+            //                         lotteryID: "0",
+            //                         money: 2600,
+            //                         multiple: 1,
+            //                         payType: 2,
+            //                         printTime: "2018-05-09 17:00:20",
+            //                         status: 3,
+            //                         ticketID: "20180509170019356182",
+            //                         updateDate: "2018-05-09 21:36:47",
+            //                         wareIssue: "2018122",
+            //                         winamt: 0
+            //                     }
+            //                 ],
+            //             money: 2,
+            //             notice: 0,
+            //             orderNo: "20180509165844246000",
+            //             payType: 2,
+            //             status:4,
+            //             updateDate: "2018-05-09 21:36:48",
+            //             wareIssue: "2018122"
+            //         },
+            //         {
+            //             addFlag: 0,
+            //             channelName: "扫码兑换",
+            //             channelNotice: 0,
+            //             createDate: "2018-05-09 17:00:19",
+            //             customer_phone: "15596827206",
+            //             customer_realName: "柳树",
+            //             dcurrencyAmount: 150,
+            //             delFlag: "0",
+            //             drawTime: "2018-05-09 20:30:00",
+            //             id: 8264,
+            //             lotteryID: "0",
+            //             lotteryList:
+            //                 [
+            //                     {
+            //
+            //                         addFlag: 0,
+            //                         betAmount: 1,
+            //                         betWay: "10051051",
+            //                         createDate: "2018-05-09 17:00:19",
+            //                         customer_phone: "15596827206",
+            //                         customer_realName: "柳树",
+            //                         delFlag: "0",
+            //                         drawTime: "2018-05-09 20:30:00",
+            //                         id: 8410,
+            //                         investCode: [
+            //                             {
+            //                                 changci: "021",
+            //                                 week: '周五',
+            //                                 teamone: '莱恩',
+            //                                 teamtwo: '瓦哈卡',
+            //                                 num: '3:2',
+            //                                 end: '0'
+            //                             },
+            //                             {
+            //                                 changci: "034",
+            //                                 week: '周四',
+            //                                 teamone: '莫里利亚',
+            //                                 teamtwo: '萨卡特卡',
+            //                                 num: '2:1',
+            //                                 end: '0'
+            //                             }
+            //                         ],
+            //                         lotteryID: "0",
+            //                         money: 2600,
+            //                         multiple: 1,
+            //                         payType: 2,
+            //                         printTime: "2018-05-09 17:00:20",
+            //                         status: 3,
+            //                         ticketID: "20180509170019356182",
+            //                         updateDate: "2018-05-09 21:36:47",
+            //                         wareIssue: "2018122",
+            //                         winamt: 0
+            //                     }
+            //                 ],
+            //             money: 2,
+            //             notice: 0,
+            //             orderNo: "20180509165844246000",
+            //             payType: 2,
+            //             status:4  ,
+            //             updateDate: "2018-05-09 21:36:48",
+            //             wareIssue: "2018122"
+            //         }
+            //     ];
+            //
+            // }
         };
     });

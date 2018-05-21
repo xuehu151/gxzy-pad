@@ -7,16 +7,16 @@ angular.module ('starter.mineCtrl', [])
         $scope.activeTab = function (index, status) {
             switch (index) {
                 case 0:
-                    $state.go ('mine.orderInquiry.allOrder', {status : status});
+                    $state.go ('mine.orderInquiry.allOrder', {status : status}); //0
                     break;
                 case 1:
-                    $state.go ('mine.orderInquiry.outstandingOrder', {status : status});
+                    $state.go ('mine.orderInquiry.outstandingOrder', {status : status});//3
                     break;
                 case 2:
-                    $state.go ('mine.orderInquiry.openOrder', {status : status});
+                    $state.go ('mine.orderInquiry.openOrder', {status : status});//1
                     break;
                 case 3:
-                    $state.go ('mine.orderInquiry.awardedOrder', {status : status});
+                    $state.go ('mine.orderInquiry.awardedOrder', {status : status});//4
                     break;
             }
         };

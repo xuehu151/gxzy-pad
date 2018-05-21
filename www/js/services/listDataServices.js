@@ -92,6 +92,7 @@ angular.module('starter.CustomService', [])
                             investCodeList.blue = investCodeDlt[1].split(',');
                         }
                         investCodeListArr.push(investCodeList);
+                        console.log("investCodeListArr",investCodeListArr)
 
                     }
                     allOrdersInfoObj.lotteryList = investCodeListArr;
@@ -114,8 +115,8 @@ angular.module('starter.CustomService', [])
                             allOrdersInfoObj.lotteryTxt = '排列五';
                             break;
                     }
-
                     switch (listData[i].status) {
+
                         case 0:
                         case 1:
                         case 2:
@@ -155,7 +156,6 @@ angular.module('starter.CustomService', [])
                     }
                     allOrdersInfoArr.push(allOrdersInfoObj);
                 }
-                console.log("adasdsafas",allOrdersInfoArr);
                 return allOrdersInfoArr
             }
 

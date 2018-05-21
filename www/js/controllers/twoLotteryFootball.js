@@ -1,5 +1,8 @@
 angular.module('starter.twoLotteryFootball', [])
-    .controller('twoLotteryFootballCtrl', function ($scope, $state) {
+    .controller('twoLotteryFootballCtrl', function ($scope, $state,$stateParams) {
+
+        $scope.activityData = $stateParams.resdata;  //活动期间数据
+        console.log("2串1数据",activityData);
         $scope.headwin = 999999999; //第一场压赢的
         $scope.headlose = 99 ; //第一场压输的
 

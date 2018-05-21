@@ -13,19 +13,19 @@
             </div>
             <div class="order_content ">
                 <div class="order_content_info">
-                    <!--<div class="order_title_category">购买方案：-->
-                        <!--<div class="order_ball">-->
-                            <!--<span-->
-                                    <!--ng-repeat="ball in orderInfos.lotteryList track by $index"-->
-                                    <!--ng-cloak="">-->
-                                <!--<i class="red_ball" ng-cloak="" ng-repeat="red in ball.red track by $index">{{red}}</i>-->
-                                <!--<i class="blue_ball" ng-cloak="" ng-repeat="blue in ball.blue track by $index">{{blue}}</i>-->
-                            <!--</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <div class="order-title-result">
-                        <span class="text-head">购买方案&nbsp;:&nbsp;&nbsp;一场,&nbsp;&nbsp;单关,&nbsp;方案1倍</span>
+                    <div class="order_title_category" ng-if="orderInfos.lotteryKind !== 0">购买方案：
+                        <div class="order_ball">
+                            <span
+                                    ng-repeat="ball in orderInfos.lotteryList track by $index"
+                                    ng-cloak="">
+                                <i class="red_ball" ng-cloak="" ng-repeat="red in ball.red track by $index">{{red}}</i>
+                                <i class="blue_ball" ng-cloak="" ng-repeat="blue in ball.blue track by $index">{{blue}}</i>
+                            </span>
+                        </div>
+                    </div>
+                    <!--足彩-->
+                    <div class="order-title-result" ng-if="orderInfos.lotteryKind === 0">
+                        <span class="text-head">购买方案&nbsp;:&nbsp;&nbsp;1场,&nbsp;&nbsp;单关,&nbsp;方案1倍</span>
                         <div class="match-message">
                             <table border="1" class="message-tb">
                                 <tr>
@@ -34,41 +34,29 @@
                                     <th>投注</th>
                                     <th>赛果</th>
                                 </tr>
-                                <tr>
+                                <tr ng-repeat="list in orderInfos.lotteryList[0]">
                                     <th>
-                                        <div>周二</div>
-                                        <div>021</div>
+                                        <div>{{list.week}}</div>
+                                        <div>{{list.changci}}</div>
                                     </th>
                                     <th>
-                                        <div>莱恩</div>
-                                        <div>3:5</div>
-                                        <div>瓦拉卡</div>
+                                        <div>{{list.teamone}}</div>
+                                         <div style="line-height: 2rem;">{{list.num}}</div>
+                                        <div>{{list.teamtwo}}</div>
                                     </th>
-                                    <th>主胜&nbsp;1.79</th>
-                                    <th>主胜</th>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <div>周二</div>
-                                        <div>021</div>
-                                    </th>
-                                    <th>
-                                        <div>莱恩</div>
-                                        <div>3:1</div>
-                                        <div>瓦拉卡</div>
-                                    </th>
-                                    <th>主胜&nbsp;1.79</th>
-                                    <th>主胜</th>
+                                    <th style="color: red">主胜&nbsp;1.79</th>
+                                    <th style="color: red">主胜</th>
                                 </tr>
                             </table>
                         </div>
                     </div>
 
 
-                    <div class="order_title_category">订单支付：<span ng-cloak="">{{orderInfos.patternPayment}}</span></div>
-                    <div class="order_title_category">订单编号：<span ng-cloak="">{{orderInfos.orderNo}}</span></div>
-                    <div class="order_title_category">订单时间：<span ng-cloak="">{{orderInfos.createDate}}</span></div>
-                    <div class="order_title_category order_money" ng-if="orderInfos.num==4">中奖奖金：<span ng-cloak="">{{orderInfos.money | currency : '￥'}}</span></div>
+                        <div class="order_title_category">订单支付：<span ng-cloak="">{{orderInfos.patternPayment}}</span></div>
+                        <div class="order_title_category">订单编号：<span ng-cloak="">{{orderInfos.orderNo}}</span></div>
+                        <div class="order_title_category">订单时间：<span ng-cloak="">{{orderInfos.createDate}}</span></div>
+                        <div class="order_title_category order_money" ng-if="orderInfos.num==4">中奖奖金：<span ng-cloak="">{{orderInfos.money | currency : '￥'}}</span></div>
+               
                 </div>
             </div>
         </div>

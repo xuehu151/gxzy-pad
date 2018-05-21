@@ -211,6 +211,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/lotteryFootball',
                 cache: 'false',
                 prefetchTemplate: false,
+                params: {'resdata': null,'userId':null},
                 templateUrl: 'templates/lotteryFootball.html',
                 controller: 'lotteryFootballCtrl'
             })
@@ -220,6 +221,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.CustomService', 'start
                 url: '/twoLotteryFootball',
                 cache: 'false',
                 prefetchTemplate: false,
+                params: {'resdata': null,'userId':null},
                 templateUrl: 'templates/twoLotteryFootball.html',
                 controller: 'twoLotteryFootballCtrl'
             })

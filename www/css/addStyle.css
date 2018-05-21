@@ -4,7 +4,8 @@
 }
 th{
     border: 1px solid black;
-
+    vertical-align: middle;
+    padding: 0.5rem;
 }
 .addBtn{
     width: 50%;
@@ -492,10 +493,22 @@ th{
 }
 .order-title-result .match-message{
     width: 100%;
-    height: 300px;
-    margin-top: 2rem;
-    padding: 0 14.5rem;
+    margin: 2rem 0;
+    padding: 0 13.5rem;
 }
 .match-message .message-tb{
     width: 100%;
+    font-size: 17px;
+    font-weight: 100;
 }
+.match-message .message-tb tbody tr:first-child{
+    font-size: 24px;
+    font-weight: 900;
+}
+.match-message .message-tb tbody tr:first-child th{
+    padding: 1rem;
+}
+.hancaiHome li img{
+    height: 34rem;
+}
+
