@@ -7,6 +7,7 @@ angular.module('starter.lotteryFootball', [])
         $scope.headdraw = 178; //压平局的
         $scope.headlose = 844 ; //压输的
         $scope.noteOne = 200;
+
         $scope.multiple = 1; //倍数
         $scope.money = 200;//支付龙币数
         $scope. bonus = 0; //奖金
