@@ -9,7 +9,8 @@
         <div class="content-bg">
             <div class="competition-time ">
                 <span class="time-t">日职赛事</span>
-                <span class="time">周三17:&nbsp;54截止:&nbsp;&nbsp;<i>剩4时25分07秒</i></span>
+                <span class="time">周三&nbsp;{{endT[1]}}截止:&nbsp;&nbsp;55:00</span>
+                <!--<i>剩{{endTime.hours}}时{{endTime.minute}}分{{endTime.second}}秒</i>-->
             </div>
             <div class="competition-session">
 
@@ -47,7 +48,7 @@
         </div>
     </ion-content>
     <ion-footer-bar class="footer-bar">
-        <a class="footer-clean">
+        <a class="footer-clean" ng-click="emptyAll()">
             <i class="icon ion-ios-trash-outline"></i>
             <span>清空</span>
         </a>
@@ -55,17 +56,21 @@
             <span>投</span>
             <div class="add-subtract">
                 <a ng-click="multSmall()">-</a>
-                <input class="multiple-ipt" type="text" ng-model="multiple">
+                <input class="multiple-ipt"
+                       type="tel"
+                       onKeyUp="value=value.replace(/\D/g,'')"
+                       ng-model="multiple"
+                       ng-change="multipleChange()">
                 <a ng-click="multBig()">+</a>
             </div>
             <span>倍</span>
         </div>
         <div class="bet-num">
-            共1注&nbsp;1倍
+            共{{noteNum}}注&nbsp;{{multiple}}倍
             <i>{{money}}</i>
             龙币
-            预计奖金
-            <i>{{0}}</i>
+            最高奖金
+            <i>{{bonus}}</i>
             元
         </div>
         <button type="button" class="button-liner-gradiend footer-confirm" style="font-size: 25px">

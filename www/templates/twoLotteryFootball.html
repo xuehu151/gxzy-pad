@@ -8,13 +8,13 @@
         <div class="content-bg">
             <div class="competition-time two-lh">
                 <span class="time-t">日职赛事</span>
-                <span class="time">周三17:&nbsp;54截止:&nbsp;&nbsp;<i>剩4时25分07秒</i></span>
+                <span class="time">周三&nbsp;{{endT[1]}}截止:&nbsp;&nbsp;<i>剩{{endTime.hours}}时{{endTime.minute}}分{{endTime.second}}秒</i></span>
             </div>
 
-            <div class="competition-session">
+            <div class="competition-session" ng-repeat=" item in activityData">
                 <div class="team-name">
                     <div class="weak">周三&nbsp;001</div>
-                    <span>大阪樱花</span>
+                    <span>item</span>
                     <img src="./img/VS1.png">
                     <span>仙台七夕</span>
                 </div>
@@ -41,34 +41,34 @@
                 </div>
             </div>
 
-            <div class="competition-session mt-1">
-                <div class="team-name">
-                    <div class="weak">周三&nbsp;001</div>
-                    <span>大阪樱花</span>
-                    <img src="./img/VS1.png">
-                    <span>仙台七夕</span>
-                </div>
-                <div class="match-fitness p-bottom">
-                    <div class="rating-num" >
-                        <div class="win">
-                            <div class="num-btn two-w" ng-click="bunkoBtnTwo(1)" ng-class="twobetnum===1?'num-btn-click':''">胜&nbsp;&nbsp;1.64</div>
-                            <span class="two-support">{{twoheadwin}}次支持</span>
-                        </div>
-                        <div class="two-rating">
-                            <span class="num win-cl">{{twowinpercent}}%</span>
-                            <div class="rating">
-                                <div class="plan win-plan" ng-style="{'width':'{{twowinpercent+'%'}}'}"></div>
-                                <div class="plan draw-plan" ng-style="{'width':'{{twolosepercent+'%'}}'}"></div>
-                            </div>
-                            <span class="num lose-cl">{{twolosepercent}}%</span>
-                        </div>
-                        <div class="lose">
-                            <div class="num-btn two-w" ng-click="bunkoBtnTwo(2)" ng-class="twobetnum===2?'num-btn-click':''">负&nbsp;&nbsp;1.64</div>
-                            <span class="two-support">{{twoheadlose}}次支持</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="competition-session mt-1">-->
+                <!--<div class="team-name">-->
+                    <!--<div class="weak">周三&nbsp;001</div>-->
+                    <!--<span>大阪樱花</span>-->
+                    <!--<img src="./img/VS1.png">-->
+                    <!--<span>仙台七夕</span>-->
+                <!--</div>-->
+                <!--<div class="match-fitness p-bottom">-->
+                    <!--<div class="rating-num" >-->
+                        <!--<div class="win">-->
+                            <!--<div class="num-btn two-w" ng-click="bunkoBtnTwo(1)" ng-class="twobetnum===1?'num-btn-click':''">胜&nbsp;&nbsp;1.64</div>-->
+                            <!--<span class="two-support">{{twoheadwin}}次支持</span>-->
+                        <!--</div>-->
+                        <!--<div class="two-rating">-->
+                            <!--<span class="num win-cl">{{twowinpercent}}%</span>-->
+                            <!--<div class="rating">-->
+                                <!--<div class="plan win-plan" ng-style="{'width':'{{twowinpercent+'%'}}'}"></div>-->
+                                <!--<div class="plan draw-plan" ng-style="{'width':'{{twolosepercent+'%'}}'}"></div>-->
+                            <!--</div>-->
+                            <!--<span class="num lose-cl">{{twolosepercent}}%</span>-->
+                        <!--</div>-->
+                        <!--<div class="lose">-->
+                            <!--<div class="num-btn two-w" ng-click="bunkoBtnTwo(2)" ng-class="twobetnum===2?'num-btn-click':''">负&nbsp;&nbsp;1.64</div>-->
+                            <!--<span class="two-support">{{twoheadlose}}次支持</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
 
         </div>

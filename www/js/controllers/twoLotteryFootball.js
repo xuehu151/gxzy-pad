@@ -1,8 +1,8 @@
 angular.module('starter.twoLotteryFootball', [])
-    .controller('twoLotteryFootballCtrl', function ($scope, $state,$stateParams) {
+    .controller('twoLotteryFootballCtrl', function ($scope, $state, $util, $interval,$stateParams) {
 
         $scope.activityData = $stateParams.resdata;  //活动期间数据
-        console.log("2串1数据",activityData);
+        console.log("2串1数据",$scope.activityData);
         $scope.headwin = 999999999; //第一场压赢的
         $scope.headlose = 99 ; //第一场压输的
 
@@ -39,5 +39,11 @@ angular.module('starter.twoLotteryFootball', [])
         $scope.bunkoBtnTwo = function (num) { //选输赢
             $scope.twobetnum = num;
         };
+
+        // $interval(function () {
+        //     $scope.endTime = $util.countTime($scope.activityData[0].endTime);
+        // },1000);
+
+        $scope.endT= $scope.activityData[0].endTime.split(' ',2);//赛事截止时间
 
     });

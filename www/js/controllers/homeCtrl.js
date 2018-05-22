@@ -33,6 +33,7 @@ angular.module('starter.homeCtrl', [])
                 $activityDiscount.footBall(teach, userInfo.token)
                     .then(function (response) {
                         $scope.footOneData =response.data;
+                        console.log('data',$scope.footOneData);
                         $scope.activityPicture = res.activityPicture;
                         $scope.pl3Bg = $scope.activityPicture[0].img;//排列三入口背景
                         $scope.pl5Bg =$scope.activityPicture[1].img; //排列五入口背景
