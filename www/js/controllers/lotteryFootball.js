@@ -67,8 +67,7 @@ angular.module('starter.lotteryFootball', [])
             $scope.endTime = $util.countTime($scope.activityData[0].endTime);
         },1000);
 
-        $scope.endT= $scope.activityData[0].endTime.split(' ',2);//赛事截止时间
-        console.log( $scope.endT);
+        $scope.endT= $scope.activityData[0].endTime.split(' ',2)[1];//赛事截止时间
         var userInfo = $util.getUserInfo();
         console.log(userInfo.token)
 

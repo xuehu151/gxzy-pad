@@ -3,6 +3,8 @@ angular.module('starter.twoLotteryFootball', [])
 
         $scope.activityData = $stateParams.resdata;  //活动期间数据
         console.log("2串1数据",$scope.activityData);
+        $scope.oneTeamData =  $scope.activityData[0]; //第一场数据
+        $scope.twoTeamData =  $scope.activityData[1]; //第二场数据
         $scope.headwin = 999999999; //第一场压赢的
         $scope.headlose = 99 ; //第一场压输的
         $scope.twoheadwin =1 ; //第二场压赢的
@@ -15,7 +17,8 @@ angular.module('starter.twoLotteryFootball', [])
         $scope.noteNum = 0 ;//注数
         $scope.bonus = 0; //奖金
         $scope.money = 0;//支付龙币数
-        $scope.teamState = []
+        $scope.oneTeamState = []; //第一场比赛方式
+        $scope.twoTeamState = []; //第二场比赛方式
 
         $scope.commonality = function () {
             $scope.money = $scope.noteOne * $scope.begNum * $scope.multiple;
@@ -35,28 +38,33 @@ angular.module('starter.twoLotteryFootball', [])
         $scope.twowinpercent <=0? $scope.twowinpercent =1:'';
         $scope.twolosepercent = 100- $scope.twowinpercent;
 
+        //判断比赛规则
+        $scope.oneTeamData.rqspfRateCount == -1?$scope.oneTeamState =['主胜','客不败']:['主不败','客胜'];
+        $scope.twoTeamData.rqspfRateCount == -1?$scope.twoTeamState =['主胜','客不败']:['主不败','客胜'];
 
-        $scope.multSmall=function(){ //减少倍数
-            $scope.multiple <=1? $scope.multiple = 1:$scope.multiple--;
-            $scope.commonality();
-        };
-        $scope.multBig=function(){ //增加倍数
-            $scope.multiple >= 999 ? $scope.multiple = 999 : $scope.multiple++;
-            $scope.commonality();
-        };
+        var closeTime = ''; //两场比赛最先结束的时间
+        var oneEndTime = new Date($scope.oneTeamData.endTime).getTime(); //第一场结束时间毫秒数
+        var twoEndTime = new Date($scope.twoTeamData.endTime).getTime(); //第二场结束时间毫秒数
+        oneEndTime>twoEndTime?closeTime = $scope.twoTeamData.endTime  : closeTime = $scope.oneTeamData.endTime
 
-        $scope.begNum =0;
+        $interval(function () {
+            $scope.endTime = $util.countTime(closeTime);
+        },1000);
+        console.log('sdsdsdsd',closeTime);
+        $scope.endT= closeTime.split(' ',2)[1];//赛事截止时间
+
+        $scope.begNum =0; //选中几场
         $scope.begMoney =0;  //计算一倍最高奖金
         $scope.bunkoBtn = function (num) { //选输赢
             $scope.betnum[num] = !$scope.betnum[num];
             $scope.begNum =0;
             var begState =[]; //一倍的选中状态龙币数
             //第一场
-            var win = $scope.noteOne*$scope.activityData[0].v3;
-            var lose = $scope.noteOne*$scope.activityData[0].v0;
+            var win = $scope.noteOne*$scope.oneTeamData.v3;
+            var lose = $scope.noteOne*$scope.oneTeamData.v0;
             //第二场
-            var twowin = $scope.noteOne*$scope.activityData[1].v3;
-            var twolose = $scope.noteOne*$scope.activityData[1].v0;
+            var twowin = $scope.noteOne*$scope.twoTeamData.v3;
+            var twolose = $scope.noteOne*$scope.twoTeamData.v0;
             begState.push(win,lose,twowin,twolose);
             $scope.betnum.forEach(function (value,index) {
                 value ? $scope.begNum ++: begState[index] = 0;
@@ -79,10 +87,5 @@ angular.module('starter.twoLotteryFootball', [])
             $scope.begMoney =0;
             $scope.begNum = 0
         };
-        // $interval(function () {
-        //     $scope.endTime = $util.countTime($scope.activityData[0].endTime);
-        // },1000);
-
-        // $scope.endT= $scope.activityData[0].endTime.split(' ',2);//赛事截止时间
 
     });
