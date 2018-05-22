@@ -20,13 +20,16 @@ npm-debug.log*
 coverage/
 dist/
 node_modules/
+resources/
 tmp/
 temp/
 hooks/
 platforms/
+www/lib
 plugins/
 plugins/android.json
 plugins/ios.json
+README.md
 $RECYCLE.BIN/
 
 .DS_Store

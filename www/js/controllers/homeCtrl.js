@@ -20,7 +20,6 @@ angular.module('starter.homeCtrl', [])
 
         $activityDiscount.activityDiscount(data, userInfo.token)
             .then(function (response) {
-                // var discountData = response.data;
                 return {
                     activityDiscount: response.data.activityDiscount,
                     activityPicture: response.data.activityPicture

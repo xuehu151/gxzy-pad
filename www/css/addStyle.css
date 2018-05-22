@@ -260,6 +260,7 @@ th{
     align-items: center;
 }
 .footer-clean{
+    width: 7rem;
     float: left;
     font-size: 52px;
     color: #1F3795  ;
@@ -273,7 +274,6 @@ th{
     width: 13.5rem;
     height: 4rem;
     border-radius: 47px;
-    margin-left: 15rem;
 }
 .footer-multiple{
     display: flex;
@@ -314,6 +314,8 @@ th{
     border-left:1px solid black ;
 }
 .bet-num{
+    width: 59rem;
+    text-align: center;
     font-size: 27px;
     margin-left: 8rem;
 }
@@ -468,7 +470,8 @@ th{
     color: #6A2EFE
 }
 .match-fitness .rating-num .two-w{
-    padding: 3.5rem 7rem;
+    width: 32rem;
+    height: 9rem;
 }
 .mt-1{
     margin-top: 1rem;

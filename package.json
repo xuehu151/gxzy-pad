@@ -9,7 +9,7 @@
     "gulp-sass": "^3.1.0"
   },
   "dependencies": {
-    "cordova-android": "^6.3.0",
+    "cordova-android": "6.3.0",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-geolocation": "^4.0.1",
@@ -29,7 +29,9 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-splashscreen": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   },
   "cordovaPlugins": [
     "cordova-plugin-device",

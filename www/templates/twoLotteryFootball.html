@@ -8,20 +8,20 @@
         <div class="content-bg">
             <div class="competition-time two-lh">
                 <span class="time-t">日职赛事</span>
-                <span class="time">周三&nbsp;{{endT[1]}}截止:&nbsp;&nbsp;<i>剩{{endTime.hours}}时{{endTime.minute}}分{{endTime.second}}秒</i></span>
+                <span class="time">周三17:&nbsp;54截止:&nbsp;&nbsp;<i>剩4时25分07秒</i></span>
             </div>
 
-            <div class="competition-session" ng-repeat=" item in activityData">
+            <div class="competition-session">
                 <div class="team-name">
-                    <div class="weak">周三&nbsp;001</div>
-                    <span>item</span>
+                    <div class="weak">周三&nbsp;{{activityData[0].playId}}</div>
+                    <span>{{activityData[0].hostTeam}}</span>
                     <img src="./img/VS1.png">
-                    <span>仙台七夕</span>
+                    <span>{{activityData[0].visitTeam}}</span>
                 </div>
                 <div class="match-fitness p-bottom">
                     <div class="rating-num" >
                         <div class="win">
-                            <div class="num-btn two-w" ng-click="bunkoBtn(1)" ng-class="betnum===1?'num-btn-click':''">胜&nbsp;&nbsp;1.64</div>
+                            <div class="num-btn two-w" ng-click="bunkoBtn(0)" ng-class="betnum[0]?'num-btn-click':''">主胜&nbsp;&nbsp;{{activityData[0].v3}}</div>
                             <span class="two-support">{{headwin}}次支持</span>
                         </div>
                         <div class="two-rating">
@@ -34,47 +34,47 @@
                         </div>
 
                         <div class="lose">
-                            <div class="num-btn two-w" ng-click="bunkoBtn(2)" ng-class="betnum===2?'num-btn-click':''">负&nbsp;&nbsp;1.64</div>
+                            <div class="num-btn two-w" ng-click="bunkoBtn(1)" ng-class="betnum[1]?'num-btn-click':''">客不败&nbsp;&nbsp;{{activityData[0].v0}}</div>
                             <span class="two-support">{{headlose}}次支持</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!--<div class="competition-session mt-1">-->
-                <!--<div class="team-name">-->
-                    <!--<div class="weak">周三&nbsp;001</div>-->
-                    <!--<span>大阪樱花</span>-->
-                    <!--<img src="./img/VS1.png">-->
-                    <!--<span>仙台七夕</span>-->
-                <!--</div>-->
-                <!--<div class="match-fitness p-bottom">-->
-                    <!--<div class="rating-num" >-->
-                        <!--<div class="win">-->
-                            <!--<div class="num-btn two-w" ng-click="bunkoBtnTwo(1)" ng-class="twobetnum===1?'num-btn-click':''">胜&nbsp;&nbsp;1.64</div>-->
-                            <!--<span class="two-support">{{twoheadwin}}次支持</span>-->
-                        <!--</div>-->
-                        <!--<div class="two-rating">-->
-                            <!--<span class="num win-cl">{{twowinpercent}}%</span>-->
-                            <!--<div class="rating">-->
-                                <!--<div class="plan win-plan" ng-style="{'width':'{{twowinpercent+'%'}}'}"></div>-->
-                                <!--<div class="plan draw-plan" ng-style="{'width':'{{twolosepercent+'%'}}'}"></div>-->
-                            <!--</div>-->
-                            <!--<span class="num lose-cl">{{twolosepercent}}%</span>-->
-                        <!--</div>-->
-                        <!--<div class="lose">-->
-                            <!--<div class="num-btn two-w" ng-click="bunkoBtnTwo(2)" ng-class="twobetnum===2?'num-btn-click':''">负&nbsp;&nbsp;1.64</div>-->
-                            <!--<span class="two-support">{{twoheadlose}}次支持</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="competition-session mt-1">
+                <div class="team-name">
+                    <div class="weak">周三&nbsp;{{activityData[1].playId}}</div>
+                    <span>{{activityData[1].hostTeam}}</span>
+                    <img src="./img/VS1.png">
+                    <span>{{activityData[1].visitTeam}}</span>
+                </div>
+                <div class="match-fitness p-bottom">
+                    <div class="rating-num" >
+                        <div class="win">
+                            <div class="num-btn two-w" ng-click="bunkoBtn(2)" ng-class="betnum[2]?'num-btn-click':''">主不败&nbsp;&nbsp;{{activityData[1].v3}}</div>
+                            <span class="two-support">{{twoheadwin}}次支持</span>
+                        </div>
+                        <div class="two-rating">
+                            <span class="num win-cl">{{twowinpercent}}%</span>
+                            <div class="rating">
+                                <div class="plan win-plan" ng-style="{'width':'{{twowinpercent+'%'}}'}"></div>
+                                <div class="plan draw-plan" ng-style="{'width':'{{twolosepercent+'%'}}'}"></div>
+                            </div>
+                            <span class="num lose-cl">{{twolosepercent}}%</span>
+                        </div>
+                        <div class="lose">
+                            <div class="num-btn two-w" ng-click="bunkoBtn(3)" ng-class="betnum[3]?'num-btn-click':''">客胜&nbsp;&nbsp;{{activityData[1].v0}}</div>
+                            <span class="two-support">{{twoheadlose}}次支持</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
     </ion-content>
     <ion-footer-bar class="footer-bar">
-        <a class="footer-clean">
+        <a class="footer-clean" ng-click="emptyAll()">
             <i class="icon ion-ios-trash-outline"></i>
             <span>清空</span>
         </a>
@@ -91,11 +91,11 @@
             <span>倍</span>
         </div>
         <div class="bet-num">
-            共1注&nbsp;1倍
-            <i>26000</i>
+            共{{noteNum}}注&nbsp;{{multiple}}倍
+            <i>{{money}}</i>
             龙币
             预计奖金
-            <i>10.21</i>
+            <i>{{bonus}}</i>
             元
         </div>
         <button type="button" class="button-liner-gradiend footer-confirm" style="font-size: 25px">

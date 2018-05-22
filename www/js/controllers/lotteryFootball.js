@@ -25,11 +25,11 @@ angular.module('starter.lotteryFootball', [])
             $scope.noteNum = $scope.multiple * $scope.begNum;
         };
         $scope.begNum =0;
-        $scope.begMoney =0;  //全选中一倍的总钱数
+        $scope.begMoney =0;  //计算一倍最高奖金
         $scope.bunkoBtn = function (num) { //选输赢
             $scope.betnum[num] = !$scope.betnum[num];
             $scope.begNum =0;
-            var begState =[]; //一倍的选中状态
+            var begState =[]; //一倍的选中状态龙币数
             var win = $scope.noteOne*$scope.activityData[0].v3;
             var draw = $scope.noteOne*$scope.activityData[0].v1;
             var lose = $scope.noteOne*$scope.activityData[0].v0;
