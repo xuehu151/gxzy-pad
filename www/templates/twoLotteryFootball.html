@@ -8,12 +8,12 @@
         <div class="content-bg">
             <div class="competition-time two-lh">
                 <span class="time-t">日职赛事</span>
-                <span class="time">周三{{endT}}截止:&nbsp;&nbsp;<i>{{endTime.hours}}时{{endTime.minute}}分{{endTime.second}}秒</i></span>
+                <span class="time">{{closeWeek}}&nbsp;{{endT}}截止:&nbsp;&nbsp;<i>{{endTime.hours}}时{{endTime.minute}}分{{endTime.second}}秒</i></span>
             </div>
 
             <div class="competition-session">
                 <div class="team-name">
-                    <div class="weak">周三&nbsp;{{oneTeamData.playId}}</div>
+                    <div class="weak">{{week[0]}}&nbsp;{{oneTeamData.playId}}</div>
                     <span>{{oneTeamData.hostTeam}}</span>
                     <img src="./img/VS1.png">
                     <span>{{oneTeamData.visitTeam}}</span>
@@ -21,7 +21,7 @@
                 <div class="match-fitness p-bottom">
                     <div class="rating-num" >
                         <div class="win">
-                            <div class="num-btn two-w" ng-click="bunkoBtn(0)" ng-class="betnum[0]?'num-btn-click':''">{{oneTeamState[0]}}&nbsp;&nbsp;{{oneTeamData.v3}}</div>
+                            <div class="num-btn two-w" ng-click="oneBunkoBtn(0)" ng-class="oneBetnum[0]?'num-btn-click':''">{{oneTeamState[0]}}&nbsp;&nbsp;{{oneOdds[0]}}</div>
                             <span class="two-support">{{headwin}}次支持</span>
                         </div>
                         <div class="two-rating">
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="lose">
-                            <div class="num-btn two-w" ng-click="bunkoBtn(1)" ng-class="betnum[1]?'num-btn-click':''">{{oneTeamState[1]}}&nbsp;&nbsp;{{oneTeamData.v0}}</div>
+                            <div class="num-btn two-w" ng-click="oneBunkoBtn(1)" ng-class="oneBetnum[1]?'num-btn-click':''">{{oneTeamState[1]}}&nbsp;&nbsp;{{oneOdds[1]}}</div>
                             <span class="two-support">{{headlose}}次支持</span>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
 
             <div class="competition-session mt-1">
                 <div class="team-name">
-                    <div class="weak">周三&nbsp;{{twoTeamData.playId}}</div>
+                    <div class="weak">{{week[1]}}&nbsp;{{twoTeamData.playId}}</div>
                     <span>{{twoTeamData.hostTeam}}</span>
                     <img src="./img/VS1.png">
                     <span>{{twoTeamData.visitTeam}}</span>
@@ -51,7 +51,7 @@
                 <div class="match-fitness p-bottom">
                     <div class="rating-num" >
                         <div class="win">
-                            <div class="num-btn two-w" ng-click="bunkoBtn(2)" ng-class="betnum[2]?'num-btn-click':''">{{twoTeamState[0]}}&nbsp;&nbsp;{{twoTeamData.v3}}</div>
+                            <div class="num-btn two-w" ng-click="twoBunkoBtn(0)" ng-class="twoBetnum[0]?'num-btn-click':''">{{twoTeamState[0]}}&nbsp;&nbsp;{{twoOdds[0]}}</div>
                             <span class="two-support">{{twoheadwin}}次支持</span>
                         </div>
                         <div class="two-rating">
@@ -63,7 +63,7 @@
                             <span class="num lose-cl">{{twolosepercent}}%</span>
                         </div>
                         <div class="lose">
-                            <div class="num-btn two-w" ng-click="bunkoBtn(3)" ng-class="betnum[3]?'num-btn-click':''">{{twoTeamState[1]}}&nbsp;&nbsp;{{twoTeamData.v0}}</div>
+                            <div class="num-btn two-w" ng-click="twoBunkoBtn(1)" ng-class="twoBetnum[1]?'num-btn-click':''">{{twoTeamState[1]}}&nbsp;&nbsp;{{twoOdds[1]}}</div>
                             <span class="two-support">{{twoheadlose}}次支持</span>
                         </div>
                     </div>

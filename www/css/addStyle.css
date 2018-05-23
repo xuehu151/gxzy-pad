@@ -430,7 +430,7 @@ th{
 .match-fitness .rating-num .num-btn{
     border: 3px solid #6636D3;
     border-radius: 19px;
-    padding: 4rem 7rem;
+    padding: 4rem 0rem;
     font-size: 51px;
     color: #6636D3;
     font-weight: bold;
@@ -469,7 +469,7 @@ th{
     color: #6A2EFE
 }
 .match-fitness .rating-num .two-w{
-    width: 32rem;
+    width: 28rem;
     height: 9rem;
 }
 .mt-1{
