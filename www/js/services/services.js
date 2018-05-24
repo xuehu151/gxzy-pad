@@ -47,6 +47,10 @@ angular.module('starter.services', [])
             pl3addAuto: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().pl3addAutoUrl + '?token=' + token, data);
             },
+
+            footBallAdd: function (data, token) {
+                return $util.httpPostRequest($util.getHttpURL().footBallAddUrl, data, token);
+            }
         };
     })
 

@@ -428,6 +428,7 @@ th{
     font-size: 34px;
 }
 .match-fitness .rating-num .num-btn{
+    width: 23rem;
     border: 3px solid #6636D3;
     border-radius: 19px;
     padding: 4rem 0rem;

@@ -30,7 +30,6 @@ angular.module('starter.homeCtrl', [])
                 var teach = '';
                 $activityDiscount.footBall(teach, userInfo.token)
                     .then(function (response) {
-                        console.log("response", response)
                         $scope.footOneData = response.data;
                         console.log('data', $scope.footOneData);
                         $scope.activityPicture = res.activityPicture;
@@ -42,18 +41,18 @@ angular.module('starter.homeCtrl', [])
                             $scope.footOneData.reverse();
                         }
 
-                        if ($scope.footOneData[0].length === 1) { //length为1 ==> 单关
+                        if ($scope.footOneData[0].length === 2) { //length为1 ==> 单关
                             $scope.pl3Num = 11;
                             $scope.pl3Bg = $scope.activityPicture[8].img;
-                        } else if ($scope.footOneData[0].length === 2) { //length为2 ==> 2串1
+                        } else if ($scope.footOneData[0].length === 3) { //length为2 ==> 2串1
                             $scope.pl3Num = 27;
                             $scope.pl3Bg = $scope.activityPicture[9].img;
                         }
 
-                        if ($scope.footOneData[1].length === 1) {
+                        if ($scope.footOneData[1].length === 2) {
                             $scope.pl5Num = 11;
                             $scope.pl5Bg = $scope.activityPicture[8].img;
-                        } else if ($scope.footOneData[1].length === 2) {
+                        } else if ($scope.footOneData[1].length ===3) {
                             $scope.pl5Num = 27;
                             $scope.pl5Bg = $scope.activityPicture[9].img;
                         }

@@ -6,6 +6,8 @@ angular.module ('starter.allOrderCtrl', [])
     .controller ('allOrderCtrl', function ($scope, $state, $rootScope, $util, $allOrdersdService, $allOrdersFactory, $stateParams, $errorPopupFactory, $timeout) {
         $rootScope.nowModule = {listIndex : 4, index : 3};
         $scope.imgagesUrl = './img/completeInf.png';
+
+        var fakeData = $util.getDate()
         var status = $stateParams.status;
         if(status === null){
             status = 0;
@@ -27,10 +29,9 @@ angular.module ('starter.allOrderCtrl', [])
             loadMore : function () {
                 $allOrdersdService.allOrders (vm.data, userInfo.token)
                     .then (function (response) {
-                        console.info ('Orders', response.data[0]);
+                        console.info ('Orders', response.data);
                         if (response.error === '0' ) {
                             if(response.data.length !== 0){
-                                // vm.orderEach = vm.orderEach.concat(fakeData);
                                 vm.orderEach = vm.orderEach.concat(response.data);
 
 

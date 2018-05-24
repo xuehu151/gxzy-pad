@@ -14,6 +14,7 @@ angular.module ('starter.util', [])
             pl3AddUrl : ipUrl + '/service/lottery/pl3add', //排列3投注
             pl5AddUrl : ipUrl + '/service/lottery/pl5add', //排列5投注
             dltAddUrl : ipUrl + '/service/lottery/dltadd', //大乐透投注
+            footBallAddUrl : ipUrl + '/service/lottery/footBallAdd', //足彩投注
             getWareIssueUrl : ipUrl + '/service/lottery/getWareIssue',   //获取期号
             pl3addAutoUrl : ipUrl + '/service/lottery/pl3addAuto',   //排列三自动投注
             getUserUrl : ipUrl + '/service/customer/getUser',   //用户信息
@@ -161,8 +162,70 @@ angular.module ('starter.util', [])
                     default:
                 }
 
-            }
+            },
 
+
+
+            getDate:function () {
+                return data = [
+                    {
+                        addFlag: 0,
+                        channelName: "扫码兑换",
+                        channelNotice: 0,
+                        createDate: "2018-05-09 17:00:19",
+                        customer_phone: "15596827206",
+                        customer_realName: "柳树",
+                        dcurrencyAmount: 150,
+                        delFlag: "0",
+                        drawTime: "2018-05-09 20:30:00",
+                        id: 8264,
+                        lotteryID: "0",
+                        lotteryList:
+                            [
+                                {
+
+                                    addFlag: 0,
+                                    betAmount: 1,
+                                    betWay: "10051051",
+                                    createDate: "2018-05-09 17:00:19",
+                                    customer_phone: "15596827206",
+                                    customer_realName: "柳树",
+                                    delFlag: "0",
+                                    drawTime: "2018-05-09 20:30:00",
+                                    id: 8410,
+                                    investCode: [
+                                        {
+                                            changci: "021",
+                                            week: '周五',
+                                            teamone: '莱恩',
+                                            teamtwo: '瓦哈卡',
+                                            num: '3:2',
+                                            end: '0'
+                                        }
+                                    ],
+                                    lotteryID: "0",
+                                    money: 2600,
+                                    multiple: 1,
+                                    payType: 2,
+                                    printTime: "2018-05-09 17:00:20",
+                                    status: 3,
+                                    ticketID: "20180509170019356182",
+                                    updateDate: "2018-05-09 21:36:47",
+                                    wareIssue: "2018122",
+                                    winamt: 0
+                                }
+                            ],
+                        money: 2,
+                        notice: 0,
+                        orderNo: "20180509165844246000",
+                        payType: 2,
+                        status:4  ,
+                        updateDate: "2018-05-09 21:36:48",
+                        wareIssue: "2018122"
+                    }
+                ];
+
+            }
 
         };
     });

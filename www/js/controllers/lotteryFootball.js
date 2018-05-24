@@ -1,11 +1,13 @@
 angular.module('starter.lotteryFootball', [])
-    .controller('lotteryFootballCtrl', function ($scope, $state, $util,$interval, $stateParams) {
+    .controller('lotteryFootballCtrl', function ($scope, $state, $util,$interval, $stateParams,BettingService) {
 
         $scope.activityData = $stateParams.resdata;  //活动期间数据
         console.log("单关数据", $scope.activityData);
-        $scope.headwin = 555; //压赢的
-        $scope.headdraw = 178; //压平局的
-        $scope.headlose = 844; //压输的
+        var userId = $stateParams.userId;
+        $scope.scheme = $scope.activityData[1];
+        $scope.headwin = $scope.scheme.ballOneWinCount; //胜支持
+        $scope.headdraw = $scope.scheme.ballOneTieCount; //平支持
+        $scope.headlose = $scope.scheme.ballOneLossCount; //负支持
         $scope.noteOne = 200; //一注的龙币数
         $scope.multiple = 1; //倍数
         $scope.noteNum = 0 ;//注数
@@ -16,6 +18,7 @@ angular.module('starter.lotteryFootball', [])
         $scope.headcount = $scope.headwin + $scope.headdraw + $scope.headlose;
 
         $scope.winpercent = ($scope.headwin / $scope.headcount * 100).toFixed(3);
+        console.log( $scope.winpercent)
         $scope.drawpercent = ($scope.headdraw / $scope.headcount * 100).toFixed(3);
         $scope.losepercent = ($scope.headlose / $scope.headcount * 100).toFixed(3);
 
@@ -71,4 +74,52 @@ angular.module('starter.lotteryFootball', [])
         var userInfo = $util.getUserInfo();
         console.log(userInfo.token)
 
+        // 确认提交按钮
+
+        var dataaaa ={
+            data:{
+            lotteryID:"20205",
+            payType:"1",
+            businessmanId:"0",
+            vid:"20170518173820565014",
+            addFlag:"0",
+            data:[
+                {
+                    investCode:"20180524|4|002|20201|3^20180524|4|003|20206|0^",
+                    multiple:"1",
+                    betWay:"502",
+                    planId:"34"
+                }
+            ]
+        }
+        }
+        $scope.showOrderAlertCms = function () {
+
+            BettingService.footBallAdd(dataaaa,userInfo.token)
+                .then(function (response) {
+                    console.log(response);
+                })
+
+
+
+        };
+
     });
+
+
+
+//  var data = {
+//      lotteryID:"20205",
+//      payType:"1",
+//      businessmanId:"0",
+//      vid:"20170518173820565014",
+//      addFlag:"0",
+//      data:[
+//          {
+//              investCode:"20180524|4|002|20201|3^20180524|4|003|20206|0^",
+//              multiple:"1",
+//              betWay:"502",
+//              planId:"34",
+//          }
+//      ]
+//  }
