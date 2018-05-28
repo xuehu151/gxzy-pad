@@ -11,11 +11,13 @@ angular.module('starter.superLottoCtrl', [])
         $scope.multiple = '1';
         $scope.totalMoney = '0';
         $scope.isDisabled = true;
+        $scope.noteOne = 150; //一注的龙币数
         //空状态
         $scope.dummyStatus = '././img/dummyStatus.png';
         var activityData = $stateParams.resdata;  //活动期间数据
         var activityImg = $stateParams.resimg;
         var userId = $stateParams.userId;
+        console.log("userId",userId)
         $scope.saleNum = 1;
         $scope.imgurl = {
             "background-image": 'url(' + activityImg + ')',
@@ -161,7 +163,7 @@ angular.module('starter.superLottoCtrl', [])
                 for (var i = 0; i < $scope.numDataBlue.length; i++) {
                     $scope.numDataBlue[i].check = false;
                 }
-                $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple * $scope.saleNum;
+                $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
                 $scope.filterDataBlue = [];
                 $scope.filterDataRed = [];
                 // console.log('++++++++++++++++',$scope.numData)
@@ -232,11 +234,12 @@ angular.module('starter.superLottoCtrl', [])
             }
             $scope.sessionJsonWarp.push(addJson);
             $scope.isDisabled = $util.forbidWhetherEmpty($scope.sessionJsonWarp, $scope.isDisabled);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple * $scope.saleNum;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
         //机选五注
         $scope.autoAddFiveNote = function () {
             for (var i = 0; i < 5; i++) {
+
                 $scope.autoAddOneNote();
             }
         };
@@ -245,7 +248,7 @@ angular.module('starter.superLottoCtrl', [])
         $scope.deleteRow = function ($index) {
             $scope.sessionJsonWarp.splice($index, 1); //点击删除本行
             $scope.isDisabled = $util.forbidWhetherEmpty($scope.sessionJsonWarp, $scope.isDisabled);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple * $scope.saleNum;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
 
         //清空
@@ -253,7 +256,7 @@ angular.module('starter.superLottoCtrl', [])
             $scope.sessionJsonWarp = [];
             $scope.multiple = '1';
             $scope.isDisabled = $util.forbidWhetherEmpty($scope.sessionJsonWarp, $scope.isDisabled);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple * $scope.saleNum;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
 
         //倍数的变化
@@ -262,7 +265,7 @@ angular.module('starter.superLottoCtrl', [])
             if ($scope.multiple > 1000) {
                 $scope.multiple = '1';
             }
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple * $scope.saleNum;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
         var userInfo = $util.getUserInfo();
         var data = {
@@ -360,7 +363,7 @@ angular.module('starter.superLottoCtrl', [])
                             $scope.successOrFaild = '投注成功!';
                             $scope.imgagesUrl = imgClass[0];
                             $scope.sessionJsonWarp = [];
-                            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple * $scope.saleNum;
+                            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
                             $scope.isDisabled = true;
                             $errorPopupFactory.errorInfo($scope, $state, 'mine.myBonus', true, true, '继续投注', '个人中心');
                         }

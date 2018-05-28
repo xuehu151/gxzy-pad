@@ -11,6 +11,7 @@ angular.module ('starter.arrangeFiveCtrl', [])
         $scope.multiple = '1';
         $scope.totalMoney = '0';
         $scope.isDisabled = true;
+        $scope.noteOne = 150; //一注的龙币数
         //空状态
         $scope.dummyStatus = '././img/dummyStatus.png';
 
@@ -204,7 +205,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
                 console.log ($scope.numData);
                 $scope.sessionJsonWarp.push ($scope.numData);
                 console.log ("6464564", $scope.sessionJsonWarp);
-                $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
+                console.log("$scope.saleNum",$scope.saleNum)
+                $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
                 // for(var i=0; i<$scope.numDataBit10000.length; i++){
                 //     $scope.numDataBit10000[i].check = false;
                 // }
@@ -265,7 +267,8 @@ angular.module ('starter.arrangeFiveCtrl', [])
             //由于路由的切换,需本地保存session
             $scope.sessionJsonWarp.push (addJson);
             $scope.isDisabled = $util.forbidWhetherEmpty ($scope.sessionJsonWarp);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
+
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
         //机选五注
         $scope.autoAddFiveNote = function () {
@@ -278,7 +281,7 @@ angular.module ('starter.arrangeFiveCtrl', [])
         $scope.deleteRow = function ($index) {
             $scope.sessionJsonWarp.splice ($index, 1); //点击删除本行
             $scope.isDisabled = $util.forbidWhetherEmpty ($scope.sessionJsonWarp, $scope.isDisabled);
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
 
         //清空
@@ -286,7 +289,7 @@ angular.module ('starter.arrangeFiveCtrl', [])
             $scope.sessionJsonWarp = [];
             $scope.isDisabled = $util.forbidWhetherEmpty ($scope.sessionJsonWarp, $scope.isDisabled);
             $scope.multiple = '1';
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
 
         //倍数的变化
@@ -294,7 +297,7 @@ angular.module ('starter.arrangeFiveCtrl', [])
             if ($scope.multiple > 1000) {
                 $scope.multiple = '1';
             }
-            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
+            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
         };
 
         var userInfo = $util.getUserInfo ();
@@ -381,7 +384,9 @@ angular.module ('starter.arrangeFiveCtrl', [])
                             $scope.imgagesUrl = imgClass[0];
                             $scope.sessionJsonWarp = [];
                             $scope.isDisabled = true;
-                            $scope.totalMoney = $scope.sessionJsonWarp.length * 100 * $scope.multiple* $scope.saleNum;
+                            // $scope.totalMoney = parseInt($scope.sessionJsonWarp.length * $scope.noteOne * $scope.multiple* $scope.saleNum);
+
+                            $scope.totalMoney = $scope.sessionJsonWarp.length * $scope.multiple * (parseInt($scope.noteOne* $scope.saleNum));
                             $errorPopupFactory.errorInfo ($scope, $state, 'mine.myBonus',true,true,'继续投注','个人中心');
                         }
                         else if (response.error === '1110') {

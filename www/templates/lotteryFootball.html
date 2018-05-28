@@ -9,12 +9,12 @@
         <div class="content-bg">
             <div class="competition-time ">
                 <span class="time-t">日职赛事</span>
-                <span class="time">周三&nbsp;{{endT}}截止:&nbsp;&nbsp;<i>剩{{endTime.hours}}时{{endTime.minute}}分{{endTime.second}}秒</i></span>
+                <span class="time">{{weekNow}}&nbsp;{{endT}}截止:&nbsp;&nbsp;<i>剩{{endTime.hours}}时{{endTime.minute}}分{{endTime.second}}秒</i></span>
             </div>
             <div class="competition-session">
 
                 <div class="team-name">
-                    <div class="weak">周三&nbsp;{{activityData[0].playId}}</div>
+                    <div class="weak">{{weekNow}}&nbsp;{{activityData[0].playId}}</div>
                     <span>{{activityData[0].hostTeam}}</span>
                     <img src="./img/VS1.png" alt="">
                     <span>{{activityData[0].visitTeam}}</span>

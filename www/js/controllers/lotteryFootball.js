@@ -4,7 +4,10 @@ angular.module('starter.lotteryFootball', [])
         $scope.activityData = $stateParams.resdata;  //活动期间数据
         console.log("单关数据", $scope.activityData);
         var userId = $stateParams.userId;
+        console.log(userId);
         $scope.scheme = $scope.activityData[1];
+        // console.log( $scope.scheme.id);
+        $scope.weekNow =''; //比赛周
         $scope.headwin = $scope.scheme.ballOneWinCount; //胜支持
         $scope.headdraw = $scope.scheme.ballOneTieCount; //平支持
         $scope.headlose = $scope.scheme.ballOneLossCount; //负支持
@@ -21,6 +24,8 @@ angular.module('starter.lotteryFootball', [])
         console.log( $scope.winpercent)
         $scope.drawpercent = ($scope.headdraw / $scope.headcount * 100).toFixed(3);
         $scope.losepercent = ($scope.headlose / $scope.headcount * 100).toFixed(3);
+
+        $scope.weekNow = $util.getWeek($scope.activityData[0].week); //得到比赛在周几
 
         $scope.commonality = function () {
             $scope.money = $scope.noteOne * $scope.begNum * $scope.multiple;
@@ -75,27 +80,59 @@ angular.module('starter.lotteryFootball', [])
         console.log(userInfo.token)
 
         // 确认提交按钮
-
-        var dataaaa ={
-            data:{
-            lotteryID:"20205",
-            payType:"1",
-            businessmanId:"0",
-            vid:"20170518173820565014",
-            addFlag:"0",
-            data:[
-                {
-                    investCode:"20180524|4|002|20201|3^20180524|4|003|20206|0^",
-                    multiple:"1",
-                    betWay:"502",
-                    planId:"34"
-                }
-            ]
-        }
-        }
+        //
+        // var data ={
+        //     data:{
+        //     lotteryID:"20201",
+        //     payType:"1",
+        //     businessmanId:userId,
+        //     vid:"20170518173820565014",
+        //     addFlag:"0",
+        //     data:[
+        //         {
+        //             investCode:"20180526|6|001|310^",
+        //             multiple:"1",
+        //             betWay:"500",
+        //             planId:"35"
+        //         }
+        //     ]
+        // }
+        // }
         $scope.showOrderAlertCms = function () {
 
-            BettingService.footBallAdd(dataaaa,userInfo.token)
+            $scope.betnum = [false, false, false] ;//3 / 1 / 0
+
+            $scope.nnnn = [3,1,0];
+
+           /* $scope.betnum.forEach(function (value,index,array) {
+                value :
+            })*/
+
+            var dataArrayBig = [];
+            var resultDate;
+            var investCode  = scope.activityData[1].data+'|'+scope.activityData[1].week+'|'+scope.activityData[1].playId+'|'+resultDate;
+
+
+            var dataObj ={
+                investCode:investCode,
+                multiple:$scope.multiple,
+                betWay:"500",
+                planId: $scope.scheme.id
+            };
+            dataArrayBig.push(dataObj);
+            var data ={
+                data:{
+                    lotteryID:"20201",
+                    payType:userId,
+                    businessmanId:userId,
+                    vid:"20170518173820565014",
+                    addFlag:"0",
+                    data:dataArrayBig
+                }
+            }
+
+
+            BettingService.footBallAdd(data,userInfo.token)
                 .then(function (response) {
                     console.log(response);
                 })

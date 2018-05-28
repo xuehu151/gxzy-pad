@@ -92,7 +92,6 @@ angular.module('starter.CustomService', [])
                             investCodeList.blue = investCodeDlt[1].split(',');
                         }
                         investCodeListArr.push(investCodeList);
-                        console.log("investCodeListArr",investCodeListArr)
 
                     }
                     allOrdersInfoObj.lotteryList = investCodeListArr;

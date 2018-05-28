@@ -24,7 +24,4 @@ angular.module ('starter.mineCtrl', [])
         $scope.goToTickets = function () {
             $state.go('home');
         }
-
-
-
-    });
+        });

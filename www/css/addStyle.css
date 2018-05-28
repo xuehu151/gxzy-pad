@@ -181,7 +181,8 @@ th{
     line-height: 2.9rem;
 }
 .padding-6{
-    padding-top:9rem;
+    padding-top:3rem;
+    top: 130px;
 }
 .betting-num i{
     width: 3.5rem;

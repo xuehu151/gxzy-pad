@@ -37,7 +37,7 @@ angular.module('starter.homeCtrl', [])
                         $scope.pl5Bg = $scope.activityPicture[1].img; //排列五入口背景
 
                         //出现
-                        if ($scope.footOneData[1].length < $scope.footOneData[0].length) {
+                       if ($scope.footOneData[1].length < $scope.footOneData[0].length) {
                             $scope.footOneData.reverse();
                         }
 

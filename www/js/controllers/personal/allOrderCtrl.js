@@ -29,7 +29,7 @@ angular.module ('starter.allOrderCtrl', [])
             loadMore : function () {
                 $allOrdersdService.allOrders (vm.data, userInfo.token)
                     .then (function (response) {
-                        console.info ('Orders', response.data);
+                        console.info ('Orders', response);
                         if (response.error === '0' ) {
                             if(response.data.length !== 0){
                                 vm.orderEach = vm.orderEach.concat(response.data);
@@ -39,7 +39,7 @@ angular.module ('starter.allOrderCtrl', [])
                                 // console.log("656565",  vm.orderEach )
                                 $scope.vm.allOrders = $allOrdersFactory.allOrders (vm.orderEach, status);//全部订单
                                 vm.data.params.pageNum++;
-                                console.info ('allOrders/', $scope.vm.allOrders);
+                                // console.info ('allOrders/', $scope.vm.allOrders);
                             }
                             else {
                                 vm.moredata = false;

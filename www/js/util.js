@@ -9,6 +9,9 @@ angular.module ('starter.util', [])
         // var ipUrl = 'http://103.235.237.134';      //本地ip地址或者域名
         // var ipUrl = 'http://192.168.1.109:8080';    //刘一星
 
+        // var ipUrl = 'http://lottery.zhenlong.wang';//正式版
+
+
         var httpURL = {
             loginUrl : ipUrl + '/service/common/sign', //登录
             pl3AddUrl : ipUrl + '/service/lottery/pl3add', //排列3投注

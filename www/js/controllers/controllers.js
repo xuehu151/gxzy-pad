@@ -28,6 +28,7 @@ angular.module('starter.controllers', [])
                 console.info('response',response);
                 if (response.error === '0') {
                     $util.setUserInfo(response.data);
+
                     if (openId !== 'null' && lotteryId === 'null') {
                         // $timeout(function () {
                         $state.go('home');
