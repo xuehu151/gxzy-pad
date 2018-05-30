@@ -1,9 +1,9 @@
 angular.module('starter.lotteryFootball', [])
-    .controller('lotteryFootballCtrl', function ($scope, $state, $util,$interval, $stateParams,BettingService) {
+    .controller('lotteryFootballCtrl', function ($scope, $state, $util,$interval, $stateParams,BettingService, $rootScope) {
 
         $scope.activityData = $stateParams.resdata;  //活动期间数据
         console.log("单关数据", $scope.activityData);
-        var userId = $stateParams.userId;
+        $rootScope.userId = userId;
         console.log(userId);
         $scope.scheme = $scope.activityData[1];
         // console.log( $scope.scheme.id);
@@ -123,7 +123,7 @@ angular.module('starter.lotteryFootball', [])
             var data ={
                 data:{
                     lotteryID:"20201",
-                    payType:userId,
+                    payType:1,
                     businessmanId:userId,
                     vid:"20170518173820565014",
                     addFlag:"0",

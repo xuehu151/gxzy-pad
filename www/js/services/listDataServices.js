@@ -73,7 +73,7 @@ angular.module('starter.CustomService', [])
             allOrders: function (listData, status) {
                 console.info('*****', listData);
                 var allOrdersInfoArr = [];
-                for (var i = 0; i < listData.length; i++) {  // aaa = [    ]
+                for (var i = 0; i < listData.length; i++) {
                     var allOrdersInfoObj = {};
                     var investCodeListArr = [];
                     for (var j = 0; j < listData[i].lotteryList.length; j++) {
@@ -81,16 +81,24 @@ angular.module('starter.CustomService', [])
                             red: [],
                             blue: []
                         };
-                        if (listData[i].lotteryList[j].lotteryID !== '2' && listData[i].lotteryList[j].lotteryID !== '0') {
-                            investCodeList.red = listData[i].lotteryList[j].investCode.split('*');
-                        }else if(listData[i].lotteryList[j].lotteryID === '0'){
-                            investCodeList =listData[i].lotteryList[j].investCode;
+                        if (listData[i].lotteryList[j].lotteryID !== '2') {
+                            investCodeList.red = (listData[i].lotteryList[j].investCode.split('*'));
                         }
                         else {
                             var investCodeDlt = listData[i].lotteryList[j].investCode.split('*');
                             investCodeList.red = investCodeDlt[0].split(',');
                             investCodeList.blue = investCodeDlt[1].split(',');
                         }
+                        // if (listData[i].lotteryList[j].lotteryID !== '2' && listData[i].lotteryList[j].lotteryID !== '0') {
+                        //     investCodeList.red = listData[i].lotteryList[j].investCode.split('*');
+                        // }else if(listData[i].lotteryList[j].lotteryID === '0'){
+                        //     investCodeList =listData[i].lotteryList[j].investCode;
+                        // }
+                        // else {
+                        //     var investCodeDlt = listData[i].lotteryList[j].investCode.split('*');
+                        //     investCodeList.red = investCodeDlt[0].split(',');
+                        //     investCodeList.blue = investCodeDlt[1].split(',');
+                        // }
                         investCodeListArr.push(investCodeList);
 
                     }
@@ -100,8 +108,8 @@ angular.module('starter.CustomService', [])
                     allOrdersInfoObj.orderNo = listData[i].orderNo;
 
                     switch (Number(listData[i].lotteryID)) {
-                        case 0:
-                            allOrdersInfoObj.lotteryTxt = '竞彩足球';
+                        case 20201:
+                            allOrdersInfoObj.lotteryTxt = '竞彩足球-2串1';
                             allOrdersInfoObj.lotteryKind = 0;
                             break;
                         case 2:
@@ -207,17 +215,16 @@ angular.module('starter.CustomService', [])
     //活动数据获取
     .factory('$getActivityData', function ($interval) {
         return {
-            ActivityData: function (obj,startTime, endTime, discount) {
-                $interval(function () {
+            ActivityData: function (obj, startTime, endTime, discount) {
+                saleNumCount();
+                $interval(saleNumCount, 1000);
+                function saleNumCount() {
                     if (Date.parse(new Date(startTime)) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(new Date(endTime))) {
                         obj.saleNum = discount;
-                        // console.log('打折');
                     } else {
                         obj.saleNum = 1;
-                        // console.log('不打折');
                     }
-                }, 1000)
+                }
             }
         }
-    })
-
+    });

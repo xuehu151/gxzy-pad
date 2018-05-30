@@ -3,13 +3,15 @@
  */
 angular.module('starter.homeCtrl', [])
 
-    .controller('homeCtrl', function ($scope, $state, $errorPopupFactory, $util, $activityDiscount) {
+    .controller('homeCtrl', function ($scope, $state, $errorPopupFactory, $util, $activityDiscount,$rootScope) {
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         $scope.pl3Num = 31;
         $scope.pl3Bg = '';
         $scope.pl5Num = 40;
         $scope.pl5Bg = '';
         var userInfo = $util.getUserInfo();
+        var userId = $rootScope.userId;
+        console.log(userId);
         console.log(userInfo.token);
         var data = {
             data: {},
@@ -40,7 +42,6 @@ angular.module('starter.homeCtrl', [])
                        if ($scope.footOneData[1].length < $scope.footOneData[0].length) {
                             $scope.footOneData.reverse();
                         }
-
                         if ($scope.footOneData[0].length === 2) { //length为1 ==> 单关
                             $scope.pl3Num = 11;
                             $scope.pl3Bg = $scope.activityPicture[8].img;
@@ -57,24 +58,26 @@ angular.module('starter.homeCtrl', [])
                             $scope.pl5Bg = $scope.activityPicture[9].img;
                         }
 
-                        $scope.clickPlFn = function (num, data) {
+                        $scope.clickPlFn = function (num,data) {
                             if (num === 2) {
-
                                 $state.go('superLotto', {
                                     resdata: res.activityDiscount[2],
-                                    resimg: $scope.activityPicture[6].img
+                                    resimg: $scope.activityPicture[6].img,
+                                    userId:userId
                                 });
                             }
                             else if (num === 31) {
                                 $state.go('arrangeThree', {
                                     resdata: res.activityDiscount[0],
-                                    resimg: $scope.activityPicture[4].img
+                                    resimg: $scope.activityPicture[4].img,
+                                    userId:userId
                                 });
                             }
                             else if (num === 40) {
                                 $state.go('arrangeFive', {
                                     resdata: res.activityDiscount[1],
-                                    resimg: $scope.activityPicture[5].img
+                                    resimg: $scope.activityPicture[5].img,
+                                    userId:userId
                                 });
                             }
                             else if (num === 11) {

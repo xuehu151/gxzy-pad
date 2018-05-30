@@ -1,12 +1,13 @@
 angular.module('starter.controllers', [])
 
-    .controller('loginCtrl', function ($scope, $state, $loginService, $util, $cordovaToast, $timeout, $ionicLoading, $ionicModal, $errorPopupFactory, $activityDiscount) {
+    .controller('loginCtrl', function ($scope, $state, $loginService, $util, $cordovaToast, $timeout, $ionicLoading, $ionicModal, $errorPopupFactory, $activityDiscount,$rootScope) {
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         var splitUrl = param.split('?')[1];
         var loginArgument = splitUrl.split('&');
         var lotteryId = loginArgument[0].split('=')[1];
         var openId = loginArgument[1].split('=')[1];
         var userId = loginArgument[2].split('=')[1];
+        $rootScope.userId = userId;
         var KEY = "a1b2c3d4e5f6g7";
         var sign = md5(openId + KEY);
         var data = {

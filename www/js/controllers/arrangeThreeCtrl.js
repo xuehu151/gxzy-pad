@@ -18,15 +18,13 @@ angular.module ('starter.arrangeThreeCtrl', [])
         var activityData = $stateParams.resdata;
         var activityImg = $stateParams.resimg;
         var userId = $stateParams.userId;
+        console.log('userId',userId)
         $scope.imgurl = {
             "background-image" : 'url(' + activityImg +')',
             // "background-size": "100% 100%"
         }
         $scope.saleNum = 1;
-        console.log(Date.parse(new Date(activityData.startTime)));
-        console.log(Date.parse(new Date()));
-        console.log(Date.parse(new Date(activityData.endTime)));
-
+        console.log("activityData.discount",activityData.discount);
         $getActivityData.ActivityData( $scope,activityData.startTime,activityData.endTime,activityData.discount);
 
         //设置排列3球百位号码

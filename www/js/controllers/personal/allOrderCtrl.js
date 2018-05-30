@@ -7,7 +7,7 @@ angular.module ('starter.allOrderCtrl', [])
         $rootScope.nowModule = {listIndex : 4, index : 3};
         $scope.imgagesUrl = './img/completeInf.png';
 
-        var fakeData = $util.getDate()
+
         var status = $stateParams.status;
         if(status === null){
             status = 0;
@@ -39,7 +39,7 @@ angular.module ('starter.allOrderCtrl', [])
                                 // console.log("656565",  vm.orderEach )
                                 $scope.vm.allOrders = $allOrdersFactory.allOrders (vm.orderEach, status);//全部订单
                                 vm.data.params.pageNum++;
-                                // console.info ('allOrders/', $scope.vm.allOrders);
+                                console.info ('allOrders/', $scope.vm.allOrders);
                             }
                             else {
                                 vm.moredata = false;

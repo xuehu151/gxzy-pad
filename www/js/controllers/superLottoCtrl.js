@@ -11,7 +11,7 @@ angular.module('starter.superLottoCtrl', [])
         $scope.multiple = '1';
         $scope.totalMoney = '0';
         $scope.isDisabled = true;
-        $scope.noteOne = 150; //一注的龙币数
+            $scope.noteOne = 150; //一注的龙币数
         //空状态
         $scope.dummyStatus = '././img/dummyStatus.png';
         var activityData = $stateParams.resdata;  //活动期间数据

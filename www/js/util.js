@@ -5,11 +5,11 @@
 angular.module ('starter.util', [])
     .factory ('$util', function ($http, $q, $ionicLoading) {
         /* 接口地址  */
-        var ipUrl = 'http://47.104.29.94:8090';      //本地ip地址或者域名
+         var ipUrl = 'http://47.104.29.94:8090';      //本地ip地址或者域名
         // var ipUrl = 'http://103.235.237.134';      //本地ip地址或者域名
         // var ipUrl = 'http://192.168.1.109:8080';    //刘一星
 
-        // var ipUrl = 'http://lottery.zhenlong.wang';//正式版
+         //var ipUrl = 'http://lottery.zhenlong.wang';//正式版
 
 
         var httpURL = {
@@ -164,71 +164,6 @@ angular.module ('starter.util', [])
                     case 7: return '周天';
                     default:
                 }
-
-            },
-
-
-
-            getDate:function () {
-                return data = [
-                    {
-                        addFlag: 0,
-                        channelName: "扫码兑换",
-                        channelNotice: 0,
-                        createDate: "2018-05-09 17:00:19",
-                        customer_phone: "15596827206",
-                        customer_realName: "柳树",
-                        dcurrencyAmount: 150,
-                        delFlag: "0",
-                        drawTime: "2018-05-09 20:30:00",
-                        id: 8264,
-                        lotteryID: "0",
-                        lotteryList:
-                            [
-                                {
-
-                                    addFlag: 0,
-                                    betAmount: 1,
-                                    betWay: "10051051",
-                                    createDate: "2018-05-09 17:00:19",
-                                    customer_phone: "15596827206",
-                                    customer_realName: "柳树",
-                                    delFlag: "0",
-                                    drawTime: "2018-05-09 20:30:00",
-                                    id: 8410,
-                                    investCode: [
-                                        {
-                                            changci: "021",
-                                            week: '周五',
-                                            teamone: '莱恩',
-                                            teamtwo: '瓦哈卡',
-                                            num: '3:2',
-                                            end: '0'
-                                        }
-                                    ],
-                                    lotteryID: "0",
-                                    money: 2600,
-                                    multiple: 1,
-                                    payType: 2,
-                                    printTime: "2018-05-09 17:00:20",
-                                    status: 3,
-                                    ticketID: "20180509170019356182",
-                                    updateDate: "2018-05-09 21:36:47",
-                                    wareIssue: "2018122",
-                                    winamt: 0
-                                }
-                            ],
-                        money: 2,
-                        notice: 0,
-                        orderNo: "20180509165844246000",
-                        payType: 2,
-                        status:4  ,
-                        updateDate: "2018-05-09 21:36:48",
-                        wareIssue: "2018122"
-                    }
-                ];
-
             }
-
         };
     });
