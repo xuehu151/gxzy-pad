@@ -70,47 +70,19 @@ angular.module('starter.CustomService', [])
     //全部订单
     .factory('$allOrdersFactory', function () {
         return {
-            allOrders: function (listData, status) {
+            allOrders: function (listData, status, footMsg) {   // 0 , 3 , 1 , 4
                 console.info('*****', listData);
                 var allOrdersInfoArr = [];
                 for (var i = 0; i < listData.length; i++) {
                     var allOrdersInfoObj = {};
                     var investCodeListArr = [];
-                    for (var j = 0; j < listData[i].lotteryList.length; j++) {
-                        var investCodeList = {
-                            red: [],
-                            blue: []
-                        };
-                        if (listData[i].lotteryList[j].lotteryID !== '2') {
-                            investCodeList.red = (listData[i].lotteryList[j].investCode.split('*'));
-                        }
-                        else {
-                            var investCodeDlt = listData[i].lotteryList[j].investCode.split('*');
-                            investCodeList.red = investCodeDlt[0].split(',');
-                            investCodeList.blue = investCodeDlt[1].split(',');
-                        }
-                        // if (listData[i].lotteryList[j].lotteryID !== '2' && listData[i].lotteryList[j].lotteryID !== '0') {
-                        //     investCodeList.red = listData[i].lotteryList[j].investCode.split('*');
-                        // }else if(listData[i].lotteryList[j].lotteryID === '0'){
-                        //     investCodeList =listData[i].lotteryList[j].investCode;
-                        // }
-                        // else {
-                        //     var investCodeDlt = listData[i].lotteryList[j].investCode.split('*');
-                        //     investCodeList.red = investCodeDlt[0].split(',');
-                        //     investCodeList.blue = investCodeDlt[1].split(',');
-                        // }
-                        investCodeListArr.push(investCodeList);
-
-                    }
-                    allOrdersInfoObj.lotteryList = investCodeListArr;
-                    allOrdersInfoObj.money = listData[i].money;
-                    allOrdersInfoObj.createDate = listData[i].createDate;
-                    allOrdersInfoObj.orderNo = listData[i].orderNo;
 
                     switch (Number(listData[i].lotteryID)) {
-                        case 20201:
-                            allOrdersInfoObj.lotteryTxt = '竞彩足球-2串1';
-                            allOrdersInfoObj.lotteryKind = 0;
+                        case 20201 :
+                        case 20205 :
+                        case 20206 :
+                            allOrdersInfoObj.lotteryTxt = '竞彩足球';
+                            allOrdersInfoObj.lotteryKind = 0;     //足彩特有字段
                             break;
                         case 2:
                             allOrdersInfoObj.lotteryTxt = '大乐透';
@@ -122,6 +94,43 @@ angular.module('starter.CustomService', [])
                             allOrdersInfoObj.lotteryTxt = '排列五';
                             break;
                     }
+                    if(allOrdersInfoObj.lotteryKind === 0) {  //足彩
+                        var footBallMessage = (listData[i].lotteryList[0].investCode.split('^')).slice(0,-1);
+                        if(footBallMessage.length === 1){
+                            allOrdersInfoObj.betKind = "单关";
+                        }else{
+                            allOrdersInfoObj.betKind = "2串1";
+                        }
+                        allOrdersInfoObj.betNum = footBallMessage.length; //方案场次
+                        allOrdersInfoObj.multiple = listData[i].lotteryList[0].multiple; //方案倍数
+                        allOrdersInfoObj.footBallMessage = footBallMessage;
+                        allOrdersInfoObj.ballPlanId = listData[i].planId;
+                    }else {                                  //其他彩种
+                        for (var j = 0; j < listData[i].lotteryList.length; j++) {
+
+                            var investCodeList = {
+                                red: [],
+                                blue: []
+                            };
+                            if (listData[i].lotteryList[j].lotteryID !== '2') {
+                                investCodeList.red = (listData[i].lotteryList[j].investCode.split('*'));
+                            }
+                            else {
+                                var investCodeDlt = listData[i].lotteryList[j].investCode.split('*');
+                                investCodeList.red = investCodeDlt[0].split(',');
+                                investCodeList.blue = investCodeDlt[1].split(',');
+                            }
+                            investCodeListArr.push(investCodeList);
+
+                        }
+                    }
+
+                    allOrdersInfoObj.lotteryList = investCodeListArr;
+                    allOrdersInfoObj.money = listData[i].money;
+                    allOrdersInfoObj.createDate = listData[i].createDate;
+                    allOrdersInfoObj.orderNo = listData[i].orderNo;
+
+
                     switch (listData[i].status) {
 
                         case 0:
@@ -129,7 +138,12 @@ angular.module('starter.CustomService', [])
                         case 2:
                             allOrdersInfoObj.num = '2';
                             allOrdersInfoObj.statusTxt = '待开奖';
-                            allOrdersInfoObj.differentTxt = '开奖时间' + listData[i].drawTime;
+                            if( allOrdersInfoObj.lotteryKind === 0){
+                                allOrdersInfoObj.differentTxt = "等待开奖";
+                            }else {
+                                allOrdersInfoObj.differentTxt = '开奖时间' + listData[i].drawTime;
+                            }
+
                             if (status === 1) {
                                 allOrdersInfoObj.patternPayment = listData[i].money;
                             }

@@ -226,9 +226,9 @@ angular.module('starter.twoLotteryFootball', [])
                     if ($scope.oneTeamData.rqspfRateCount === "-1") {   //主队让球判断
                         if (resultDate[0] === resultDate[1]) {  //两场选中同样结果
                             if (resultDate[0] === 3) { //都选主胜
-                                lotteryID = "20201" + '|';
+                                lotteryID = "20201";
                             } else {                   //都选客胜
-                                lotteryID = "20206" + '|';
+                                lotteryID = "20206";
                             }
 
                         } else {              //两场选中不一样结果
@@ -244,9 +244,9 @@ angular.module('starter.twoLotteryFootball', [])
                     } else {
                         if (resultDate[0] === resultDate[1]) {
                             if (resultDate[0] === 3) {
-                                lotteryID = "20206" + '|' //让球胜平负
+                                lotteryID = "20206" //让球胜平负
                             } else {
-                                lotteryID = "20201" + '|'; //胜平负
+                                lotteryID = "20201"; //胜平负
                             }
 
                         } else {
@@ -306,7 +306,7 @@ angular.module('starter.twoLotteryFootball', [])
                 var twoData = $scope.twoTeamData.date + '|' + $scope.twoTeamData.week + '|' + $scope.twoTeamData.playId + '|' + LotteryType[1] + resultDate[1] + '^';
                 var dataArrayBig = [];
                 var investCode = oneData + twoData;
-                console.log(investCode);
+                console.log("footdata",investCode);
                 var dataObj = {
                     investCode: investCode,
                     multiple: $scope.multiple,
@@ -317,14 +317,13 @@ angular.module('starter.twoLotteryFootball', [])
                 var data = {
                     data: {
                         lotteryID: lotteryID,
-                        payType: 1,
+                        payType: 2,
                         businessmanId: userId,
                         vid: "20170518173820565014",
                         addFlag: "0",
                         data: dataArrayBig
                     }
                 };
-
                 BettingService.footBallAdd(data, userInfo.token)
                     .then(function (response) {
                         console.log(response);

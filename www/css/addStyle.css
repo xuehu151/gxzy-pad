@@ -490,16 +490,16 @@ th{
 }
 /*彩票详情页*/
 
-.order-title-result{
-    text-align: center;
-}
+/*.order-title-result{*/
+    /*text-align: center;*/
+/*}*/
 .order-title-result .text-head{
     font-size: 32px;
 }
 .order-title-result .match-message{
-    width: 100%;
-    margin: 1rem 0;
-    padding: 0 13.5rem;
+    width: 60%;
+    margin: 3rem 0;
+
 }
 .match-message .message-tb{
     width: 100%;

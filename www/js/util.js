@@ -26,7 +26,7 @@ angular.module ('starter.util', [])
             ordersGetListUrl : ipUrl + '/service/lottery/getList',   //全部订单
             activityDiscountUrl : ipUrl + '/service/lottery/activityDiscount', //折扣信息
             homeImageUrl : ipUrl +  '/service/common/image', // 入口图片
-            zcAddUrl: ipUrl + '/service/ball/getPlan', //足彩投注
+            zcAddUrl: ipUrl + '/service/ball/getPlan/?ballPlanId=', //获取对阵信息
 
         };
         return {

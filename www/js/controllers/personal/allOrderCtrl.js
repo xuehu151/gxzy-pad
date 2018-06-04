@@ -32,11 +32,8 @@ angular.module ('starter.allOrderCtrl', [])
                         console.info ('Orders', response);
                         if (response.error === '0' ) {
                             if(response.data.length !== 0){
+
                                 vm.orderEach = vm.orderEach.concat(response.data);
-
-
-
-                                // console.log("656565",  vm.orderEach )
                                 $scope.vm.allOrders = $allOrdersFactory.allOrders (vm.orderEach, status);//全部订单
                                 vm.data.params.pageNum++;
                                 console.info ('allOrders/', $scope.vm.allOrders);
@@ -59,7 +56,7 @@ angular.module ('starter.allOrderCtrl', [])
             }
         };
         $scope.goToCheckOrders = function (order) {
-            $state.go('mine.orderInquiry.orderDetails',{order : order});
+           $state.go('mine.orderInquiry.orderDetails',{order : order});
         }
 
 

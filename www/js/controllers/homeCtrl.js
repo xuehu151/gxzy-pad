@@ -29,11 +29,10 @@ angular.module('starter.homeCtrl', [])
             })
 
             .then(function (res) {
-                var teach = '';
-                $activityDiscount.footBall(teach, userInfo.token)
+                $activityDiscount.footBall('',userInfo.token,'')
                     .then(function (response) {
                         $scope.footOneData = response.data;
-                        console.log('data', $scope.footOneData);
+                        console.log('data11111', $scope.footOneData);
                         $scope.activityPicture = res.activityPicture;
                         $scope.pl3Bg = $scope.activityPicture[0].img;//排列三入口背景
                         $scope.pl5Bg = $scope.activityPicture[1].img; //排列五入口背景

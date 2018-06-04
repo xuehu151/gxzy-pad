@@ -110,8 +110,8 @@ angular.module('starter.services', [])
             homeImage: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().homeImageUrl, data, token);
             },
-            footBall: function (data, token) {
-                return $util.httpPostRequest($util.getHttpURL().zcAddUrl, data, token);
+            footBall: function (data, token, num) {
+                return $util.httpPostRequest($util.getHttpURL().zcAddUrl+num, data, token);
             },
 
         }

@@ -1,9 +1,11 @@
 angular.module('starter.lotteryFootball', [])
-    .controller('lotteryFootballCtrl', function ($scope, $state, $util,$interval, $stateParams,BettingService, $rootScope) {
-
+    .controller('lotteryFootballCtrl', function ($scope, $state, $util,$interval, $stateParams,BettingService, $rootScope,$errorPopupFactory) {
+        var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
+        $scope.successOrFaild = '您的余额不足,无法投注';
+        $scope.imgagesUrl = imgClass[1];
         $scope.activityData = $stateParams.resdata;  //活动期间数据
         console.log("单关数据", $scope.activityData);
-        $rootScope.userId = userId;
+        var userId=$rootScope.userId;
         console.log(userId);
         $scope.scheme = $scope.activityData[1];
         // console.log( $scope.scheme.id);
@@ -99,44 +101,56 @@ angular.module('starter.lotteryFootball', [])
         // }
         // }
         $scope.showOrderAlertCms = function () {
+            if($scope.begNum<=0){
+                alert("请至少选择一种赛果");
+            }else {
+                var resultDate = '';
+                var teamArrey = ['3','1','0'];
 
-            $scope.betnum = [false, false, false] ;//3 / 1 / 0
+                $scope.betnum.forEach(function (value,index,array) {
+                    value ? resultDate+=teamArrey[index]:'';
+                });
 
-            $scope.nnnn = [3,1,0];
+                var dataArrayBig = [];
 
-           /* $scope.betnum.forEach(function (value,index,array) {
-                value :
-            })*/
+                var investCode  =$scope.activityData[0].date+'|'+$scope.activityData[0].week+'|'+$scope.activityData[0].playId+'|'+resultDate+'^';
 
-            var dataArrayBig = [];
-            var resultDate;
-            var investCode  = scope.activityData[1].data+'|'+scope.activityData[1].week+'|'+scope.activityData[1].playId+'|'+resultDate;
-
-
-            var dataObj ={
-                investCode:investCode,
-                multiple:$scope.multiple,
-                betWay:"500",
-                planId: $scope.scheme.id
-            };
-            dataArrayBig.push(dataObj);
-            var data ={
-                data:{
-                    lotteryID:"20201",
-                    payType:1,
-                    businessmanId:userId,
-                    vid:"20170518173820565014",
-                    addFlag:"0",
-                    data:dataArrayBig
+                console.log(investCode);
+                var dataObj ={
+                    investCode:investCode,
+                    multiple:$scope.multiple,
+                    betWay:"500",
+                    planId: $scope.scheme.id
+                };
+                dataArrayBig.push(dataObj);
+                var data ={
+                    data:{
+                        lotteryID:"20201",
+                        payType:2,
+                        businessmanId:userId,
+                        vid:"20170518173820565014",
+                        addFlag:"0",
+                        data:dataArrayBig
+                    }
                 }
+                BettingService.footBallAdd(data, userInfo.token)
+                    .then(function (response) {
+                        console.log(response);
+                        if (response.error === '0') {
+                            $scope.emptyAll();
+                            $scope.successOrFaild = '投注成功!';
+                            $scope.imgagesUrl = imgClass[0];
+                            $errorPopupFactory.errorInfo($scope, $state, 'mine.myBonus', true, true, '继续投注', '个人中心');
+                        } else if (response.error === '1110') {
+                            $scope.successOrFaild = response.info;
+                            $errorPopupFactory.errorInfo($scope, $state, 'login', false, false);
+                        } else {
+                            $scope.successOrFaild = response.info;
+                            $errorPopupFactory.errorInfo($scope, $state, 'login', false, false);
+                        }
+
+                    })
             }
-
-
-            BettingService.footBallAdd(data,userInfo.token)
-                .then(function (response) {
-                    console.log(response);
-                })
-
 
 
         };

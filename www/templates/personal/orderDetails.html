@@ -25,7 +25,7 @@
                     </div>
                     <!--足彩-->
                     <div class="order-title-result" ng-if="orderInfos.lotteryKind === 0">
-                        <span class="text-head">购买方案&nbsp;:&nbsp;&nbsp;1场,&nbsp;&nbsp;单关,&nbsp;方案1倍</span>
+                        <span class="text-head">购买方案&nbsp;:&nbsp;&nbsp;{{orderInfos.betNum}}场,&nbsp;&nbsp;{{orderInfos.betKind}},&nbsp;方案{{orderInfos.multiple}}倍</span>
                         <div class="match-message">
                             <table border="1" class="message-tb">
                                 <tr>
@@ -34,18 +34,18 @@
                                     <th>投注</th>
                                     <th>赛果</th>
                                 </tr>
-                                <tr ng-repeat="list in orderInfos.lotteryList[0]">
+                                <tr ng-repeat="list in orderInfos.lotteryList">
                                     <th>
                                         <div>{{list.week}}</div>
                                         <div>{{list.changci}}</div>
                                     </th>
                                     <th>
                                         <div>{{list.teamone}}</div>
-                                         <div style="line-height: 2rem;">{{list.num}}</div>
+                                         <div style="line-height: 2rem;">{{list.resultNum}}</div>
                                         <div>{{list.teamtwo}}</div>
                                     </th>
-                                    <th style="color: red">主胜&nbsp;1.79</th>
-                                    <th style="color: red">主胜</th>
+                                    <th style="color: red"><div ng-repeat="result in list.betRes">{{result.betrs}} {{result.betNum}}</div></th>
+                                    <th style="color: red">{{list.amidithion}}</th>
                                 </tr>
                             </table>
                         </div>
