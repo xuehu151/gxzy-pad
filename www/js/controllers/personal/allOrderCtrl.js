@@ -6,8 +6,6 @@ angular.module ('starter.allOrderCtrl', [])
     .controller ('allOrderCtrl', function ($scope, $state, $rootScope, $util, $allOrdersdService, $allOrdersFactory, $stateParams, $errorPopupFactory, $timeout) {
         $rootScope.nowModule = {listIndex : 4, index : 3};
         $scope.imgagesUrl = './img/completeInf.png';
-
-
         var status = $stateParams.status;
         if(status === null){
             status = 0;
@@ -27,6 +25,7 @@ angular.module ('starter.allOrderCtrl', [])
                 }
             },
             loadMore : function () {
+
                 $allOrdersdService.allOrders (vm.data, userInfo.token)
                     .then (function (response) {
                         console.info ('Orders', response);

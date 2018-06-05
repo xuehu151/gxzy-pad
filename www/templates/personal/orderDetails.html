@@ -52,7 +52,10 @@
                     </div>
 
 
-                        <div class="order_title_category">订单支付：<span ng-cloak="">{{orderInfos.patternPayment}}</span></div>
+                        <div class="order_title_category" ng-if="orderInfos.lotteryKind !== 0">订单支付：<span ng-cloak="">{{orderInfos.patternPayment}}</span></div>
+                    <!--足彩-->
+                        <div class="order_title_category" ng-if="orderInfos.lotteryKind === 0">龙币支付：<span ng-cloak="" style="color:red; font-size: 40px">{{orderInfos.patternPayment}} </span><span>龙币</span></div>
+
                         <div class="order_title_category">订单编号：<span ng-cloak="">{{orderInfos.orderNo}}</span></div>
                         <div class="order_title_category">订单时间：<span ng-cloak="">{{orderInfos.createDate}}</span></div>
                         <div class="order_title_category order_money" ng-if="orderInfos.num==4">中奖奖金：<span ng-cloak="">{{orderInfos.money | currency : '￥'}}</span></div>

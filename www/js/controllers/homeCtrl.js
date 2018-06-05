@@ -39,7 +39,7 @@ angular.module('starter.homeCtrl', [])
 
                         //出现
                        if ($scope.footOneData[1].length < $scope.footOneData[0].length) {
-                            $scope.footOneData.reverse();
+                            $scope.footOneData.reverse();  //单关排第一个
                         }
                         if ($scope.footOneData[0].length === 2) { //length为1 ==> 单关
                             $scope.pl3Num = 11;

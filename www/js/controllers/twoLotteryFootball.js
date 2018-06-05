@@ -106,9 +106,10 @@ angular.module('starter.twoLotteryFootball', [])
             closeTime = $scope.oneTeamData.endTime;
             $scope.closeWeek = $scope.week[0];
         }
-
+        console.log(closeTime);
         $interval(function () {
             $scope.endTime = $util.countTime(closeTime);
+            // console.log($scope.endTime);
         }, 1000);
         $scope.endT = closeTime.split(' ', 2)[1];//赛事截止时间
 

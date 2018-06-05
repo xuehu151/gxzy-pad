@@ -26,8 +26,8 @@
                     </div>
                     <div class = "fr">
                         <div class="bonus_mth">
-                            <span ng-if = "order.num==3 " class = "font-style3">奖金支付: </span>
-                            <!--<span  class = "font-style3">龙币支付: </span>-->
+                            <span ng-if = "order.num==3 && order.lotteryKind !=0 " class = "font-style3">奖金支付: </span>
+                            <span  class = "font-style3" ng-if = "order.lotteryKind ==0 ">龙币支付: </span>
                             <span ng-cloak ng-class = "order.num==3?'order_money':''">{{order.patternPayment}}</span>
                         </div>
                         <div

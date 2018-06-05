@@ -158,19 +158,3 @@ angular.module('starter.lotteryFootball', [])
     });
 
 
-
-//  var data = {
-//      lotteryID:"20205",
-//      payType:"1",
-//      businessmanId:"0",
-//      vid:"20170518173820565014",
-//      addFlag:"0",
-//      data:[
-//          {
-//              investCode:"20180524|4|002|20201|3^20180524|4|003|20206|0^",
-//              multiple:"1",
-//              betWay:"502",
-//              planId:"34",
-//          }
-//      ]
-//  }
