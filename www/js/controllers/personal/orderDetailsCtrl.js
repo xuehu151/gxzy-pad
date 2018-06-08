@@ -3,13 +3,15 @@
  */
 angular.module ('starter.orderDetailsCtrl', [])
 
-    .controller ('orderDetailsCtrl', function ($scope, $state, $ionicHistory, $ionicViewSwitcher, $stateParams,$activityDiscount,$util) {
+    .controller ('orderDetailsCtrl', function ($scope, $state, $ionicHistory, $ionicViewSwitcher, $stateParams,$activityDiscount,$util,$errorPopupFactory) {
+        var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
+        $scope.imgagesUrl = imgClass[1];
         $scope.orderInfos = $stateParams.order;
         console.log("dsdsdsd",$scope.orderInfos)
-
         if( $scope.orderInfos.lotteryKind === 0){
             $activityDiscount.footBall('',userInfo.token,$scope.orderInfos.ballPlanId)
                 .then(function (response) {
+                    console.log("response",response)
                     if(response.error === "0"){
                         var footMessage = response.data[0];
                         for(var i=0; len = $scope.orderInfos.footBallMessage.length, i<len; i++){
@@ -64,7 +66,7 @@ angular.module ('starter.orderDetailsCtrl', [])
                             $scope.orderInfos.lotteryList.push(Data);
                         }
                     }else {
-                        $scope.successOrFaild = response.info;
+                        $scope.successOrFaild = '获取信息失败';
                         $errorPopupFactory.errorInfo($scope, $state, 'login', false, false);
                     }
 

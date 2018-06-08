@@ -17,7 +17,7 @@ angular.module('starter.twoLotteryFootball', [])
         $scope.twoheadlose = 0; //第二场压输的
 
         $scope.week = []; //比赛周几
-        $scope.noteOne = 200; //一注的龙币数
+        $scope.noteOne = 150; //一注的龙币数
         $scope.multiple = 1; //倍数
         $scope.noteNum = 0;//注数
         $scope.money = 0;//支付龙币数

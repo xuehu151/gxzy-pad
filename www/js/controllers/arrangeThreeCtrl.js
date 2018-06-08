@@ -22,7 +22,7 @@ angular.module ('starter.arrangeThreeCtrl', [])
         $scope.imgurl = {
             "background-image" : 'url(' + activityImg +')',
             // "background-size": "100% 100%"
-        }
+        };
         $scope.saleNum = 1;
         console.log(activityData);
         $getActivityData.ActivityData( $scope,activityData.startTime,activityData.endTime,activityData.discount);

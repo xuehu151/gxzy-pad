@@ -26,8 +26,8 @@
                     </div>
                     <div class = "fr">
                         <div class="bonus_mth">
-                            <span ng-if = "order.num==3 && order.lotteryKind !=0 " class = "font-style3">奖金支付: </span>
-                            <span  class = "font-style3" ng-if = "order.lotteryKind ==0 ">龙币支付: </span>
+                            <!--<span ng-if = "order.num==3 && order.lotteryKind !=0 " class = "font-style3">奖金支付: </span>-->
+                            <span  class = "font-style3">龙币支付: </span>
                             <span ng-cloak ng-class = "order.num==3?'order_money':''">{{order.patternPayment}}</span>
                         </div>
                         <div
@@ -43,7 +43,7 @@
             <div class="no_list" ng-if="vm.orderEach.length==0">
                 <img src="././img/servicesFaild.png" />
                 <p style="margin-bottom: 50px;">
-                    好像出错了，什么也没有耶!
+                    暂无订单!
                 </p>
             </div>
             <ion-infinite-scroll ng-if = "vm.moredata" on-infinite = "vm.loadMore()" distance = "1%"></ion-infinite-scroll>
