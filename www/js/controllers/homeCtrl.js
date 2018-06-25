@@ -3,7 +3,7 @@
  */
 angular.module('starter.homeCtrl', [])
 
-    .controller('homeCtrl', function ($scope, $state, $errorPopupFactory, $util, $activityDiscount,$rootScope) {
+    .controller('homeCtrl', function ($scope, $state, $errorPopupFactory, $util, $activityDiscount, $rootScope) {
         var imgClass = ['./img/completeInfoSucceed.png', './img/completeInf.png'];
         $scope.pl3Num = 31;
         $scope.pl3Bg = '';
@@ -29,7 +29,7 @@ angular.module('starter.homeCtrl', [])
             })
 
             .then(function (res) {
-                $activityDiscount.footBall('',userInfo.token,'')
+                $activityDiscount.footBall('', userInfo.token, '')
                     .then(function (response) {
                         $scope.footOneData = response.data;
                         console.log('data11111', $scope.footOneData);
@@ -38,7 +38,7 @@ angular.module('starter.homeCtrl', [])
                         $scope.pl5Bg = $scope.activityPicture[1].img; //排列五入口背景
 
                         //出现
-                       if ($scope.footOneData[1].length < $scope.footOneData[0].length) {
+                        if ($scope.footOneData[1].length < $scope.footOneData[0].length) {
                             $scope.footOneData.reverse();
                         }
                         if ($scope.footOneData[0].length === 2) { //length为1 ==> 单关
@@ -52,31 +52,31 @@ angular.module('starter.homeCtrl', [])
                         if ($scope.footOneData[1].length === 2) {
                             $scope.pl5Num = 11;
                             $scope.pl5Bg = $scope.activityPicture[8].img;
-                        } else if ($scope.footOneData[1].length ===3) {
+                        } else if ($scope.footOneData[1].length === 3) {
                             $scope.pl5Num = 27;
                             $scope.pl5Bg = $scope.activityPicture[9].img;
                         }
 
-                        $scope.clickPlFn = function (num,data) {
+                        $scope.clickPlFn = function (num, data) {
                             if (num === 2) {
                                 $state.go('superLotto', {
                                     resdata: res.activityDiscount[2],
                                     resimg: $scope.activityPicture[6].img,
-                                    userId:userId
+                                    userId: userId
                                 });
                             }
                             else if (num === 31) {
                                 $state.go('arrangeThree', {
                                     resdata: res.activityDiscount[0],
                                     resimg: $scope.activityPicture[4].img,
-                                    userId:userId
+                                    userId: userId
                                 });
                             }
                             else if (num === 40) {
                                 $state.go('arrangeFive', {
                                     resdata: res.activityDiscount[1],
                                     resimg: $scope.activityPicture[5].img,
-                                    userId:userId
+                                    userId: userId
                                 });
                             }
                             else if (num === 11) {
