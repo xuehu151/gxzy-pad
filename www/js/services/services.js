@@ -59,10 +59,7 @@ angular.module('starter.services', [])
         return {
             getUserInfo: function (data, token) {
                 return $util.httpPostRequest($util.getHttpURL().getUserUrl, data, token);
-            },
-
-
-
+            }
         };
     })
 

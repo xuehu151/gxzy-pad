@@ -70,7 +70,7 @@ angular.module('starter.CustomService', [])
     //全部订单
     .factory('$allOrdersFactory', function () {
         return {
-            allOrders: function (listData, status, footMsg) {   // 0 , 3 , 1 , 4
+            allOrders: function (listData, status) {   // 0 , 3 , 1 , 4
                 console.info('*****', listData);
                 var allOrdersInfoArr = [];
                 for (var i = 0; i < listData.length; i++) {
@@ -144,39 +144,64 @@ angular.module('starter.CustomService', [])
                                 allOrdersInfoObj.differentTxt = '开奖时间' + listData[i].drawTime;
                             }
 
-                            if (status === 1) {
-                                allOrdersInfoObj.patternPayment = listData[i].money;
-                            }
-                            else {
-                                allOrdersInfoObj.patternPayment = listData[i].channelName;
-                            }
+                            // if (status === 2) {
+                                // if(allOrdersInfoObj.lotteryKind === 0) {
+                                    allOrdersInfoObj.patternPayment = listData[i].dcurrencyAmount
+                                // }else {
+                                //     allOrdersInfoObj.patternPayment = '￥'+ listData[i].money;
+                                // }
+                            // }
+                            // else {
+                                // if(allOrdersInfoObj.lotteryKind === 0){
+                                    allOrdersInfoObj.patternPayment = listData[i].dcurrencyAmount
+                                // }else {
+                                //     allOrdersInfoObj.patternPayment = listData[i].channelName;
+                                // }
+                            // }
                             break;
                         case 3:
                             allOrdersInfoObj.num = '3';
                             allOrdersInfoObj.statusTxt = '未中奖';
                             allOrdersInfoObj.differentTxt = '再接再厉哦~~';
-                            if (status === 0) {
-                                allOrdersInfoObj.patternPayment = '￥' + listData[i].money;
-                            }
-                            else {
-                                allOrdersInfoObj.patternPayment = listData[i].money;
-                            }
+                            // if (status === 0) {
+                            //     allOrdersInfoObj.patternPayment = '￥' + listData[i].money;
+                            // }
+                            // else {
+                                // if(allOrdersInfoObj.lotteryKind === 0){
+                                    allOrdersInfoObj.patternPayment = listData[i].dcurrencyAmount;
+                                // }else {
+                                //     allOrdersInfoObj.patternPayment = '￥' + listData[i].money;
+                                // }
+
+                            // }
                             break;
                         case 4:
                             allOrdersInfoObj.num = '4';
                             allOrdersInfoObj.statusTxt = '已中奖';
                             allOrdersInfoObj.differentTxt = '￥' + listData[i].money;
-                            allOrdersInfoObj.patternPayment = listData[i].channelName;
+                            // if(allOrdersInfoObj.lotteryKind === 0){
+                                allOrdersInfoObj.patternPayment = listData[i].dcurrencyAmount;
+                            // }else {
+                            //     allOrdersInfoObj.patternPayment = listData[i].channelName;
+                            // }
                             break;
                         case -1:
                             allOrdersInfoObj.num = '-1';
                             allOrdersInfoObj.statusTxt = '兑换超时';
                             allOrdersInfoObj.differentTxt = '';
-                            allOrdersInfoObj.patternPayment = listData[i].channelName;
+                            // if(allOrdersInfoObj.lotteryKind === 0){
+                                allOrdersInfoObj.patternPayment = listData[i].dcurrencyAmount;
+                            // }else {
+                            //     allOrdersInfoObj.patternPayment = listData[i].channelName;
+                            // }
                             break;
                     }
+                    // if(allOrdersInfoObj.lotteryKind === 0){
+                    //     allOrdersInfoObj.patternPayment = listData[i].money*100;
+                    // }
                     allOrdersInfoArr.push(allOrdersInfoObj);
                 }
+                console.log("allOrdersInfoArr",allOrdersInfoArr);
                 return allOrdersInfoArr
             }
 

@@ -17,7 +17,7 @@ angular.module('starter.twoLotteryFootball', [])
         $scope.twoheadlose = 0; //第二场压输的
 
         $scope.week = []; //比赛周几
-        $scope.noteOne = 200; //一注的龙币数
+        $scope.noteOne = 150; //一注的龙币数
         $scope.multiple = 1; //倍数
         $scope.noteNum = 0;//注数
         $scope.money = 0;//支付龙币数
@@ -106,9 +106,10 @@ angular.module('starter.twoLotteryFootball', [])
             closeTime = $scope.oneTeamData.endTime;
             $scope.closeWeek = $scope.week[0];
         }
-
+        console.log(closeTime);
         $interval(function () {
             $scope.endTime = $util.countTime(closeTime);
+            // console.log($scope.endTime);
         }, 1000);
         $scope.endT = closeTime.split(' ', 2)[1];//赛事截止时间
 

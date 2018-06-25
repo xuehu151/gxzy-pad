@@ -13,7 +13,7 @@ angular.module('starter.lotteryFootball', [])
         $scope.headwin = $scope.scheme.ballOneWinCount; //胜支持
         $scope.headdraw = $scope.scheme.ballOneTieCount; //平支持
         $scope.headlose = $scope.scheme.ballOneLossCount; //负支持
-        $scope.noteOne = 200; //一注的龙币数
+        $scope.noteOne = 150; //一注的龙币数
         $scope.multiple = 1; //倍数
         $scope.noteNum = 0 ;//注数
         $scope.money = 0;//支付龙币数
@@ -21,11 +21,16 @@ angular.module('starter.lotteryFootball', [])
         $scope.betnum = [false, false, false]; //选中没选中
         $scope.footOneData = '';
         $scope.headcount = $scope.headwin + $scope.headdraw + $scope.headlose;
+        if($scope.headcount === 0){
+            $scope.winpercent = 0 ;
+            $scope.drawpercent = 0;
+            $scope.losepercent = 0;
+        }else {
+            $scope.winpercent = ($scope.headwin / $scope.headcount * 100).toFixed(3);
+            $scope.drawpercent = ($scope.headdraw / $scope.headcount * 100).toFixed(3);
+            $scope.losepercent = ($scope.headlose / $scope.headcount * 100).toFixed(3);
+        }
 
-        $scope.winpercent = ($scope.headwin / $scope.headcount * 100).toFixed(3);
-        console.log( $scope.winpercent)
-        $scope.drawpercent = ($scope.headdraw / $scope.headcount * 100).toFixed(3);
-        $scope.losepercent = ($scope.headlose / $scope.headcount * 100).toFixed(3);
 
         $scope.weekNow = $util.getWeek($scope.activityData[0].week); //得到比赛在周几
 
@@ -81,25 +86,6 @@ angular.module('starter.lotteryFootball', [])
         var userInfo = $util.getUserInfo();
         console.log(userInfo.token)
 
-        // 确认提交按钮
-        //
-        // var data ={
-        //     data:{
-        //     lotteryID:"20201",
-        //     payType:"1",
-        //     businessmanId:userId,
-        //     vid:"20170518173820565014",
-        //     addFlag:"0",
-        //     data:[
-        //         {
-        //             investCode:"20180526|6|001|310^",
-        //             multiple:"1",
-        //             betWay:"500",
-        //             planId:"35"
-        //         }
-        //     ]
-        // }
-        // }
         $scope.showOrderAlertCms = function () {
             if($scope.begNum<=0){
                 alert("请至少选择一种赛果");
@@ -158,19 +144,3 @@ angular.module('starter.lotteryFootball', [])
     });
 
 
-
-//  var data = {
-//      lotteryID:"20205",
-//      payType:"1",
-//      businessmanId:"0",
-//      vid:"20170518173820565014",
-//      addFlag:"0",
-//      data:[
-//          {
-//              investCode:"20180524|4|002|20201|3^20180524|4|003|20206|0^",
-//              multiple:"1",
-//              betWay:"502",
-//              planId:"34",
-//          }
-//      ]
-//  }
